@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artex</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app">
+        <div class="sidebar" id="sidebar">
+            <img src="logo.png" alt="" class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="" class="avatar">
+        </div>
+        <div class="chat" id="chat">
+            <header>Chats <i class="ri-menu-4-line" onclick="open_sidebar_options()"></i></header>
+
+            <div class="messages">
+                <div class="ai">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6873/6873405.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quasi nulla porro animi sint nihil
+                        totam esse illum tempore voluptates.</p>
+                </div>
+
+                <div class="ai user">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quasi nulla porro animi sint nihil
+                        totam esse illum tempore voluptates.lorem30 Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Architecto molestiae ipsa ducimus doloribus est reiciendis nam hic! Neque, cum nihil.
+                        Quasi fugiat assumenda numquam dignissimos in nulla inventore sunt sapiente.</p>
+                </div>
+
+                <div class="ai">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6873/6873405.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quasi nulla porro animi sint nihil
+                        totam esse illum tempore voluptates.</p>
+                </div>
+
+                <div class="ai user">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quasi nulla porro animi sint nihil
+                        totam esse illum tempore voluptates.lorem30 Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Architecto molestiae ipsa ducimus doloribus est reiciendis nam hic! Neque, cum nihil.
+                        Quasi fugiat assumenda numquam dignissimos in nulla inventore sunt sapiente.</p>
+                </div>
+
+                <div class="ai">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6873/6873405.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quasi nulla porro animi sint nihil
+                        totam esse illum tempore voluptates.</p>
+                </div>
+
+                <div class="ai user">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quasi nulla porro animi sint nihil
+                        totam esse illum tempore voluptates.lorem30 Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Architecto molestiae ipsa ducimus doloribus est reiciendis nam hic! Neque, cum nihil.
+                        Quasi fugiat assumenda numquam dignissimos in nulla inventore sunt sapiente.</p>
+                </div>
+
+                <div class="ai">
+                    <img src="https://cdn-icons-png.flaticon.com/128/6873/6873405.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quasi nulla porro animi sint nihil
+                        totam esse illum tempore voluptates.</p>
+                </div>
+
+                <div class="ai user">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quasi nulla porro animi sint nihil
+                        totam esse illum tempore voluptates.lorem30 Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Architecto molestiae ipsa ducimus doloribus est reiciendis nam hic! Neque, cum nihil.
+                        Quasi fugiat assumenda numquam dignissimos in nulla inventore sunt sapiente.</p>
+                </div>
+            </div>
+
+            <div class="input">
+                <i class="ri-mic-fill"></i>
+                <input type="text" placeholder="Type your query here">
+                <i class="ri-send-plane-2-fill"></i>
+            </div>
+        </div>
+        <div class="options" id="options">
+            <p class="optionsTitle">Quick Questions <i class="ri-close-fill" onclick="close_sidebar_options()"></i></p>
+
+            <ul>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, temporibus.</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sunt.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus, vitae!.</li>
+                <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, totam!</li>
+            </ul>
+
+            <div class="card">
+                <p><b>visit out portfolio</b> <span><i class="ri-sparkling-fill"></i></span></p>
+                <p>Lorem, ipsum dolor sit amet consec adipisicing elit. Commodi, esse? Corrupti voluptatum
+                    consectetu</p>
+                <button>Visit now</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+<script>
+    const lenis = new Lenis()
+
+    lenis.on('scroll', (e) => {
+        console.log(e)
+    })
+
+    function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+</script>
+<script src="../../js/common.js"></script>
+<script>
+    function open_sidebar_options() {
+        document.getElementById('chat').style.display = 'none';
+        document.getElementById('sidebar').style.display = 'flex';
+        document.getElementById('options').style.display = 'block';
+    }
+
+    function close_sidebar_options() {
+        document.getElementById('chat').style.display = 'block';
+        document.getElementById('sidebar').style.display = 'none';
+        document.getElementById('options').style.display = 'none';
+    }
+</script>
