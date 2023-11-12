@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artex</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/common.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
-    <div id="contextMenu" class="context-menu" style="display:none;">
+    <!-- <div id="contextMenu" class="context-menu" style="display:none;">
         <ul>
             <li><a onclick="document.querySelector('#app-list-terminal').click()"><img
-                        src="assets/appIcons/terminal.png" alt="">Terminal</a></li>
+                        src="../../assets/appIcons/terminal.png" alt="">Terminal</a></li>
             <li><a target="_blank" href=""><img src="https://img.icons8.com/?size=48&id=UiBLNa8BF2DH&format=png"
                         alt="">Duplicate</a></li>
             <li><a onclick="window.location.reload()"><img
@@ -22,7 +23,7 @@
             <li><a href="#"><img src="https://img.icons8.com/?size=48&id=A0GP25NseAaQ&format=png" alt="">Signout</a>
             </li>
         </ul>
-    </div>
+    </div> -->
     <div class="app">
         <div class="sidebar" id="sidebar">
             <img src="logo.png" alt="" class="logo">
@@ -131,7 +132,6 @@
 
     requestAnimationFrame(raf)
 </script>
-<script src="../../js/common.js"></script>
 <script>
     function open_sidebar_options() {
         document.getElementById('chat').style.display = 'none';
