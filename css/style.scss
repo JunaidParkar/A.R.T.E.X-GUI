@@ -99,49 +99,6 @@ p {
     font-size: 85px;
 }
 
-.desktop .apps .app.main {
-    .context-menu {
-        position: absolute;
-        text-align: center;
-        background: rgba(56, 56, 56, 0.529);
-        backdrop-filter: blur(25px);
-        border-radius: 5px;
-    }
-
-    .context-menu ul {
-        padding: 0px;
-        margin: 0px;
-        min-width: 150px;
-        list-style: none;
-    }
-
-    .context-menu ul li {
-        padding-bottom: 7px;
-        padding-top: 7px;
-        cursor: pointer;
-    }
-
-    .context-menu ul li a {
-        text-decoration: none;
-        color: white;
-        font-weight: 200;
-        display: flex;
-        justify-content: start;align-items: center;
-        padding-left: 7px;
-        gap: 10px;
-        font-size: 12px;
-
-        img{
-            width: 20px;
-        }
-    }
-
-    .context-menu ul li:hover {
-        background: rgba(169, 169, 169, 0.301);
-        border-radius: 5px;
-    }
-}
-
 .desktop .bar {
     padding: 10px;
     height: 60px;
@@ -150,15 +107,6 @@ p {
     align-items: center;
     flex-wrap: wrap;
 }
-
-// .desktop .bar .screen li.no-hover:hover {
-//     border-bottom: 0px solid grey;
-// }
-
-// .desktop .bar .screen li.no-hover:hover img {
-//     transform: translateY(0px);
-// }
-
 
 .desktop .bar ul li.no-hover img {
     transform: translateY(0px);
@@ -183,17 +131,6 @@ p {
     overflow: hidden;
     list-style: none;
 }
-
-// .desktop .bar ul li:hover {
-//     overflow: visible;
-//     transition: 0.5s all ease-in-out;
-//     border-bottom: 3px solid grey;
-// }
-
-// .desktop .bar ul li:hover img {
-//     transform: translateY(-10px);
-//     transition: 0.5s all ease-in-out;
-// }
 
 .desktop .bar ul li.select {
     overflow: visible;
@@ -249,15 +186,8 @@ p {
     cursor: pointer;
 }
 
-
-// responsive
 @media (width< 450px) {
     .desktop {
-
-        // .apps {
-        //     height: calc(100vh - 80px);
-        // }
-
         .bar {
             ul {
                 display: none;
