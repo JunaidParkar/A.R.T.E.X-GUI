@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +12,7 @@
 }
 
 :root {
-  --desktop-background: url(../assets/bg1.png);
+  --desktop-background: url(../assets/bg4.png);
   --font-size: 16px;
   --icon-size: 40px;
   --heading: 900;
@@ -58,7 +57,6 @@ p {
   position: absolute;
   resize: both;
 }
-
 .desktop .apps .app iframe {
   position: absolute;
   top: 0px;
@@ -122,7 +120,7 @@ p {
   gap: 15px;
   border-radius: 5px;
   -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
 }
 
 .desktop .bar ul li {
@@ -190,8 +188,7 @@ p {
   .desktop .bar ul {
     display: none;
   }
-
   .desktop .bar .app-list {
     display: flex;
   }
-}
+}/*# sourceMappingURL=style.css.map */

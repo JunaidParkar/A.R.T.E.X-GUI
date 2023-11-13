@@ -1,16 +1,17 @@
 .context-menu {
     position: fixed;
     text-align: center;
-    background: rgba(56, 56, 56, 0.529);
+    background: rgba(56, 56, 56, 0.167);
     -webkit-backdrop-filter: blur(25px);
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(6px);
     border-radius: 5px;
     z-index: 499;
     width: max-content;
+    border: 1px solid rgba(128, 128, 128, 0.241);
 }
 
 .context-menu ul {
-    padding: 5px 10px;
+    padding: 5px 5px;
     margin: 0px;
     list-style: none;
 }
@@ -29,9 +30,10 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: 10px;
     font-size: 12px;
     padding: 0 5px;
+    padding-right: 20px;
+    gap: 10px;
 }
 
 .context-menu ul li a img {
