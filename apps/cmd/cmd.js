@@ -1,3 +1,6 @@
+let cmdContainer = document.getElementById("cmdContainer")
+let cmdInp = document.getElementById("cmdInp")
+
 let addError = (line) => {
     addLine(line, false, null, true)
 }
@@ -53,10 +56,13 @@ engine.addCommand("Artex", [{ flag: "--h", requiredValue: false }], args => {
 //     })
 // })
 
+// const set
+
 var commandHistory = [];
 var commandIndex = -1;
 
 function checkInput() {
+    console.log(cmdInp.value)
     var event = window.event || event.which;
     if (event.keyCode == 13) {
         var command = document.getElementById("textinput").value;
@@ -80,8 +86,9 @@ function checkInput() {
         }
         event.preventDefault();
     } else {
-        document.getElementById("textinput").style.height = "";
-        document.getElementById("textinput").style.height = document.getElementById("textinput").scrollHeight + "px";
+        console.log(event.keyCode)
+        // cmdInp.style.height = "";
+        // cmdInp.style.height = document..scrollHeight + "px";
     }
 }
 
