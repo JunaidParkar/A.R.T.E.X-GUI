@@ -1,31 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../../css/common.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+  </head>
 
-<body>
-    <div id="contextMenu" class="context-menu" style="display:none;">
-        <ul>
-            <li onclick="document.querySelector('#app-list-terminal').click()"><a><img
-                        src="../../assets/appIcons/terminal.png" alt="">Terminal</a></li>
-            <li><a target="_blank" href=""><img src="https://img.icons8.com/?size=48&id=UiBLNa8BF2DH&format=png"
-                        alt="">Duplicate</a></li>
-            <li onclick="window.location.reload()"><a><img
-                        src="https://img.icons8.com/?size=48&id=l9jAYs17iNqZ&format=png" alt="">Refresh</a>
-            </li>
-            <li><a href="#"><img src="https://img.icons8.com/?size=48&id=A0GP25NseAaQ&format=png" alt="">Signout</a>
-            </li>
-        </ul>
+  <body>
+    <div id="cmdContainer">
+      <div class="showcase">
+        <div class="userInput">
+          <p>$A.R.T.E.X ></p>
+          <p>hello --v</p>
+        </div>
+        <div class="userInputResult error">
+          <p>
+            'hello' is not recognized as an internal or external command,
+            operable program or batch file.
+          </p>
+        </div>
+
+        <div class="userInput">
+          <p>$A.R.T.E.X ></p>
+          <p>hello --h</p>
+        </div>
+        <div class="userInputResult">
+          <table>
+            <caption>
+              hello help
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Flags</th>
+                <th scope="col">Description</th>
+                <th scope="col">Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Account">--u && --p</td>
+                <td data-label="Due Date">
+                  Required for authentication purposes. Both --u & --p are
+                  necessary. --u is for username while --p stands for password
+                </td>
+                <td data-label="Amount">hello --u username --p password</td>
+              </tr>
+              <tr>
+                <td scope="row" data-label="Account">Visa - 6076</td>
+                <td data-label="Due Date">03/01/2016</td>
+                <td data-label="Amount">$2,443</td>
+              </tr>
+              <tr>
+                <td scope="row" data-label="Account">Corporate AMEX</td>
+                <td data-label="Due Date">03/01/2016</td>
+                <td data-label="Amount">$1,181</td>
+              </tr>
+              <tr>
+                <td scope="row" data-label="Acount">Visa - 3412</td>
+                <td data-label="Due Date">02/01/2016</td>
+                <td data-label="Amount">$842</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div id="cmdInputs">
+        <p>$A.R.T.E.X ></p>
+        <input type="text" name="" id="cmdInp" onkeyup="checkInput()" />
+      </div>
     </div>
-    <h1>Terminal page</h1>
     <script src="./codereducer/CREngine.js"></script>
     <script src="./cmd.js"></script>
-</body>
-
+    <script src="./script.js"></script>
+    <!-- <script type="module" src=""></script> -->
+  </body>
 </html>

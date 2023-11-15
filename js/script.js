@@ -84,7 +84,6 @@ const observer = new MutationObserver(function (mutationsList, observer) {
 observer.observe(document, { childList: true, subtree: true });
 
 function attachEventHandlers(iframe) {
-    console.log(iframe.content)
     iframe.contentWindow.addEventListener("click", e => {
         e.preventDefault()
         hideMenu()
