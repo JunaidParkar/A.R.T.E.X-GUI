@@ -134,9 +134,6 @@ function rightClick(e) {
 
 
 
-
-
-
 // change date color according to desktop background color
 function getMaximumColorFromBackgroundAndSetText(element, textElement) {
     const backgroundImage = getComputedStyle(element).backgroundImage;

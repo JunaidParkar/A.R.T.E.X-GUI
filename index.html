@@ -27,11 +27,13 @@
     <div class="desktop">
         <div class="apps" id="apps">
             <div class="app main">
-                <h1><span id="date"></span>/<span id="month"></span></h1>
-                <span>
-                    <p id="day"></p>
-                    <h1 id="year"></h1>
-                </span>
+                <div class="desktop-date">
+                    <h1><span id="date"></span>/<span id="month"></span></h1>
+                    <span>
+                        <p id="day"></p>
+                        <h1 id="year"></h1>
+                    </span>
+                </div>
             </div>
         </div>
 
@@ -89,8 +91,8 @@
         });
 
         anime({
-            targets: '.app',
-            scale: [5, 1.1],
+            targets: '.desktop-date',
+            translateY: [-500, 0],
             opacity: [0, 1],
             direction: 'alternate',
             loop: false,
