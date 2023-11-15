@@ -71,7 +71,7 @@ const observer = new MutationObserver(function (mutationsList, observer) {
     for (const mutation of mutationsList) {
         if (mutation.type === 'childList') {
             mutation.addedNodes.forEach(function (node) {
-                node.childNodes.forEach( nd => {
+                node.childNodes.forEach(nd => {
                     if (nd.nodeName === 'IFRAME') {
                         attachEventHandlers(nd);
                     }
@@ -131,3 +131,45 @@ function rightClick(e) {
         menu.style.top = menuY + "px";
     }
 }
+
+
+
+
+
+
+// change date color according to desktop background color
+function getMaximumColorFromBackgroundAndSetText(element, textElement) {
+    const backgroundImage = getComputedStyle(element).backgroundImage;
+
+    const imageUrl = backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, '$1');
+
+
+    const img = new Image();
+    img.src = imageUrl;
+
+    img.onload = function () {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+        let maxBrightness = 0;
+        let maxBrightnessPixel = null;
+
+        for (let i = 0; i < imageData.data.length; i += 4) {
+            const brightness = imageData.data[i] + imageData.data[i + 1] + imageData.data[i + 2];
+            if (brightness > maxBrightness) {
+                maxBrightness = brightness;
+                maxBrightnessPixel = imageData.data.subarray(i, i + 4);
+            }
+        }
+        textElement.style.color = `rgb(${maxBrightnessPixel[0]}, ${maxBrightnessPixel[1]}, ${maxBrightnessPixel[2]})`;
+    };
+}
+
+const desktopElement = document.querySelector('.desktop');
+const myText = document.getElementById('date');
+
+getMaximumColorFromBackgroundAndSetText(desktopElement, myText);
