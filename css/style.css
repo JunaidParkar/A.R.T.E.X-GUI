@@ -6,6 +6,9 @@
   border: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  user-select: none;
+  outline: none;
+  text-decoration: none;
 }
 
 ::-webkit-scrollbar {
@@ -237,4 +240,4 @@ p {
   .desktop .bar .app-list li img {
     width: 38px;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
