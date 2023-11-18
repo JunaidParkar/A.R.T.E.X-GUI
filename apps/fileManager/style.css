@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  user-select: none;
+  outline: none;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --padding: 50px;
+}
+
+@media screen and (max-width: 720px) {
+  :root {
+    --padding: 25px;
+  }
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  padding: 0 var(--padding);
+}
+
+/* header starts */
+
+#header {
+  width: 100%;
+  height: 60px;
+  /* background: rgba(255, 0, 0, 0.5); */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  #header {
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #header {
+    height: 40px;
+  }
+}
+
+/* controls */
+
+#header #controls {
+  display: flex;
+  height: 100%;
+  gap: 20px;
+  align-items: center;
+}
+
+#header #controls #left,
+#header #controls #right,
+#header #controls #reload {
+  height: 24px;
+  cursor: pointer;
+}
+
+#header #controls #reload {
+  height: 19px;
+}
+
+#header #controls #left img,
+#header #controls #right img,
+#header #controls #reload img,
+#header #paths #path #pth img {
+  height: 100%;
+  filter: invert(1);
+}
+
+/* navigator and search bar */
+
+#header #navigator {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+#header #navigator #path,
+#header #navigator #pathInput,
+#header #searchBar {
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.126);
+  display: none;
+  overflow: hidden;
+  align-items: center;
+  padding: 0 15px;
+  gap: 10px;
+  color: white;
+}
+
+#header #navigator #path {
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+#header #navigator #path::-webkit-scrollbar {
+  display: none;
+}
+
+#header #navigator #path img {
+  height: 10px;
+  filter: invert(1);
+}
+
+#header #navigator #path span {
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+#header #navigator #path span:hover {
+  background: rgba(255, 255, 255, 0.126);
+}
+
+#header #navigator #path.active,
+#header #navigator #pathInput.active {
+  display: flex;
+}
+
+#header #navigator #pathInput input,
+#header #searchBar input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: white;
+}
+
+#header #navigator #pathInput input::placeholder,
+#header #searchBar input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#header #searchBar {
+  display: flex;
+  width: 25%;
+}
+
+@media screen and (max-width: 950px) {
+  #header #navigator #path,
+  #header #navigator #pathInput,
+  #header #searchBar {
+    height: 35px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #header #searchBar {
+    display: none;
+  }
+  #header #navigator {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #header #navigator #path,
+  #header #navigator #pathInput,
+  #header #searchBar {
+    height: 35px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #header #navigator #path,
+  #header #navigator #pathInput,
+  #header #searchBar {
+    height: 30px;
+  }
+}
+
+/* #header #navigator #pathInput input:hover {
+  pointer-events: visible;
+} */
+
+/* header ends */
