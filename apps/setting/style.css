@@ -1,195 +1,219 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 :root {
-    --desktop-background: url(../assets/bg1.png);
-    --font-size: 16px;
-    --icon-size: 40px;
-    --heading: 900;
-    --text: 200;
-    --title: 400;
+  --desktop-background: url(../assets/bg1.png);
+  --font-size: 16px;
+  --icon-size: 40px;
+  --heading: 900;
+  --text: 200;
+  --title: 400;
 
-    --dark: #213153;
+  --dark: #213153;
+  --accent-color: rgba(60, 161, 255, 1);
+  --accent-tr-color: rgba(60, 161, 255, 0.179);
 }
 
 body {
-    background: #213153;
-    color: rgba(211, 211, 211, 0.696);
+  background: #213153;
+  color: rgba(211, 211, 211, 0.696);
 }
 
 .app {
-    display: flex;
+  display: flex;
 }
 
 .app .sidebar {
-    background: var(--dark);
-    padding: 10px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background: var(--dark);
+  padding: 10px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .app .sidebar img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .app .sidebar img.avatar {
-    background: white;
-    border-radius: 50%;
+  background: white;
+  border-radius: 50%;
 }
 
 .app .setting {
-    width: 100%;
-    max-width: 450px;
+  width: 100%;
+  max-width: 450px;
 }
 
 .app .setting header {
-    background: var(--dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: static;
-    top: 0;
-    height: 60px;
-    padding: 0 20px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  background: var(--dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: static;
+  top: 0;
+  height: 60px;
+  padding: 0 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .app .setting header i {
-    display: none;
+  display: none;
 }
 
 .app .setting ul {
-    background: rgba(255, 255, 255, 0.095);
-    padding: 10px;
-    border-radius: 10px;
-    margin-left: 10px;
-    margin-top: 20px;
+  background: rgba(255, 255, 255, 0.095);
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 20px;
 }
 
 .app .setting ul li {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 7px;
-    font-size: 14px;
-    cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+  font-size: 14px;
 }
 
 .app .setting ul li .button {
-    width: 40px;
-    background: rgba(255, 255, 255, 0.179);
-    height: 20px;
-    display: block;
-    border-radius: 25px;
+  width: 40px;
+  background: rgba(255, 255, 255, 0.179);
+  height: 20px;
+  display: block;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.app .setting ul li .button.active {
+  background: var(--accent-tr-color);
 }
 
 .app .setting ul li .button .circle {
-    height: 100%;
-    width: 20px;
-    background: rgba(255, 255, 255, 0.559);
-    border-radius: 25px;
+  height: 100%;
+  width: 20px;
+  background: rgba(255, 255, 255, 0.559);
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+}
+
+.app .setting ul li .button.active .circle {
+  right: 0;
+  left: auto;
+  background: var(--accent-color);
 }
 
 .app .setting ul li .percentage {
-    width: 60px;
-    height: 25px;
-    background: linear-gradient(to right, rgba(144, 238, 144, 0.396) 60%, rgba(255, 255, 255, 0.188) 40%);
-    display: grid;
-    place-items: center;
-    color: white;
+  width: 60px;
+  height: 25px;
+  background: linear-gradient(
+    to right,
+    rgba(144, 238, 144, 0.396) 60%,
+    rgba(255, 255, 255, 0.188) 40%
+  );
+  display: grid;
+  place-items: center;
+  color: white;
 }
 
 .app .setting ul li .opensubsetting i {
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .app .setting ul li .value {
-    width: 50px;
-    height: 25px;
-    background: rgba(255, 255, 255, 0.2);
-    text-align: center;
-    color: white;
-    outline: none;
+  width: 50px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: white;
+  outline: none;
+  /* accent-color: var(--accent-color); */
+  accent-color: var(--accent-color);
 }
 
 /*  */
 
 .app .subsetting {
-    width: 100%;
-    position: relative;
+  width: 100%;
+  position: relative;
 }
 
 .app .subsetting main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    flex-direction: column;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+  position: relative;
 }
 
 .app .subsetting main .logo {
-    width: 40%;
-    min-width: 300px;
-    position: relative;
-    z-index: 1;
+  width: 40%;
+  min-width: 300px;
+  position: relative;
+  z-index: 1;
 }
 
 .app .subsetting main h2 {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    color: white;
-    letter-spacing: 2px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: white;
+  letter-spacing: 2px;
 }
 
 .app .subsetting main .circle {
-    background: #3CA1FF;
-    border-radius: 50%;
-    filter: blur(160px);
-    height: 200px;
-    width: 200px;
-    top: 50%;
-    left: 20%;
-    position: absolute;
-    z-index: 0;
+  background: #3ca1ff;
+  border-radius: 50%;
+  filter: blur(160px);
+  height: 200px;
+  width: 200px;
+  top: 50%;
+  left: 20%;
+  position: absolute;
+  z-index: 0;
 }
 
 .app .subsetting main .circle2 {
-    background: rgb(202, 19, 181);
-    border-radius: 50%;
-    filter: blur(150px);
-    height: 200px;
-    width: 200px;
-    top: 10%;
-    right: 20%;
-    position: absolute;
-    z-index: 0;
+  background: rgb(202, 19, 181);
+  border-radius: 50%;
+  filter: blur(150px);
+  height: 200px;
+  width: 200px;
+  top: 10%;
+  right: 20%;
+  position: absolute;
+  z-index: 0;
 }
 
 /*  */
 
-.app .subsetting .moresetting{
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 2;
+.app .subsetting .moresetting {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
 }
