@@ -1,3 +1,5 @@
+// header section starts
+
 let header = document.getElementById("header");
 let pth = document.getElementById("path");
 let pthInput = document.getElementById("pathInput");
@@ -72,3 +74,59 @@ pthInput.querySelector("input").onkeyup = (e) => {
     }
   }
 };
+
+const changePath = (path) => {
+  document.getElementById("path").innerHTML = "";
+  path = path.trim().split("/");
+  let elems = [];
+  path.forEach((word, index) => {
+    if (word != "" && word != " ") {
+      let spn = document.createElement("span");
+      spn.innerText = word;
+      elems.push(spn);
+      let img = document.createElement("img");
+      img.src = "../../assets/forward.png";
+      elems.push(img);
+    }
+  });
+
+  if (
+    elems[elems.length - 1] &&
+    elems[elems.length - 1].tagName &&
+    elems[elems.length - 1].tagName.toLowerCase() === "img"
+  ) {
+    elems.pop();
+  }
+
+  elems.forEach((elem) => {
+    document.getElementById("path").appendChild(elem);
+  });
+};
+
+// header section ends
+
+// file manager section starts
+
+let drives = document
+  .getElementById("drives")
+  .querySelector("ul")
+  .querySelectorAll("li");
+
+drives.forEach((drive) => {
+  if (drive.hasAttribute("clickAble")) {
+    drive.onclick = () => {
+      if (!drive.classList.contains("active")) {
+        drives.forEach((dr) => {
+          if (dr.classList.contains("active")) {
+            dr.classList.remove("active");
+          }
+        });
+        drive.classList.add("active");
+        let path = drive.getAttribute("root-path");
+        changePath(path);
+      }
+    };
+  }
+});
+
+// file manager section ends
