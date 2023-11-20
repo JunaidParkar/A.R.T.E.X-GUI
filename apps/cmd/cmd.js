@@ -1,122 +1,97 @@
-let cmdContainer = document.getElementById("cmdContainer");
-let cmdInp = document.getElementById("cmdInp");
+// initialize codereducer
 
-let addError = (line) => {
-  addLine(line, false, null, true);
-};
-
-let engine = new CREngine((e) => addError(e));
-
-engine.addTerm("Artex");
-
-engine.addCommand("Artex", [{ flag: "--h", requiredValue: false }], (args) => {
-  //   let table = document.createElement("table");
-  //   let row1 = document.createElement("tr");
-  //   let tr1th1 = document.createElement("th");
-  //   tr1th1.textContent = "Flags";
-  //   let tr1th2 = document.createElement("th");
-  //   tr1th2.textContent = "Usage";
-  //   row1.appendChild(tr1th1);
-  //   row1.appendChild(tr1th2);
-  //   let row2 = document.createElement("tr");
-  //   let tr2th1 = document.createElement("th");
-  //   tr2th1.textContent = "--h";
-  //   let tr2td2 = document.createElement("td");
-  //   tr2td2.textContent =
-  //     "Used to get help with all functionalities of Evolution AI CMD.";
-  //   row2.appendChild(tr2th1);
-  //   row2.appendChild(tr2td2);
-  //   table.appendChild(row1);
-  //   table.appendChild(row2);
-  //   console.log(table);
-  //   addLine(table, true);
-  console.log("Artex help");
+let engine = new CREngine((e) => {
+  submitResponse(e, false, true);
 });
 
-// engine.addCommand("Evo", [{ flag: "--getVoices", requiredValue: false }], args => {
-//     eel.get_available_voices()().then(function (voices) {
-//         let table = document.createElement("table")
-//         let row1 = document.createElement("tr")
-//         let tr1th1 = document.createElement("th")
-//         tr1th1.textContent = "Id"
-//         let tr1th2 = document.createElement("th")
-//         tr1th2.textContent = "Name"
-//         row1.appendChild(tr1th1)
-//         row1.appendChild(tr1th2)
-//         table.appendChild(row1)
-//         voices.forEach(function (voice) {
-//             let row2 = document.createElement("tr")
-//             let tr2th1 = document.createElement("th")
-//             tr2th1.textContent = voice.index
-//             let tr2td2 = document.createElement("td")
-//             tr2td2.textContent = voice.name
-//             row2.appendChild(tr2th1)
-//             row2.appendChild(tr2td2)
-//             table.appendChild(row2)
-//         });
-//         addLine(table, true)
-//     })
-// })
+// add the terms for commands example command is "artex --h" here artex is called term
+engine.addTerm("artex");
+engine.addTerm("cloud");
 
-// const set
+// add the command and what should be performed when this command is entered
+// remember the name i.e first argument i.e term is added by previous line
+// second argument is an array with all the flags required for particular command
+// eg: for authentication the command should look like "artex --u username --p password"
+// here for flag --u and --p for both flags values are required. So for this the second argument will look like [{flag: "--u", requiredValue: true}, {flag: "--p", requiredValue: true}]
+// third argument is an callback to define a function which  should execute on trigerring that specific command. it returns an argument which is the values of that flags which is set to true. examples are given below in second command
+engine.addCommand("artex", [{ flag: "--h", requiredValue: false }], (args) => {
+  let p1 = document.createElement("p");
+  p1.textContent = "artex help here";
+  submitResponse(p1);
+});
+
+engine.addCommand(
+  "cloud",
+  [
+    { flag: "--u", requiredValue: true },
+    { flag: "--p", requiredValue: true },
+  ],
+  (args) => {
+    console.log(args);
+    let p1 = document.createElement("p");
+    p1.textContent = "help here";
+    submitResponse(p1);
+  }
+);
+
+// command prompt functionalities here
 
 var commandHistory = [];
 var commandIndex = -1;
 
 function checkInput() {
   var event = window.event || event.which;
+  // if enter is pressed
   if (event.keyCode == 13) {
-    var command = cmdInp.value;
-    // addLine(command, false, "self");
+    var command = document.getElementById("cmdInp").value;
+    submitResponse(command, true);
     commandHistory.push(command);
     commandIndex = commandHistory.length;
-    engine.executeCommand(command);
-    cmdInp.value = "";
-    cmdInp.style.height = "1em";
+    engine.executeCommand(command); // Execute command from codereducer
+    document.getElementById("cmdInp").value = "";
+    document.getElementById("cmdInp").style.height = "1em";
     event.preventDefault();
   } else if (event.keyCode == 38) {
+    // if up arrow is pressed
     if (commandIndex > 0) {
       commandIndex--;
-      cmdInp.value = commandHistory[commandIndex];
+      document.getElementById("cmdInp").value = commandHistory[commandIndex];
     }
     event.preventDefault();
   } else if (event.keyCode == 40) {
+    // if down arrow is pressed
     if (commandIndex < commandHistory.length - 1) {
       commandIndex++;
-      cmdInp.value = commandHistory[commandIndex];
+      document.getElementById("cmdInp").value = commandHistory[commandIndex];
     }
     event.preventDefault();
-  } else {
-    console.log(event.keyCode);
-    // cmdInp.style.height = "";
-    // cmdInp.style.height = document..scrollHeight + "px";
   }
 }
 
-function addLine(line, isHTML = false, author = null, error = false) {
-  // let d = document.createElement("div");
-  // let p = document.createElement("p");
-
-  // if (error) {
-  //     d.classList.add("error");
-  // }
-
-  // if (author == "self") {
-  //     let p2 = document.createElement("p");
-  //     p2.textContent = "Evolution AI >> ";
-  //     d.appendChild(p2);
-  // }
-
-  // if (isHTML) {
-  //     p.appendChild(line);
-  // } else {
-  //     p.innerHTML = line;
-  // }
-  // d.appendChild(p);
-
-  // console.log(line)
-  // console.log(p)
-
-  // document.getElementById("consoletext").appendChild(d);
-  console.log(line);
-}
+// function that appends data as response in command prompt
+// here data can be html or string. pass HTML only if author and error both are set to false else it should be an String
+// author is by default set to false. it is true only when appending command written by user
+// error is only true when you append any error
+const submitResponse = (data, author = false, error = false) => {
+  let cont = document.getElementById("history");
+  let div = document.createElement("div");
+  author ? div.classList.add("inp") : div.classList.add("output");
+  if (author) {
+    let p1 = document.createElement("p");
+    p1.textContent = "artex >";
+    let p2 = document.createElement("p");
+    p2.textContent = data;
+    div.appendChild(p1);
+    div.appendChild(p2);
+  } else {
+    if (error) {
+      let p3 = document.createElement("p");
+      p3.classList.add("error");
+      p3.textContent = data;
+      div.appendChild(p3);
+    } else {
+      div.appendChild(data);
+    }
+  }
+  cont.appendChild(div);
+};
