@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    --desktop-background: url(../assets/bg1.png);
+    --font-size: 16px;
+    --icon-size: 40px;
+    --heading: 900;
+    --text: 200;
+    --title: 400;
+}
+
+body {
+    background: #1a121c;
+    color: rgb(211, 211, 211);
+    overflow: auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+    padding-top: 15px;
+    gap: 10px;
+    background: #271a2a73;
+}
+
+.header img {
+    width: 35px;
+}
+
+.header h3 {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.header ul {
+    margin-left: 30px;
+    float: right;
+    display: none;
+}
+
+.header ul li {
+    list-style: none;
+    background: rgba(255, 255, 255, 0.145);
+    padding: 5px 13px;
+    border-radius: 5px;
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    font-weight: 400;
+    color: rgb(186, 186, 186);
+}
+
+.commands {
+    padding: 10px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.commands .user {
+    display: flex;
+    align-items: start;
+    gap: 5px;
+}
+
+.commands .user span {
+    color: rgb(197, 134, 255);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;justify-content: start;
+    font-size: 13px;
+}
+
+.commands .user span big{
+    font-size: 13px;
+    margin-left: 3px;
+}
+
+.commands .user p {
+    width: 100%;
+    outline: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    outline: none;
+    color: rgb(184, 184, 184);
+}
+
+.commands .computer{
+    margin-top: 10px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: rgb(119, 119, 119);
+    margin-bottom: 10px;
+}
