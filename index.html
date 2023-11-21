@@ -1,156 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARTEX Ai</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/common.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARTEX Ai</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/common.css" />
-</head>
+  <body>
+    <div id="contextMenu" class="context-menu" style="display: none">
+      <ul>
+        <li>
+          <a onclick="document.querySelector('#app-list-terminal').click()"
+            ><img src="assets/appIcons/terminal.png" alt="" />Terminal</a
+          >
+        </li>
+        <li>
+          <a target="_blank" href=""
+            ><img
+              src="https://img.icons8.com/?size=48&id=UiBLNa8BF2DH&format=png"
+              alt=""
+            />Duplicate</a
+          >
+        </li>
+        <li>
+          <a onclick="window.location.reload()"
+            ><img
+              src="https://img.icons8.com/?size=48&id=l9jAYs17iNqZ&format=png"
+              alt=""
+            />Refresh</a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><img
+              src="https://img.icons8.com/?size=48&id=A0GP25NseAaQ&format=png"
+              alt=""
+            />Signout</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="desktop">
+      <div class="apps" id="apps">
+        <div class="app main">
+          <div class="desktop-date">
+            <h1><span id="date"></span>/<span id="month"></span></h1>
+            <span>
+              <p id="day"></p>
+              <h1 id="year"></h1>
+            </span>
+          </div>
+        </div>
+      </div>
 
-<body>
-  <div id="contextMenu" class="context-menu" style="display: none">
-    <ul>
-      <li>
-        <a onclick="document.querySelector('#app-list-terminal').click()"><img src="assets/appIcons/terminal.png"
-            alt="" />Terminal</a>
-      </li>
-      <li>
-        <a target="_blank" href=""><img src="https://img.icons8.com/?size=48&id=UiBLNa8BF2DH&format=png"
-            alt="" />Duplicate</a>
-      </li>
-      <li>
-        <a onclick="window.location.reload()"><img src="https://img.icons8.com/?size=48&id=l9jAYs17iNqZ&format=png"
-            alt="" />Refresh</a>
-      </li>
-      <li>
-        <a href="#"><img src="https://img.icons8.com/?size=48&id=A0GP25NseAaQ&format=png" alt="" />Signout</a>
-      </li>
-    </ul>
-  </div>
-  <div class="desktop">
-    <div class="apps" id="apps">
-      <div class="app main">
-        <div class="desktop-date">
-          <h1><span id="date"></span>/<span id="month"></span></h1>
-          <span>
-            <p id="day"></p>
-            <h1 id="year"></h1>
-          </span>
+      <div class="bar">
+        <ul>
+          <li>
+            <img
+              src="https://img.icons8.com/?size=64&id=10T26sBqm4H3&format=png"
+              alt=""
+            />
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/?size=64&id=5klJ0aSnzHuq&format=png"
+              alt=""
+            />
+          </li>
+        </ul>
+
+        <ul class="screen fullscreen">
+          <li class="no-hover fullscreen">
+            <img
+              src="assets/appIcons/fullscreen.png"
+              onclick="toggleFullScreen()"
+              alt=""
+            />
+          </li>
+          <li class="no-hover smallscreen">
+            <img
+              src="assets/appIcons/smallscreen.png"
+              onclick="toggleFullScreen()"
+              alt=""
+            />
+          </li>
+        </ul>
+
+        <ul class="app-list">
+          <li><img src="assets/logo.png" alt="" data-app="apps/artex" /></li>
+          <li>
+            <img
+              src="assets/appIcons/files.png"
+              alt=""
+              data-app="apps/fileManager"
+            />
+          </li>
+          <li>
+            <img
+              src="assets/appIcons/setting.png"
+              alt=""
+              data-app="apps/setting"
+            />
+          </li>
+          <li id="app-list-terminal">
+            <img
+              src="assets/appIcons/terminal.png"
+              alt=""
+              data-app="apps/cmd"
+            />
+          </li>
+          <li><img src="assets/appIcons/info.png" alt="" /></li>
+          <li><img src="assets/appIcons/store.png" alt="" /></li>
+        </ul>
+
+        <ul id="searchInputContainer">
+          <input id="searchInput" placeholder="Search here" type="text" />
+          <li><img src="assets/appIcons/mic.png" alt="" /></li>
+        </ul>
+
+        <div class="search-menu">
+          <ul class="search-app-list">
+            <li>
+              <img
+                data-app="http://www.google.com"
+                src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.google.com&size=64"
+                alt=""
+              />
+              <p>Google</p>
+            </li>
+            <li>
+              <img
+                src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.Stackoverflow.com&size=64"
+                alt=""
+              />
+              <p>Stackoverflow</p>
+            </li>
+            <li>
+              <img
+                src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://chat.openai.com/&size=64"
+                alt=""
+              />
+              <p>Chat Gpt</p>
+            </li>
+          </ul>
+          <ul id="articles-container"></ul>
         </div>
       </div>
     </div>
+    <script src="js/script.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+      integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      anime({
+        targets: ".bar ul",
+        translateY: [200, 0],
+        scale: 1,
+        direction: "alternate",
+        loop: false,
+        delay: anime.stagger(100),
+      });
 
-    <div class="bar">
-      <ul>
-        <li>
-          <img src="https://img.icons8.com/?size=64&id=10T26sBqm4H3&format=png" alt="" />
-        </li>
-        <li>
-          <img src="https://img.icons8.com/?size=64&id=5klJ0aSnzHuq&format=png" alt="" />
-        </li>
-      </ul>
+      anime({
+        targets: ".bar ul li",
+        translateY: [200, 0],
+        scale: [0, 1],
+        direction: "alternate",
+        loop: false,
+        delay: anime.stagger(100),
+      });
 
-      <ul class="screen fullscreen">
-        <li class="no-hover fullscreen">
-          <img src="assets/appIcons/fullscreen.png" onclick="toggleFullScreen()" alt="" />
-        </li>
-        <li class="no-hover smallscreen">
-          <img src="assets/appIcons/smallscreen.png" onclick="toggleFullScreen()" alt="" />
-        </li>
-      </ul>
+      anime({
+        targets: ".desktop-date",
+        translateY: [-500, 0],
+        opacity: [0, 1],
+        direction: "alternate",
+        loop: false,
+        duration: 2000,
+      });
 
-      <ul class="app-list">
-        <li><img src="assets/logo.png" alt="" data-app="apps/artex" /></li>
-        <li>
-          <img src="assets/appIcons/files.png" alt="" data-app="apps/fileManager" />
-        </li>
-        <li>
-          <img src="assets/appIcons/setting.png" alt="" data-app="apps/setting" />
-        </li>
-        <li id="app-list-terminal">
-          <img src="assets/appIcons/terminal.png" alt="" data-app="apps/cmd" />
-        </li>
-        <li><img src="assets/appIcons/info.png" alt="" /></li>
-        <li><img src="assets/appIcons/store.png" alt="" /></li>
-      </ul>
-
-      <ul>
-        <input id="searchInput" placeholder="Search here" type="text" />
-        <li><img src="assets/appIcons/mic.png" alt="" /></li>
-      </ul>
-
-      <div class="search-menu">
-        <ul class="search-app-list">
-          <li><img data-app="http://www.google.com"
-              src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.google.com&size=64"
-              alt="">
-            <p>Google </p>
-          </li>
-          <li><img
-              src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.Stackoverflow.com&size=64"
-              alt="">
-            <p>Stackoverflow</p>
-          </li>
-          <li><img
-              src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://chat.openai.com/&size=64"
-              alt="">
-            <p>Chat Gpt</p>
-          </li>
-        </ul>
-        <ul id="articles-container">
-
-        </ul>
-      </div>
-
-    </div>
-
-
-
-  </div>
-  <script src="js/script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
-    integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
-    anime({
-      targets: ".bar ul",
-      translateY: [200, 0],
-      scale: 1,
-      direction: "alternate",
-      loop: false,
-      delay: anime.stagger(100),
-    });
-
-    anime({
-      targets: ".bar ul li",
-      translateY: [200, 0],
-      scale: [0, 1],
-      direction: "alternate",
-      loop: false,
-      delay: anime.stagger(100),
-    });
-
-    anime({
-      targets: ".desktop-date",
-      translateY: [-500, 0],
-      opacity: [0, 1],
-      direction: "alternate",
-      loop: false,
-      duration: 2000,
-    });
-
-    anime({
-      targets: "iframe",
-      translateY: [200, 0],
-      direction: "alternate",
-      loop: false,
-      loop: false,
-      delay: anime.stagger(100),
-    });
-
-  </script>
-</body>
-
+      anime({
+        targets: "iframe",
+        translateY: [200, 0],
+        direction: "alternate",
+        loop: false,
+        loop: false,
+        delay: anime.stagger(100),
+      });
+    </script>
+  </body>
 </html>
