@@ -170,3 +170,130 @@ const desktopElement = document.querySelector('.desktop');
 const myText = document.getElementById('date');
 
 getMaximumColorFromBackgroundAndSetText(desktopElement, myText);
+
+
+
+// news fetching
+async function getNews(keyword) {
+    const url = 'http://eventregistry.org/api/v1/article/getArticles';
+
+    const data = `{
+  "action": "getArticles",
+  "keyword": "${keyword}",
+  "articlesPage": 1,
+  "articlesCount": 5,
+  "articlesSortBy": "date",
+  "articlesSortByAsc": false,
+  "articlesArticleBodyLen": -1,
+  "resultType": "articles",
+  "dataType": [
+    "news",
+    "pr"
+  ],
+  "apiKey": "f2bb630d-ceca-4a20-9a04-28ccf0f71b8c",
+  "forceMaxDataTimeWindow": 31
+}`;
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: data,
+    });
+
+    const text = await response.json();
+
+    console.log(text);
+
+    const articles = text.articles.results;
+    console.log(articles);
+
+    const articlesContainer = document.getElementById('articles-container');
+    document.getElementById('articles-container').innerHTML = '';
+
+    articles.forEach(article => {
+        const articleDiv = document.createElement('div');
+        articleDiv.classList.add('article');
+
+        const titleElement = document.createElement('h2');
+        titleElement.textContent = article.title;
+
+        const sourceElement = document.createElement('p');
+        sourceElement.textContent = `Source: ${article.source.title}`;
+
+        const bodyElement = document.createElement('p');
+        bodyElement.textContent = article.body;
+
+        const linkElement = document.createElement('a');
+        linkElement.href = article.url;
+        linkElement.textContent = 'Read More';
+
+        const imageElement = document.createElement('img');
+        imageElement.src = article.image;
+        imageElement.alt = article.title;
+        imageElement.onerror = () => {
+            imageElement.style.display = 'none';
+        }
+
+        articleDiv.appendChild(imageElement);
+        articleDiv.appendChild(titleElement);
+        articleDiv.appendChild(sourceElement);
+        articleDiv.appendChild(bodyElement);
+        articleDiv.appendChild(linkElement);
+
+        articlesContainer.appendChild(articleDiv);
+    });
+}
+
+fetch('https://geolocation-db.com/json/')
+    .then(response => response.json())
+    .then(data => {
+        const country = data.country_name;
+        getNews(country)
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+
+
+// typing done the get news
+let timer;
+const waitTime = 1000;
+const messageInput = document.getElementById('searchInput');
+messageInput.addEventListener('keyup', event => {
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+        doneTyping(event.target.value);
+    }, waitTime);
+});
+
+function doneTyping(value) {
+    if (value !== '') {
+        getNews(value);
+    }
+}
+
+
+// open search menu when clicked search input
+const searchInput = document.getElementById('searchInput');
+const searchMenu = document.querySelector('.search-menu');
+
+searchInput.addEventListener('focus', function () {
+    searchMenu.style.display = 'flex';
+});
+// Check if cursor is outside both search input and search menu before hiding the menu
+document.addEventListener('click', function (event) {
+    const isClickInsideSearchInput = searchInput.contains(event.target);
+    const isClickInsideSearchMenu = searchMenu.contains(event.target);
+
+    if (!isClickInsideSearchInput && !isClickInsideSearchMenu) {
+        searchMenu.style.display = 'none';
+    }
+});
+// Keep search menu open if cursor is over the search menu
+searchMenu.addEventListener('mouseleave', function () {
+    searchMenu.style.display = 'none';
+});

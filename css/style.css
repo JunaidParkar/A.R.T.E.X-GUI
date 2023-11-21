@@ -1,4 +1,5 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap";
+
 /* context menu */
 * {
   margin: 0;
@@ -63,17 +64,20 @@ p {
   width: max-content;
   border: 1px solid rgba(128, 128, 128, 0.241);
 }
+
 .context-menu ul {
   padding: 5px 5px;
   margin: 0px;
   list-style: none;
 }
+
 .context-menu ul li {
   padding-bottom: 7px;
   padding-top: 7px;
   cursor: pointer;
   border-radius: 5px;
 }
+
 .context-menu ul li a {
   text-decoration: none;
   color: white;
@@ -86,9 +90,11 @@ p {
   padding-right: 20px;
   gap: 10px;
 }
+
 .context-menu ul li a img {
   width: 20px;
 }
+
 .context-menu ul li:hover {
   background: rgba(169, 169, 169, 0.301);
 }
@@ -100,16 +106,19 @@ p {
   width: 100%;
   height: 100vh;
 }
+
 .desktop .apps {
   width: 100%;
   height: calc(100% - 80px);
   position: relative;
 }
+
 .desktop .apps .app {
   width: 100%;
   height: 100%;
   position: absolute;
 }
+
 .desktop .apps .app iframe {
   position: absolute;
   top: 0px;
@@ -117,11 +126,13 @@ p {
   height: 100%;
   left: 0;
 }
+
 .desktop .apps .app.main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .desktop .apps .app.main .desktop-date {
   scale: 1.1;
   display: flex;
@@ -130,13 +141,16 @@ p {
   color: white;
   flex-direction: column;
 }
+
 .desktop .apps .app.main .desktop-date h1 {
   font-size: 85px;
 }
+
 .desktop .apps .app.main .desktop-date span {
   position: relative;
   margin-top: -40px;
 }
+
 .desktop .apps .app.main .desktop-date span p {
   position: absolute;
   top: 50%;
@@ -145,10 +159,12 @@ p {
   text-transform: uppercase;
   font-weight: var(--title);
 }
+
 .desktop .apps .app.main .desktop-date span h1 {
   opacity: 20%;
   font-size: 85px;
 }
+
 .desktop .bar {
   padding: 10px;
   height: 60px;
@@ -157,6 +173,7 @@ p {
   align-items: center;
   flex-wrap: wrap;
 }
+
 .desktop .bar ul {
   display: flex;
   justify-content: center;
@@ -169,10 +186,12 @@ p {
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
+
 .desktop .bar ul li.no-hover img {
   transform: translateY(0px);
   padding: 2px;
 }
+
 .desktop .bar ul li {
   width: 30px;
   height: 30px;
@@ -180,18 +199,22 @@ p {
   list-style: none;
   cursor: pointer;
 }
+
 .desktop .bar ul li img {
   width: 30px;
 }
-.desktop .bar ul li.select {
+
+.desktop .bar ul.app-list li.select {
   overflow: visible;
   transition: 0.1s all ease-in-out;
   border-bottom: 3px solid rgba(18, 255, 156, 0.503);
 }
-.desktop .bar ul li.select img {
+
+.desktop .bar ul.app-list li.select img {
   transform: translateY(-10px);
   transition: 0.1s all ease-in-out;
 }
+
 .desktop .bar ul input {
   width: 270px;
   padding: 5px;
@@ -199,27 +222,123 @@ p {
   outline: none;
   color: rgb(211, 211, 211);
 }
+
 .desktop .bar .screen li.select {
   overflow: visible;
   transition: 0.1s all ease-in-out;
   border-bottom: 0px solid rgba(18, 255, 156, 0.503);
 }
+
 .desktop .bar .screen li.select img {
   transform: translateY(0px);
   transition: 0.5s all ease-in-out;
 }
+
 .desktop .bar .fullscreen .fullscreen {
   display: block;
 }
+
 .desktop .bar .fullscreen .smallscreen {
   display: none;
 }
+
 .desktop .bar .smallscreen .fullscreen {
   display: none;
 }
+
 .desktop .bar .smallscreen .smallscreen {
   display: block;
 }
+
+.desktop .bar .search-menu {
+  position: fixed;
+  bottom: 75px;
+  display: flex;
+  align-items: start;
+  max-width: 795px;
+  display: none;
+}
+
+.desktop .bar .search-menu ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  height: 400px;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+  backdrop-filter: blur(200px);
+  padding: 7px 5px;
+}
+
+.desktop .bar .search-menu ul.search-app-list {
+  max-width: 300px;
+}
+
+.desktop .bar .search-menu ul li:hover {
+  background: rgba(255, 255, 255, 0.205);
+  border-radius: 5px;
+}
+
+.desktop .bar .search-menu ul li {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: start;
+  color: rgb(211, 211, 211);
+  padding: 20px 10px;
+  margin: 0;
+}
+
+
+.desktop .bar .search-menu ul li p {
+  font-size: 14px;
+}
+
+.desktop .bar .search-menu ul#articles-container {
+  overflow: scroll;
+  height: 400px;
+  max-width: auto;
+
+}
+
+.desktop .bar .search-menu #articles-container .article {
+  margin-bottom: 20px;
+  padding: 10px;
+  color: rgb(211, 211, 211);
+}
+
+.desktop .bar .search-menu #articles-container .article img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.desktop .bar .search-menu #articles-container .article h2 {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  color: rgb(211, 211, 211);
+}
+
+.desktop .bar .search-menu #articles-container .article p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.desktop .bar .search-menu #articles-container .article a {
+  display: block;
+  text-decoration: none;
+  color: blue;
+  display: none;
+}
+
+.desktop .bar .search-menu #articles-container .article a:hover {
+  text-decoration: underline;
+}
+
+
 
 .app-list img {
   cursor: pointer;
@@ -229,16 +348,21 @@ p {
   .desktop .bar ul {
     display: none;
   }
+
   .desktop .bar .app-list {
     display: flex;
     width: 100vw;
     background: linear-gradient(transparent, rgba(255, 255, 255, 0.089));
   }
+
   .desktop .bar .app-list li {
     width: 40px;
     height: 40px;
   }
+
   .desktop .bar .app-list li img {
     width: 38px;
   }
-} /*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
