@@ -3,84 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Terminal</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../../css/common.css" />
   </head>
 
   <body>
-    <div id="cmdContainer">
-      <div class="showcase">
-        <div class="userInput">
-          <p>$A.R.T.E.X ></p>
-          <p>hello --v</p>
-        </div>
-        <div class="userInputResult error">
-          <p>
-            'hello' is not recognized as an internal or external command,
-            operable program or batch file.
-          </p>
-        </div>
+    <div class="app">
+      <!-- header starts -->
+      <div class="header">
+        <img src="../../assets/appIcons/terminal.png" alt="" class="logo" />
+        <h3>Terminal</h3>
+        <ul>
+          <li>command</li>
+        </ul>
+      </div>
+      <!-- header ends -->
 
-        <div class="userInput">
-          <p>$A.R.T.E.X ></p>
-          <p>hello --h</p>
+      <!-- command prompt container starts -->
+      <div id="cmdContainer" class="commands">
+        <!-- history and outputs here -->
+        <div id="history">
+          <!-- input history by user -->
+          <div class="inp">
+            <p>artex ></p>
+            <p>artex --h</p>
+          </div>
+          <!-- output result here -->
+          <div class="output">
+            <p class="error">
+              'giuj' is not recognized as an internal or external command,
+              operable program or batch file.
+            </p>
+          </div>
+          <!-- output result here -->
+          <div class="output">
+            <table></table>
+          </div>
         </div>
-        <div class="userInputResult">
-          <table>
-            <caption>
-              hello help
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Flags</th>
-                <th scope="col">Description</th>
-                <th scope="col">Example</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Account">--u && --p</td>
-                <td data-label="Due Date">
-                  Required for authentication purposes. Both --u & --p are
-                  necessary. --u is for username while --p stands for password
-                </td>
-                <td data-label="Amount">hello --u username --p password</td>
-              </tr>
-              <tr>
-                <td scope="row" data-label="Account">Visa - 6076</td>
-                <td data-label="Due Date">03/01/2016</td>
-                <td data-label="Amount">$2,443</td>
-              </tr>
-              <tr>
-                <td scope="row" data-label="Account">Corporate AMEX</td>
-                <td data-label="Due Date">03/01/2016</td>
-                <td data-label="Amount">$1,181</td>
-              </tr>
-              <tr>
-                <td scope="row" data-label="Acount">Visa - 3412</td>
-                <td data-label="Due Date">02/01/2016</td>
-                <td data-label="Amount">$842</td>
-              </tr>
-            </tbody>
-          </table>
+        <div id="inputs">
+          <p>artex ></p>
+          <input
+            type="text"
+            name=""
+            id="cmdInp"
+            onkeyup="checkInput()"
+            autocomplete="off"
+            autofocus
+          />
         </div>
       </div>
-      <div id="cmdInputs">
-        <p>$A.R.T.E.X ></p>
-        <input
-          type="text"
-          name=""
-          id="cmdInp"
-          onkeyup="checkInput()"
-          autocomplete="off"
-          autofocus
-        />
-      </div>
+      <!-- command prompt container ends -->
     </div>
+
     <script src="./codereducer/CREngine.js"></script>
     <script src="./cmd.js"></script>
     <script src="./script.js"></script>
-    <!-- <script type="module" src=""></script> -->
   </body>
 </html>

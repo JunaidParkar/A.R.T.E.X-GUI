@@ -1,12 +1,12 @@
 document.onload = () => {
-  cmdInp.focus();
+  document.getElementById("cmdInp").focus();
 };
 
-cmdContainer.addEventListener("click", () => {
-  cmdInp.focus();
+document.getElementById("cmdContainer").addEventListener("click", () => {
+  document.getElementById("cmdInp").focus();
 });
 
-cmdInp.addEventListener("input", () => {
-  let contentWidth = cmdInp.scrollWidth;
-  cmdInp.style.width = contentWidth + "px";
+document.getElementById("cmdInp").addEventListener("input", () => {
+  let contentWidth = document.getElementById("cmdInp").scrollWidth;
+  document.getElementById("cmdInp").style.width = contentWidth + "px";
 });
