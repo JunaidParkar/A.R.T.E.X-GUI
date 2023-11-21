@@ -252,11 +252,12 @@ p {
 
 .desktop .bar .search-menu {
   position: fixed;
-  bottom: 75px;
+  bottom: 80px;
   display: flex;
   align-items: start;
   max-width: 795px;
   display: none;
+  height: 500px;
 }
 
 .desktop .bar .search-menu ul {
@@ -264,7 +265,7 @@ p {
   flex-direction: column;
   padding: 0;
   overflow: hidden;
-  height: 400px;
+  height: 100%;
   align-items: start;
   justify-content: start;
   width: 100%;
@@ -299,7 +300,6 @@ p {
 
 .desktop .bar .search-menu ul#articles-container {
   overflow: scroll;
-  height: 400px;
   max-width: auto;
 
 }

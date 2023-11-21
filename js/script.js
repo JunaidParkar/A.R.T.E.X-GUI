@@ -293,7 +293,3 @@ document.addEventListener('click', function (event) {
         searchMenu.style.display = 'none';
     }
 });
-// Keep search menu open if cursor is over the search menu
-searchMenu.addEventListener('mouseleave', function () {
-    searchMenu.style.display = 'none';
-});
