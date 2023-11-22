@@ -23,9 +23,9 @@ const leftClick = async (e) => {
     clickY > rect.top &&
     clickY < rect.bottom;
   if (clickedOnSearch) {
-    await getNews();
     searchInput.focus();
     searchMenu.style.display = "flex";
+    await getNews();
   } else {
     searchMenu.style.display = "none";
   }
@@ -207,6 +207,13 @@ const getNews = async (keyword) => {
     keyword =
       defaultKeyWords[Math.floor(Math.random() * defaultKeyWords.length)];
   }
+  document.getElementById("articles-container").innerHTML = "";
+  let preloader = document.createElement("div");
+  preloader.classList.add("articlePreloader");
+  let loader = document.createElement("div");
+  loader.classList.add("loader");
+  preloader.appendChild(loader);
+  document.getElementById("articles-container").appendChild(preloader);
   const url = "http://eventregistry.org/api/v1/article/getArticles";
   const data = `{
       "action": "getArticles",
@@ -233,9 +240,9 @@ const getNews = async (keyword) => {
   });
   const text = await response.json();
   const articles = text.articles.results;
+  document.getElementById("articles-container").innerHTML = "";
   if (articles.length > 0) {
     const articlesContainer = document.getElementById("articles-container");
-    document.getElementById("articles-container").innerHTML = "";
     articles.forEach((article) => {
       const articleDiv = document.createElement("div");
       articleDiv.classList.add("article");
