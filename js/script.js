@@ -156,7 +156,6 @@ function attachEventHandlers(iframe) {
   iframe.contentWindow.addEventListener("contextmenu", (e) => {
     e.preventDefault();
     rightClick(e);
-    console.log("Right-clicked inside the dynamically appended iframe");
   });
   iframe.contentWindow.addEventListener("keydown", function (event) {
     if (event.ctrlKey && (event.key === "r" || event.code === "KeyR")) {
@@ -207,15 +206,16 @@ const getNews = async (keyword) => {
     keyword =
       defaultKeyWords[Math.floor(Math.random() * defaultKeyWords.length)];
   }
-  document.getElementById("articles-container").innerHTML = "";
-  let preloader = document.createElement("div");
-  preloader.classList.add("articlePreloader");
-  let loader = document.createElement("div");
-  loader.classList.add("loader");
-  preloader.appendChild(loader);
-  document.getElementById("articles-container").appendChild(preloader);
-  const url = "http://eventregistry.org/api/v1/article/getArticles";
-  const data = `{
+  try {
+    document.getElementById("articles-container").innerHTML = "";
+    let preloader = document.createElement("div");
+    preloader.classList.add("articlePreloader");
+    let loader = document.createElement("div");
+    loader.classList.add("loader");
+    preloader.appendChild(loader);
+    document.getElementById("articles-container").appendChild(preloader);
+    const url = "http://eventregistry.org/api/v1/article/getArticles";
+    const data = `{
       "action": "getArticles",
       "keyword": "${keyword}",
       "articlesPage": 1,
@@ -231,46 +231,52 @@ const getNews = async (keyword) => {
       "apiKey": "f2bb630d-ceca-4a20-9a04-28ccf0f71b8c",
       "forceMaxDataTimeWindow": 31
     }`;
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: data,
-  });
-  const text = await response.json();
-  const articles = text.articles.results;
-  document.getElementById("articles-container").innerHTML = "";
-  if (articles.length > 0) {
-    const articlesContainer = document.getElementById("articles-container");
-    articles.forEach((article) => {
-      const articleDiv = document.createElement("div");
-      articleDiv.classList.add("article");
-      const titleElement = document.createElement("h2");
-      titleElement.textContent = article.title;
-      const sourceElement = document.createElement("p");
-      sourceElement.textContent = `Source: ${article.source.title}`;
-      const bodyElement = document.createElement("p");
-      bodyElement.textContent = article.body;
-      const linkElement = document.createElement("a");
-      linkElement.href = article.url;
-      linkElement.textContent = "Read More";
-      const imageElement = document.createElement("img");
-      imageElement.src = article.image;
-      imageElement.alt = article.title;
-      imageElement.onerror = () => {
-        imageElement.style.display = "none";
-      };
-      articleDiv.appendChild(imageElement);
-      articleDiv.appendChild(titleElement);
-      articleDiv.appendChild(sourceElement);
-      articleDiv.appendChild(bodyElement);
-      articleDiv.appendChild(linkElement);
-      articlesContainer.appendChild(articleDiv);
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
     });
-  } else {
-    getNews(
-      defaultKeyWords[Math.floor(Math.random() * defaultKeyWords.length)]
+    const text = await response.json();
+    const articles = text.articles.results;
+    document.getElementById("articles-container").innerHTML = "";
+    if (articles.length > 0) {
+      const articlesContainer = document.getElementById("articles-container");
+      articles.forEach((article) => {
+        const articleDiv = document.createElement("div");
+        articleDiv.classList.add("article");
+        const titleElement = document.createElement("h2");
+        titleElement.textContent = article.title;
+        const sourceElement = document.createElement("p");
+        sourceElement.textContent = `Source: ${article.source.title}`;
+        const bodyElement = document.createElement("p");
+        bodyElement.textContent = article.body;
+        const linkElement = document.createElement("a");
+        linkElement.href = article.url;
+        linkElement.textContent = "Read More";
+        const imageElement = document.createElement("img");
+        imageElement.src = article.image;
+        imageElement.alt = article.title;
+        imageElement.onerror = () => {
+          imageElement.style.display = "none";
+        };
+        articleDiv.appendChild(imageElement);
+        articleDiv.appendChild(titleElement);
+        articleDiv.appendChild(sourceElement);
+        articleDiv.appendChild(bodyElement);
+        articleDiv.appendChild(linkElement);
+        articlesContainer.appendChild(articleDiv);
+      });
+    } else {
+      getNews(
+        defaultKeyWords[Math.floor(Math.random() * defaultKeyWords.length)]
+      );
+    }
+  } catch {
+    showAlert(
+      "News",
+      "Unable to load news at the moment. If problem presist then please check your internet connection."
     );
   }
 };
@@ -292,6 +298,32 @@ const doneTyping = (value) => {
   if (value !== "") {
     getNews(value);
   }
+};
+
+// alert handling
+
+const showAlert = (heading, message) => {
+  let mainDiv = document.createElement("div");
+  mainDiv.id = "alert";
+  let headingDiv = document.createElement("div");
+  headingDiv.classList.add("alert-header");
+  let headingTxt = document.createElement("p");
+  headingTxt.textContent = heading;
+  headingDiv.appendChild(headingTxt);
+  let messageDiv = document.createElement("div");
+  messageDiv.classList.add("message");
+  let messageTxt = document.createElement("p");
+  messageTxt.textContent = message;
+  messageDiv.appendChild(messageTxt);
+  mainDiv.appendChild(headingDiv);
+  mainDiv.appendChild(messageDiv);
+  if (document.getElementById("alert")) {
+    document.body.removeChild(document.getElementById("alert"));
+  }
+  document.body.appendChild(mainDiv);
+  setTimeout(() => {
+    document.body.removeChild(document.getElementById("alert"));
+  }, 10 * 1000);
 };
 
 // get time
