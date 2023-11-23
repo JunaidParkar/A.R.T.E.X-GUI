@@ -125,11 +125,11 @@ body {
 #history .inp {
   display: flex;
   gap: 10px;
-  align-items: center;
+  align-items: start;
 }
 
 #inputs p,
-input,
+textarea,
 #history .inp p,
 .output {
   font-size: 13px;
@@ -147,8 +147,11 @@ input,
   color: rgba(255, 0, 0, 0.65);
 }
 
-input {
+textarea {
   background: transparent;
   border: 0;
   outline: none;
+  resize: none;
+  width: 90%;
+  background: red;
 }

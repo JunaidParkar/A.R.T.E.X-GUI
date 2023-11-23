@@ -1,0 +1,18 @@
+{
+  "apps": [
+    {
+      "name": "app name",
+      "version": "app version",
+      "default": true,
+      "icon": "path to app icon",
+      "entry point": "index.js path for app"
+    },
+    {
+      "name": "app name",
+      "version": "app version",
+      "default": true,
+      "icon": "path to app icon",
+      "entry point": "index.js path for app"
+    }
+  ]
+}
