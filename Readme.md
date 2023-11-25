@@ -108,9 +108,9 @@ A: Currently no contributers are allowed to contribute.
 
 **Q: Where can I find information on the latest updates and releases?**
 
-A: Check the [Release Notes](#release-notes) section for details on the latest updates, bug fixes, and new features.
+A: Check the [Release Notes](#Release-notes) section for details on the latest updates, bug fixes, and new features.
 
-## Roadmap
+## Realease notes
 
 Our vision for the future of A.R.T.E.X. includes the following milestones and enhancements:
 
