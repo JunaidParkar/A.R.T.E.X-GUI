@@ -116,8 +116,12 @@ section {
 }
 
 #authentication .main #form div h3 {
+  background: #993db9;
   font-size: 20px;
+  width: max-content;
+  padding: 0 10px;
   font-weight: 800;
+  border-radius: 10px;
 }
 
 #authentication .main #form div p {
@@ -147,6 +151,10 @@ section {
   font-size: 3rem;
   line-height: 3rem;
   letter-spacing: 1px;
+}
+
+#authentication > h3 {
+  color: #993db9;
 }
 
 #first-text p {
