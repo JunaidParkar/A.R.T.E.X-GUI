@@ -130,3 +130,31 @@ drives.forEach((drive) => {
 });
 
 // file manager section ends
+
+// folder and file sorting starts
+
+const sortBy = "folder";
+
+const dataSorter = () => {
+  const sorted = [[], []];
+  const items = Array.from(
+    document.getElementById("file-list").querySelectorAll("li")
+  );
+
+  for (const item of items) {
+    if (item.dataset.type === sortBy) {
+      sorted[0].push(item);
+    } else {
+      sorted[1].push(item);
+    }
+  }
+
+  document.getElementById("file-list").innerHTML = "";
+  sorted
+    .flat()
+    .forEach((item) => document.getElementById("file-list").appendChild(item));
+};
+
+dataSorter();
+
+// folder and file sorting ends
