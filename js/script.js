@@ -14,20 +14,28 @@ const leftClick = async (e) => {
   let searchInput = document.getElementById("searchInput");
   let clickX = e.clientX;
   let clickY = e.clientY;
-  let rect = document
+  let inpRect = document
     .getElementById("searchInputContainer")
     .getBoundingClientRect();
   let clickedOnSearch =
-    clickX > rect.left &&
-    clickX < rect.right &&
-    clickY > rect.top &&
-    clickY < rect.bottom;
+    clickX > inpRect.left &&
+    clickX < inpRect.right &&
+    clickY > inpRect.top &&
+    clickY < inpRect.bottom;
   if (clickedOnSearch) {
     searchInput.focus();
     searchMenu.style.display = "flex";
     await getNews();
   } else {
-    searchMenu.style.display = "none";
+    let menuRect = searchMenu.getBoundingClientRect();
+    let clickedOnMenu =
+      clickX > menuRect.left &&
+      clickX < menuRect.right &&
+      clickY > menuRect.top &&
+      clickY < menuRect.bottom;
+    if (!clickedOnMenu) {
+      searchMenu.style.display = "none";
+    }
   }
 };
 
@@ -35,26 +43,25 @@ const leftClick = async (e) => {
 
 const rightClick = (e) => {
   e.preventDefault();
-  if (document.getElementById("contextMenu").style.display == "block")
-    hideMenu();
-  else {
-    var menu = document.getElementById("contextMenu");
-    const clickX = e.clientX;
-    const clickY = e.clientY;
-    const gap = 15;
-    const edgeX = 150;
-    const edgeY = 225;
-    const windowX = window.innerWidth;
-    const windowY = window.innerHeight;
-    const contextWindowX = windowX - edgeX;
-    const contextWindowY = windowY - edgeY;
-    const menuX = clickX > contextWindowX ? contextWindowX : clickX + gap;
-    const menuY = clickY > contextWindowY ? contextWindowY : clickY + gap;
-    menu.style.display = "block";
-    menu.style.display = "block";
-    menu.style.left = menuX + "px";
-    menu.style.top = menuY + "px";
+  var menu = document.getElementById("contextMenu");
+  if (document.getElementById("contextMenu").style.display == "block") {
+    leftClick(e);
   }
+  const clickX = e.clientX;
+  const clickY = e.clientY;
+  const gap = 15;
+  const edgeX = 150;
+  const edgeY = 225;
+  const windowX = window.innerWidth;
+  const windowY = window.innerHeight;
+  const contextWindowX = windowX - edgeX;
+  const contextWindowY = windowY - edgeY;
+  const menuX = clickX > contextWindowX ? contextWindowX : clickX + gap;
+  const menuY = clickY > contextWindowY ? contextWindowY : clickY + gap;
+  menu.style.display = "block";
+  menu.style.display = "block";
+  menu.style.left = menuX + "px";
+  menu.style.top = menuY + "px";
 };
 
 document.onclick = leftClick;
@@ -151,7 +158,7 @@ observer.observe(document, { childList: true, subtree: true });
 function attachEventHandlers(iframe) {
   iframe.contentWindow.addEventListener("click", (e) => {
     e.preventDefault();
-    hideMenu();
+    leftClick(e);
   });
   iframe.contentWindow.addEventListener("contextmenu", (e) => {
     e.preventDefault();
