@@ -69,33 +69,61 @@ document.oncontextmenu = rightClick;
 
 // open apps
 
-document.querySelectorAll(".bar li").forEach((e) => {
-  e.addEventListener("click", () => {
-    if (e.classList.contains("select")) {
-      e.classList.remove("select");
-      let id = e.querySelector("img").dataset.app;
-      let elem = document.getElementById(id);
-      if (elem.nextSibling === null) {
-        document.getElementById("apps").removeChild(elem);
-      } else {
-        document.getElementById("apps").appendChild(elem);
-        e.classList.add("select");
-      }
-    } else {
-      e.classList.add("select");
-      let url = e.querySelector("img").dataset.app;
-      let id = e.querySelector("img").dataset.app;
-      document.getElementById("apps").innerHTML +=
-        "<div class='app' id='" +
-        id +
-        "'><iframe src='" +
-        url +
-        "' frameborder='0'  uid='" +
-        id +
-        "'></iframe></div>";
-    }
-  });
-});
+// document.querySelectorAll(".bar li").forEach((e) => {
+//   e.addEventListener("click", () => {
+//     let appimg = e.getElementsByTagName('img')[0].src;
+//     let thisapp = document.querySelector(".app-list img[data-app='" + appimg + "']");
+//     let otherApp = document.querySelector(".other-apps li img[data-app='" + appimg + "']");
+
+//     if (thisapp) {
+//       // If app exists in main app list
+//       console.log('there in .app-list');
+//       if (!e.classList.contains("select")) {
+//         // If not selected, make it selected and open
+//         document.querySelectorAll(".bar li.select").forEach((selectedApp) => {
+//           selectedApp.classList.remove("select");
+//         });
+//         e.classList.add("select");
+//         // Code to open the app, similar to your existing logic
+//         // Example: 
+//         let url = e.querySelector("img").dataset.app;
+//         let id = e.querySelector("img").dataset.app;
+//         document.getElementById("apps").innerHTML +=
+//           "<div class='app' id='" +
+//           id +
+//           "'><iframe src='" +
+//           url +
+//           "' frameborder='0'  uid='" +
+//           id +
+//           "'></iframe></div>";
+//       }
+//     } else {
+//       // If app doesn't exist in main app list
+//       console.log('add to other-apps-list');
+//       if (otherApp) {
+//         // If app exists in other-apps list, bring it to front without closing
+//         document.querySelector(".other-apps").appendChild(otherApp.parentNode);
+//       } else {
+//         // If app doesn't exist in other-apps list, add it and open
+//         document.querySelector(".other-apps").innerHTML +=
+//           "<li><img src='" + appimg + "' alt='' data-app='" + appimg + "' /></li>";
+//         // Code to open the app, similar to your existing logic
+//         // Example:
+//         let url = e.querySelector("img").dataset.app;
+//         let id = e.querySelector("img").dataset.app;
+//         document.getElementById("apps").innerHTML +=
+//           "<div class='app' id='" +
+//           id +
+//           "'><iframe src='" +
+//           url +
+//           "' frameborder='0'  uid='" +
+//           id +
+//           "'></iframe></div>";
+//       }
+//     }
+//   });
+// });
+
 
 // toggle full screen
 
@@ -144,6 +172,7 @@ const observer = new MutationObserver(function (mutationsList, observer) {
         node.childNodes.forEach((nd) => {
           if (nd.nodeName === "IFRAME") {
             attachEventHandlers(nd);
+            console.log("An iframe was added:", nd);
           }
         });
       });
@@ -203,6 +232,24 @@ const desktopElement = document.querySelector(".desktop");
 const myText = document.getElementById("date");
 
 getMaximumColorFromBackgroundAndSetText(desktopElement, myText);
+
+// get app
+function getApp(value) {
+  let searchapp = document.querySelectorAll('.search-app-list li');
+
+  searchapp.forEach(e => {
+    let appName = e.querySelector('p').textContent;
+
+    if (value.length === 0) {
+      e.style.display = "flex"; 
+    } else if (appName.toUpperCase().indexOf(value.toUpperCase()) > -1) {
+      e.style.display = "flex";
+    } else {
+      e.style.display = "none";
+    }
+  });
+}
+
 
 // get news
 
@@ -305,6 +352,8 @@ const doneTyping = (value) => {
   if (value !== "") {
     getNews(value);
   }
+
+  getApp(value);
 };
 
 // alert handling
@@ -348,7 +397,10 @@ const time = function () {
   ];
   document.getElementById("year").innerHTML = currentDate.getFullYear();
   document.getElementById("month").innerHTML = currentDate.getMonth() + 1;
-  document.getElementById("date").innerHTML = currentDate.getDate();
+
+  let date = currentDate.getDate().toString().padStart(2, '0');
+  document.getElementById("date").innerHTML = date;
+
   var dayIndex = currentDate.getDay();
   document.getElementById("day").innerHTML = dayNames[dayIndex];
 };

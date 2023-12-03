@@ -205,6 +205,10 @@ p {
   width: 30px;
 }
 
+.desktop .bar ul.app-list li p {
+  display: none;
+}
+
 .desktop .bar ul.app-list li.select {
   overflow: visible;
   transition: 0.1s all ease-in-out;
@@ -214,6 +218,26 @@ p {
 .desktop .bar ul.app-list li.select img {
   transform: translateY(-10px);
   transition: 0.1s all ease-in-out;
+}
+
+.desktop .bar ul.app-list.other-apps li {
+  display: none;
+}
+
+.desktop .bar ul.app-list.other-apps li.select {
+  display: block;
+}
+
+.desktop .bar ul.app-list.other-apps {
+  display: none; /* Hide the container by default */
+}
+
+.desktop .bar ul.app-list.other-apps:not(:empty):not(:has(.select)) {
+  display: none; /* Hide if no child element has .select class */
+}
+
+.desktop .bar ul.app-list.other-apps:has(.select) {
+  display: block; /* Display if any child element has .select class */
 }
 
 .desktop .bar ul input {
@@ -273,17 +297,25 @@ p {
   width: calc(40% - 2.5px);
   padding: 7px 5px;
   background: transparent;
+  background: rgba(95, 95, 95, 0.36);
   border: 1px solid rgba(255, 255, 255, 0.156);
+  backdrop-filter: blur(25px);
+}
+
+.desktop .bar .search-menu .search-app-list {
+  overflow-y: auto;
 }
 
 .desktop .bar .search-menu ul:nth-child(2) {
   width: calc(60% - 2.5px);
 }
 
-.desktop .bar .search-menu ul li:hover {
-  background: rgba(255, 255, 255, 0.205);
-  border-radius: 5px;
+.desktop .bar .search-menu ul:nth-child(1) h3 {
+  color: rgba(255, 255, 255, 0.637);
+  padding-left: 10px;
+  font-weight: var(--text);
 }
+
 
 .desktop .bar .search-menu ul li {
   width: 100%;
@@ -295,6 +327,27 @@ p {
   padding: 20px 10px;
   margin: 0;
   background: transparent;
+  border-radius: 5px;
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
+}
+
+.desktop .bar .search-menu ul li::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  background: rgba(169, 169, 169, 0.133);
+  inset: 0;
+  scale: 0 1;
+  transform-origin: right;
+  transition: scale 250ms;
+}
+
+.desktop .bar .search-menu ul li:hover::after,
+.desktop .bar .search-menu ul li:focus-visible::after {
+  transform-origin: left;
+  scale: 1 1;
 }
 
 .desktop .bar .search-menu ul li p {
@@ -317,9 +370,9 @@ p {
   position: relative;
   left: 50%;
   top: 50%;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
+  width: 80px;
+  height: 80px;
+  margin: -40px 0 0 -40px;
   border-radius: 50%;
   border: 3px solid transparent;
   border-top-color: #9370db;
@@ -327,6 +380,7 @@ p {
   animation: spin 2s linear infinite;
   background: transparent;
 }
+
 .articlePreloader .loader:before {
   content: "";
   position: absolute;
@@ -340,6 +394,7 @@ p {
   -webkit-animation: spin 3s linear infinite;
   animation: spin 3s linear infinite;
 }
+
 .articlePreloader .loader:after {
   content: "";
   position: absolute;
@@ -353,24 +408,28 @@ p {
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
 }
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
+
 @keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
