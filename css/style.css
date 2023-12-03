@@ -297,9 +297,9 @@ p {
   width: calc(40% - 2.5px);
   padding: 7px 5px;
   background: transparent;
-  background: rgba(95, 95, 95, 0.36);
+  background: rgba(4, 4, 4, 0.466);
   border: 1px solid rgba(255, 255, 255, 0.156);
-  backdrop-filter: blur(25px);
+  backdrop-filter: blur(35px);
 }
 
 .desktop .bar .search-menu .search-app-list {
