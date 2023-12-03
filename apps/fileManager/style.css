@@ -224,6 +224,8 @@ body {
   }
 }
 
+/* sidebar starts */
+
 #sidebar {
   width: 200px;
   height: 100%;
@@ -295,5 +297,163 @@ body {
   font-size: 16px;
   font-weight: 400;
 }
+
+/* sidebar ends */
+
+/* main manager starts */
+
+#system {
+  width: calc(100% - 200px - 10px);
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#system::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+#system::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+#system::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.126);
+  border-radius: 10px;
+}
+
+#system::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.512);
+}
+
+#system #file-list {
+  width: 100%;
+}
+
+#system #file-list li {
+  width: 100%;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.512);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#system #file-list li[data-type="folder"] {
+  cursor: pointer;
+}
+
+#system #file-list li[data-type="folder"]:hover {
+  background: rgba(255, 255, 255, 0.126);
+}
+
+#system #file-list li span {
+  width: calc(100% - 128px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#system #file-list li span p {
+  width: calc(100% - 50px);
+  letter-spacing: 0.8px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 15px;
+}
+
+#system #file-list li img,
+#system #file-list li div {
+  height: 25px;
+  width: 25px;
+}
+
+#system #file-list li span img {
+  height: 20px;
+  width: 20px;
+}
+
+#delete-btn,
+#rename-btn,
+#download-btn {
+  cursor: pointer;
+}
+
+/* #file-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#file-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+#file-list li:hover {
+  background-color: #f5f5f5;
+}
+
+#file-list span.file-name,
+#file-list span.folder-name {
+  flex: 1;
+  margin-left: 10px;
+}
+
+#file-list span.file-name p,
+#file-list span.folder-name p {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#download-btn,
+#rename-btn,
+#delete-btn {
+  margin-left: auto;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#system img {
+  height: 40px;
+} */
+
+@media only screen and (max-width: 768px) {
+  /* #file-list li {
+    flex-direction: column;
+  }
+
+  #file-list span.file-name,
+  #file-list span.folder-name {
+    margin-left: 0;
+    margin-bottom: 5px;
+  }
+
+  #download-btn-1,
+  #rename-btn-1,
+  #delete-btn-1,
+  #rename-btn-2,
+  #delete-btn-2 {
+    margin-top: 10px;
+  } */
+}
+
+/* main manager ends */
 
 /* file manager ends */

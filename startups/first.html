@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/startup.css" />
+  </head>
+  <body>
+    <div id="container">
+      <section>
+        <div id="first-text">
+          <h2>A.R.T.E.X</h2>
+          <p>Advance Responsive Text Entity for eXpertise</p>
+        </div>
+        <div id="first-main-content">
+          <div>
+            <h2>Welcome sir,</h2>
+            <p>
+              Your Intelligent Personal Assistant, harnessing the power of AI to
+              enhance productivity, streamline tasks, and provide personalized
+              assistance for a smarter, more efficient digital experience.
+            </p>
+          </div>
+          <img src="../assets/startUp/Welcome.png" alt="" srcset="" />
+          <div id="actionBtns">
+            <div id="previous" style="display: none">
+              <img src="../assets/left.png" alt="" srcset="" />
+              <p>Previous</p>
+            </div>
+            <div id="next">
+              <p>continue</p>
+              <img src="../assets/right.png" alt="" srcset="" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      const t1 = gsap.timeline();
+      t1.to("#first-text", {
+        delay: 1.5,
+        y: "-100%",
+      });
+      t1.to("#first-main-content", {
+        y: "-100%",
+      });
+    </script>
+  </body>
+</html>

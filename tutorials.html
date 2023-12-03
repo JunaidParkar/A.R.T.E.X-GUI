@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ARTEX Ai</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/tutorials.css" />
     <link rel="stylesheet" href="css/common.css" />
   </head>
 
@@ -41,6 +42,14 @@
           >
         </li>
       </ul>
+    </div>
+    <div id="overlay">
+      <div id="tutorialIntro">
+        <h3>Open the apps...</h3>
+        <p>
+          Click on the File manager icon below to open the FIle manager app.
+        </p>
+      </div>
     </div>
     <div class="desktop">
       <div class="apps" id="apps">
@@ -89,7 +98,10 @@
         </ul>
 
         <ul class="app-list">
-          <li><img src="assets/logo.png" alt="" data-app="apps/artex" /></li>
+          <div id="overlaySec"></div>
+          <li>
+            <img src="assets/logo.png" alt="" data-app="apps/artex" />
+          </li>
           <li>
             <img
               src="assets/appIcons/files.png"
@@ -120,7 +132,7 @@
           <li><img src="assets/appIcons/mic.png" alt="" /></li>
         </ul>
 
-        <div class="search-menu" id="menu">
+        <div class="search-menu">
           <ul class="search-app-list">
             <li>
               <img
@@ -153,61 +165,7 @@
         </div>
       </div>
     </div>
-
-    <!-- <div id="alert">
-      <div class="alert-header">
-        <p>Command Prompt</p>
-      </div>
-      <div class="message">
-        <p>
-          No internet available it the moment. Please check your connection. uh
-          fh e7gfw9g y 67fmn b bib
-        </p>
-      </div>
-    </div> -->
     <script src="js/script.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
-      integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script>
-      anime({
-        targets: ".bar ul",
-        translateY: [200, 0],
-        scale: 1,
-        direction: "alternate",
-        loop: false,
-        delay: anime.stagger(100),
-      });
-
-      anime({
-        targets: ".bar ul li",
-        translateY: [200, 0],
-        scale: [0, 1],
-        direction: "alternate",
-        loop: false,
-        delay: anime.stagger(100),
-      });
-
-      anime({
-        targets: ".desktop-date",
-        translateY: [-500, 0],
-        opacity: [0, 1],
-        direction: "alternate",
-        loop: false,
-        duration: 2000,
-      });
-
-      anime({
-        targets: "iframe",
-        translateY: [200, 0],
-        direction: "alternate",
-        loop: false,
-        loop: false,
-        delay: anime.stagger(100),
-      });
-    </script>
+    <script src="js/tutorial.js"></script>
   </body>
 </html>
