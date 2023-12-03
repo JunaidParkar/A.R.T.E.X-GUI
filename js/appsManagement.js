@@ -21,9 +21,9 @@ const defaultApps = [{
     image: 'assets/appIcons/info.png',
     appPath: 'apps/setting',
 }, {
-    name: 'setting',
+    name: 'AI store',
     image: 'assets/appIcons/store.png',
-    appPath: 'apps/setting',
+    appPath: 'apps/appstore',
 }]
 
 const otherApps = [{
@@ -35,9 +35,9 @@ const otherApps = [{
     image: 'https://img.icons8.com/?size=30&id=fO5yVwARGUEB&format=png',
     appPath: 'https://chat.openai.com/',
 }, {
-    name: 'stackoverflow',
-    image: 'https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.Stackoverflow.com&size=64',
-    appPath: 'https://stackoverflow.bing.com/',
+    name: 'playgroundai',
+    image: 'https://yt3.googleusercontent.com/QPpa9S5D-4Bw2P9WciQyLPcp7GzHPJ7fM-SUuxaRcGUIWTLYLuiVtLjpPgI-SGrljPzvpJBlsts=s900-c-k-c0x00ffffff-no-rj',
+    appPath: 'https://playgroundai.com/',
 }, {
     name: 'Sleekpad',
     image: 'https://sleekpad-0.web.app/assets/logo-d879986a.png',
