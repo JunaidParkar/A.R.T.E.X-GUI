@@ -253,7 +253,7 @@ function getApp(value) {
 
 // get news
 
-let defaultKeyWords = ["india", "AI", "Space", "Science", "Tech", "Avengers"];
+let defaultKeyWords = ["india", "AI", "machine", "Science", "Technology", "earth"];
 
 const getNews = async (keyword) => {
   if (!keyword) {
