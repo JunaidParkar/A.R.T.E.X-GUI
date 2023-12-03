@@ -1,139 +1,165 @@
-let RunningApps = []
+let RunningApps = [];
 
-const defaultApps = [{
-    name: 'artex',
-    image: 'assets/logo.png',
-    appPath: 'apps/artex',
-}, {
-    name: 'fileManager',
-    image: 'assets/appIcons/files.png',
-    appPath: 'apps/fileManager',
-}, {
-    name: 'setting',
-    image: 'assets/appIcons/setting.png',
-    appPath: 'apps/setting',
-}, {
-    name: 'terminal',
-    image: 'assets/appIcons/terminal.png',
-    appPath: 'apps/cmd',
-}, {
-    name: 'setting',
-    image: 'assets/appIcons/info.png',
-    appPath: 'apps/setting',
-}, {
-    name: 'AI store',
-    image: 'assets/appIcons/store.png',
-    appPath: 'apps/appstore',
-}]
+const installedApps = {
+  apps: [
+    {
+      name: "n",
+      default: false,
+      icon: "assets/appIcons/setting.png",
+      path: "./apps/setting/index.html",
+    },
+    {
+      name: "m",
+      default: false,
+      icon: "assets/appIcons/setting.png",
+      path: "./apps/setting/index.html",
+    },
+    {
+      name: "l",
+      default: false,
+      icon: "assets/appIcons/setting.png",
+      path: "./apps/setting/index.html",
+    },
+    {
+      name: "a",
+      default: false,
+      icon: "assets/appIcons/setting.png",
+      path: "./apps/setting/index.html",
+    },
+    {
+      name: "f",
+      default: false,
+      icon: "assets/appIcons/setting.png",
+      path: "./apps/setting/index.html",
+    },
+    {
+      name: "g",
+      default: false,
+      icon: "assets/appIcons/setting.png",
+      path: "./apps/setting/index.html",
+    },
+    {
+      name: "b",
+      default: false,
+      icon: "assets/appIcons/setting.png",
+      path: "./apps/setting/index.html",
+    },
+    {
+      name: "artex",
+      default: true,
+      icon: "assets/logo.png",
+      path: "./apps/artex/index.html",
+    },
+    {
+      name: "fileManager",
+      default: true,
+      icon: "assets/appIcons/files.png",
+      path: "./apps/fileManager/index.html",
+    },
+    {
+      name: "setting",
+      default: true,
+      icon: "assets/appIcons/setting.png",
+      path: "./apps/setting/index.html",
+    },
+    {
+      name: "terminal",
+      default: true,
+      icon: "assets/appIcons/terminal.png",
+      path: "./apps/cmd/index.html",
+    },
+    {
+      name: "Artex store",
+      default: true,
+      icon: "assets/appIcons/store.png",
+      path: "./apps/appstore/index.html",
+    },
+  ],
+};
 
-const otherApps = [{
-    name: 'bing',
-    image: 'https://img.icons8.com/?size=48&id=pOADWgX6vV63&format=png',
-    appPath: 'https://www.bing.com/',
-}, {
-    name: 'chatGpt',
-    image: 'https://img.icons8.com/?size=30&id=fO5yVwARGUEB&format=png',
-    appPath: 'https://chat.openai.com/',
-}, {
-    name: 'playgroundai',
-    image: 'https://yt3.googleusercontent.com/QPpa9S5D-4Bw2P9WciQyLPcp7GzHPJ7fM-SUuxaRcGUIWTLYLuiVtLjpPgI-SGrljPzvpJBlsts=s900-c-k-c0x00ffffff-no-rj',
-    appPath: 'https://playgroundai.com/',
-}, {
-    name: 'Sleekpad',
-    image: 'https://sleekpad-0.web.app/assets/logo-d879986a.png',
-    appPath: 'https://sleekpad-0.web.app/notes',
-},]
-
-// defaultapps
-defaultApps.forEach((a) => {
+installedApps.apps.forEach((a) => {
+  if (a.default) {
     let appStructure = `<li id="app-list-${a.name}" class="application">
-    <img src="${a.image}" alt="" data-app="${a.appPath}" data-name="${a.name}"/>
-    <p>${a.name}</p>
-    </li>`
+          <img src="${a.icon}" alt="" data-app="${a.path}" data-name="${a.name}"/>
+          <p>${a.name}</p>
+          </li>`;
 
-    document.getElementsByClassName('app-list')[0].innerHTML += appStructure
-})
-
-// otherapps
-otherApps.forEach((a) => {
+    document.getElementsByClassName("app-list")[0].innerHTML += appStructure;
+  } else {
     let appStructure = `<li id="app-list-${a.name}" class="application">
-    <img src="${a.image}" alt="" data-app="${a.appPath}" />
-    <p>${a.name}</p>
-    </li>`
-
-    document.getElementsByClassName('other-apps')[0].innerHTML += appStructure
-})
-
-
-// softlink
-let allApps = defaultApps.concat(otherApps);
-
-// Sort allApps by name
-allApps.sort((a, b) => a.name.localeCompare(b.name));
-
-allApps.forEach((a) => {
-    let appStructure = `<li onclick="document.getElementById('app-list-${a.name}').click()">
-    <img src="${a.image}" alt="" />
+    <img src="${a.icon}" alt="" data-app="${a.path}" />
     <p>${a.name}</p>
     </li>`;
 
-    document.getElementsByClassName('search-app-list')[0].innerHTML += appStructure;
+    document.getElementsByClassName("other-apps")[0].innerHTML += appStructure;
+  }
 });
 
+installedApps.apps.forEach((a) => {
+  let appStructure = `<li onclick="document.getElementById('app-list-${a.name}').click()">
+    <img src="${a.icon}" alt="" />
+    <p>${a.name}</p>
+    </li>`;
 
+  document.getElementsByClassName("search-app-list")[0].innerHTML +=
+    appStructure;
+});
+
+// console.log(allApps);
 
 function closeApp(e) {
-    e.classList.remove("select");
-    let id = e.querySelector("img").dataset.app;
-    let elem = document.getElementById(id);
-    if (elem.nextSibling === null) {
-        document.getElementById("apps").removeChild(elem);
+  e.classList.remove("select");
+  let id = e.querySelector("img").dataset.app;
+  let elem = document.getElementById(id);
+  if (elem.nextSibling === null) {
+    document.getElementById("apps").removeChild(elem);
 
-        RunningApps = RunningApps.filter(app => app.appPath !== id);
-    } else {
-        document.getElementById("apps").appendChild(elem);
-        e.classList.add("select");
-    }
+    RunningApps = RunningApps.filter((app) => app.appPath !== id);
+  } else {
+    document.getElementById("apps").appendChild(elem);
+    e.classList.add("select");
+  }
 
-    console.log(RunningApps);
+  //   console.log(RunningApps);
 }
 
 function openApp(e) {
-    e.classList.add("select");
-    let appPath = e.querySelector("img").dataset.app;
-    let id = e.querySelector("img").dataset.app;
-    let name = e.querySelector("img").dataset.name
-    let image = e.querySelector("img").src
+  e.classList.add("select");
+  let appPath = e.querySelector("img").dataset.app;
+  let id = e.querySelector("img").dataset.app;
+  let name = e.querySelector("img").dataset.name;
+  let image = e.querySelector("img").src;
 
-    RunningApps.push({ name, image, appPath })
+  RunningApps.push({ name, image, appPath });
 
-    console.log(RunningApps);
+  //   console.log(RunningApps);
 
-    document.getElementById("apps").innerHTML +=
-        "<div class='app' id='" +
-        id +
-        "'><iframe src='" +
-        appPath +
-        "' frameborder='0'  uid='" +
-        id +
-        "'></iframe></div>";
+  document.getElementById("apps").innerHTML +=
+    "<div class='app' id='" +
+    id +
+    "'><iframe src='" +
+    appPath +
+    "' frameborder='0'  uid='" +
+    id +
+    "'></iframe></div>";
 }
 
 document.querySelectorAll(".application").forEach((e) => {
-    e.addEventListener("click", () => {
+  e.addEventListener("click", () => {
+    let appimg = e.getElementsByTagName("img")[0].src;
+    let thisapp = document.querySelector(
+      ".app-list img[data-app='" + appimg + "']"
+    );
+    if (thisapp) {
+      console.log("there in .app-list");
+    } else {
+      console.log("add to other-app-list");
+    }
 
-        let appimg = e.getElementsByTagName('img')[0].src;
-        let thisapp = document.querySelector(".app-list img[data-app='" + appimg + "']");
-        if (thisapp) {
-            console.log('there in .app-list');
-        } else {
-            console.log('add to other-app-list');
-        }
-
-        if (e.classList.contains("select")) {
-            closeApp(e)
-        } else {
-            openApp(e)
-        }
-    });
+    if (e.classList.contains("select")) {
+      closeApp(e);
+    } else {
+      openApp(e);
+    }
+  });
 });

@@ -48,7 +48,7 @@ p {
   font-size: 16px;
 }
 
-img{
+img {
   width: 100%;
 }
 
@@ -260,6 +260,10 @@ img{
   color: rgb(211, 211, 211);
 }
 
+.desktop .bar ul input:focus {
+  background: transparent;
+}
+
 .desktop .bar .screen li.select {
   overflow: visible;
   transition: 0.1s all ease-in-out;
@@ -328,7 +332,6 @@ img{
   font-weight: var(--text);
 }
 
-
 .desktop .bar .search-menu ul li {
   width: 100%;
   display: flex;
@@ -346,7 +349,7 @@ img{
 }
 
 .desktop .bar .search-menu ul li::after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
   background: rgba(169, 169, 169, 0.133);

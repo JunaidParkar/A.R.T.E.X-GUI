@@ -39,10 +39,38 @@ const leftClick = async (e) => {
   }
 };
 
+// trigger when everything loaded up
+
+document.addEventListener("DOMContentLoaded", function () {
+  let width = window.outerWidth;
+  let height = window.outerHeight;
+  if (width > 1080) {
+    window.outerWidth;
+  }
+  var elem = document.documentElement;
+
+  // Listen for a user gesture (e.g., click) and then request fullscreen
+  document.addEventListener("click", function () {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      // Firefox
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      // Chrome, Safari and Opera
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      // IE/Edge
+      elem.msRequestFullscreen();
+    }
+  });
+  document.documentElement;
+});
 // custom right click
 
 const rightClick = (e) => {
   e.preventDefault();
+  console.log("clicked right");
   var menu = document.getElementById("contextMenu");
   if (document.getElementById("contextMenu").style.display == "block") {
     leftClick(e);
@@ -85,7 +113,7 @@ document.oncontextmenu = rightClick;
 //         });
 //         e.classList.add("select");
 //         // Code to open the app, similar to your existing logic
-//         // Example: 
+//         // Example:
 //         let url = e.querySelector("img").dataset.app;
 //         let id = e.querySelector("img").dataset.app;
 //         document.getElementById("apps").innerHTML +=
@@ -123,7 +151,6 @@ document.oncontextmenu = rightClick;
 //     }
 //   });
 // });
-
 
 // toggle full screen
 
@@ -172,7 +199,7 @@ const observer = new MutationObserver(function (mutationsList, observer) {
         node.childNodes.forEach((nd) => {
           if (nd.nodeName === "IFRAME") {
             attachEventHandlers(nd);
-            console.log("An iframe was added:", nd);
+            console.log(RunningApps);
           }
         });
       });
@@ -187,6 +214,7 @@ observer.observe(document, { childList: true, subtree: true });
 function attachEventHandlers(iframe) {
   iframe.contentWindow.addEventListener("click", (e) => {
     e.preventDefault();
+    console.log("indisbyubib");
     leftClick(e);
   });
   iframe.contentWindow.addEventListener("contextmenu", (e) => {
@@ -235,13 +263,13 @@ getMaximumColorFromBackgroundAndSetText(desktopElement, myText);
 
 // get app
 function getApp(value) {
-  let searchapp = document.querySelectorAll('.search-app-list li');
+  let searchapp = document.querySelectorAll(".search-app-list li");
 
-  searchapp.forEach(e => {
-    let appName = e.querySelector('p').textContent;
+  searchapp.forEach((e) => {
+    let appName = e.querySelector("p").textContent;
 
     if (value.length === 0) {
-      e.style.display = "flex"; 
+      e.style.display = "flex";
     } else if (appName.toUpperCase().indexOf(value.toUpperCase()) > -1) {
       e.style.display = "flex";
     } else {
@@ -250,10 +278,16 @@ function getApp(value) {
   });
 }
 
-
 // get news
 
-let defaultKeyWords = ["india", "AI", "machine", "Science", "Technology", "earth"];
+let defaultKeyWords = [
+  "india",
+  "AI",
+  "machine",
+  "Science",
+  "Technology",
+  "earth",
+];
 
 const getNews = async (keyword) => {
   if (!keyword) {
@@ -398,7 +432,7 @@ const time = function () {
   document.getElementById("year").innerHTML = currentDate.getFullYear();
   document.getElementById("month").innerHTML = currentDate.getMonth() + 1;
 
-  let date = currentDate.getDate().toString().padStart(2, '0');
+  let date = currentDate.getDate().toString().padStart(2, "0");
   document.getElementById("date").innerHTML = date;
 
   var dayIndex = currentDate.getDay();

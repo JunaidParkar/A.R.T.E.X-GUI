@@ -1,18 +1,34 @@
 {
   "apps": [
     {
-      "name": "app name",
-      "version": "app version",
+      "name": "artex",
       "default": true,
-      "icon": "path to app icon",
-      "entry point": "index.js path for app"
+      "icon": "assets/logo.png",
+      "path": "apps/artex"
     },
     {
-      "name": "app name",
-      "version": "app version",
+      "name": "fileManager",
       "default": true,
-      "icon": "path to app icon",
-      "entry point": "index.js path for app"
+      "icon": "assets/appIcons/files.png",
+      "path": "apps/fileManager"
+    },
+    {
+      "name": "setting",
+      "default": true,
+      "icon": "assets/appIcons/setting.png",
+      "path": "apps/setting"
+    },
+    {
+      "name": "terminal",
+      "default": true,
+      "icon": "assets/appIcons/terminal.png",
+      "path": "apps/cmd"
+    },
+    {
+      "name": "Artex store",
+      "default": true,
+      "icon": "assets/appIcons/store.png",
+      "path": "apps/appstore"
     }
   ]
 }
