@@ -78,13 +78,18 @@ body {
 
 #header #controls #left,
 #header #controls #right,
-#header #controls #reload {
+#header #controls #reload,
+#header #controls #hamburger {
   height: 24px;
   cursor: pointer;
 }
 
 #header #controls #reload {
   height: 19px;
+}
+
+#header #controls #hamburger {
+  display: none;
 }
 
 #header #controls #left img,
@@ -115,7 +120,7 @@ body {
   overflow: hidden;
   align-items: center;
   padding: 0 15px;
-  gap: 10px;
+  /* gap: 10px; */
   color: white;
 }
 
@@ -187,6 +192,19 @@ body {
   #header #navigator #pathInput,
   #header #searchBar {
     height: 35px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #header #controls div {
+    display: none;
+  }
+  #header #controls div#hamburger {
+    display: flex;
+    font-size: 25px;
+  }
+  #navigator {
+    width: 80;
   }
 }
 
@@ -296,6 +314,14 @@ body {
   letter-spacing: 0.8px;
   font-size: 16px;
   font-weight: 400;
+}
+
+@media screen and (max-width: 650px) {
+  #sidebar {
+    position: fixed;
+    left: -200px;
+    top: 0;
+  }
 }
 
 /* sidebar ends */
@@ -452,6 +478,12 @@ body {
   #delete-btn-2 {
     margin-top: 10px;
   } */
+}
+
+@media screen and (max-width: 650px) {
+  #system {
+    width: 100%;
+  }
 }
 
 /* main manager ends */

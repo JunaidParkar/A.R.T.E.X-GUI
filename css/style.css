@@ -533,14 +533,27 @@ img {
   border: 0;
 }
 
-@media (width < 600px) {
-  .desktop .bar ul {
+@media (width < 900px) {
+  .desktop .bar > ul.screen,
+  .desktop .bar > ul:first-child {
     display: none;
   }
+}
 
-  .desktop .bar .app-list {
+@media (width < 820px) {
+  #menu {
+    width: 90%;
+  }
+}
+
+@media (width < 600px) {
+  /* .desktop .bar ul {
+    display: none;
+  } */
+
+  /* .desktop .bar .app-list {
     display: flex;
-    width: 100vw;
+    width: 100%;
     background: linear-gradient(transparent, rgba(255, 255, 255, 0.089));
   }
 
@@ -551,5 +564,21 @@ img {
 
   .desktop .bar .app-list li img {
     width: 38px;
+  } */
+  .desktop .bar ul.app-list.main {
+    display: none;
+  }
+}
+
+@media (width < 510px) {
+  #articles-container {
+    display: none;
+  }
+
+  .desktop .bar .search-menu {
+    justify-content: center;
+  }
+  .desktop .bar .search-menu ul {
+    width: 75%;
   }
 }

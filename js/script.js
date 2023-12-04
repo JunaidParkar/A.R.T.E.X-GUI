@@ -1,71 +1,27 @@
 // block ctrl + r
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", async (event) => {
   if (event.ctrlKey && (event.key === "r" || event.code === "KeyR")) {
     event.preventDefault();
   }
+  // if (event.key === "Control" && event.code === "ControlLeft") {
+  //   let searchMenu = document.querySelector(".search-menu");
+  //   searchMenu.style.display =
+  //     searchMenu.style.display == "flex" ? "none" : "flex";
+  //   if (searchMenu.style.display == "flex") {
+  //     await getNews();
+  //   }
+  // Your code here
+  // }
 });
 
 // Custom left click
 
 const leftClick = async (e) => {
   document.getElementById("contextMenu").style.display = "none";
-  let searchMenu = document.querySelector(".search-menu");
-  let searchInput = document.getElementById("searchInput");
-  let clickX = e.clientX;
-  let clickY = e.clientY;
-  let inpRect = document
-    .getElementById("searchInputContainer")
-    .getBoundingClientRect();
-  let clickedOnSearch =
-    clickX > inpRect.left &&
-    clickX < inpRect.right &&
-    clickY > inpRect.top &&
-    clickY < inpRect.bottom;
-  if (clickedOnSearch) {
-    searchInput.focus();
-    searchMenu.style.display = "flex";
-    await getNews();
-  } else {
-    let menuRect = searchMenu.getBoundingClientRect();
-    let clickedOnMenu =
-      clickX > menuRect.left &&
-      clickX < menuRect.right &&
-      clickY > menuRect.top &&
-      clickY < menuRect.bottom;
-    if (!clickedOnMenu) {
-      searchMenu.style.display = "none";
-    }
-  }
+  await toggleSearchMenu(e);
 };
 
-// trigger when everything loaded up
-
-document.addEventListener("DOMContentLoaded", function () {
-  let width = window.outerWidth;
-  let height = window.outerHeight;
-  if (width > 1080) {
-    window.outerWidth;
-  }
-  var elem = document.documentElement;
-
-  // Listen for a user gesture (e.g., click) and then request fullscreen
-  document.addEventListener("click", function () {
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-      // Firefox
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-      // Chrome, Safari and Opera
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-      // IE/Edge
-      elem.msRequestFullscreen();
-    }
-  });
-  document.documentElement;
-});
 // custom right click
 
 const rightClick = (e) => {
@@ -94,63 +50,6 @@ const rightClick = (e) => {
 
 document.onclick = leftClick;
 document.oncontextmenu = rightClick;
-
-// open apps
-
-// document.querySelectorAll(".bar li").forEach((e) => {
-//   e.addEventListener("click", () => {
-//     let appimg = e.getElementsByTagName('img')[0].src;
-//     let thisapp = document.querySelector(".app-list img[data-app='" + appimg + "']");
-//     let otherApp = document.querySelector(".other-apps li img[data-app='" + appimg + "']");
-
-//     if (thisapp) {
-//       // If app exists in main app list
-//       console.log('there in .app-list');
-//       if (!e.classList.contains("select")) {
-//         // If not selected, make it selected and open
-//         document.querySelectorAll(".bar li.select").forEach((selectedApp) => {
-//           selectedApp.classList.remove("select");
-//         });
-//         e.classList.add("select");
-//         // Code to open the app, similar to your existing logic
-//         // Example:
-//         let url = e.querySelector("img").dataset.app;
-//         let id = e.querySelector("img").dataset.app;
-//         document.getElementById("apps").innerHTML +=
-//           "<div class='app' id='" +
-//           id +
-//           "'><iframe src='" +
-//           url +
-//           "' frameborder='0'  uid='" +
-//           id +
-//           "'></iframe></div>";
-//       }
-//     } else {
-//       // If app doesn't exist in main app list
-//       console.log('add to other-apps-list');
-//       if (otherApp) {
-//         // If app exists in other-apps list, bring it to front without closing
-//         document.querySelector(".other-apps").appendChild(otherApp.parentNode);
-//       } else {
-//         // If app doesn't exist in other-apps list, add it and open
-//         document.querySelector(".other-apps").innerHTML +=
-//           "<li><img src='" + appimg + "' alt='' data-app='" + appimg + "' /></li>";
-//         // Code to open the app, similar to your existing logic
-//         // Example:
-//         let url = e.querySelector("img").dataset.app;
-//         let id = e.querySelector("img").dataset.app;
-//         document.getElementById("apps").innerHTML +=
-//           "<div class='app' id='" +
-//           id +
-//           "'><iframe src='" +
-//           url +
-//           "' frameborder='0'  uid='" +
-//           id +
-//           "'></iframe></div>";
-//       }
-//     }
-//   });
-// });
 
 // toggle full screen
 
@@ -261,8 +160,43 @@ const myText = document.getElementById("date");
 
 getMaximumColorFromBackgroundAndSetText(desktopElement, myText);
 
-// get app
-function getApp(value) {
+// open or close search menu
+
+const toggleSearchMenu = async (e) => {
+  let searchMenu = document.querySelector(".search-menu");
+  let searchInput = document.getElementById("searchInput");
+  let clickX = e.clientX;
+  let clickY = e.clientY;
+  let inpRect = document
+    .getElementById("searchInputContainer")
+    .getBoundingClientRect();
+  let clickedOnSearch =
+    clickX > inpRect.left &&
+    clickX < inpRect.right &&
+    clickY > inpRect.top &&
+    clickY < inpRect.bottom;
+  if (clickedOnSearch) {
+    if (searchMenu.style.display != "flex") {
+      searchInput.focus();
+      searchMenu.style.display = "flex";
+      await getNews();
+    }
+  } else {
+    let menuRect = searchMenu.getBoundingClientRect();
+    let clickedOnMenu =
+      clickX > menuRect.left &&
+      clickX < menuRect.right &&
+      clickY > menuRect.top &&
+      clickY < menuRect.bottom;
+    if (!clickedOnMenu) {
+      searchMenu.style.display = "none";
+    }
+  }
+};
+
+// search app on menu
+
+function searchMenuApp(value) {
   let searchapp = document.querySelectorAll(".search-app-list li");
 
   searchapp.forEach((e) => {
@@ -287,6 +221,7 @@ let defaultKeyWords = [
   "Science",
   "Technology",
   "earth",
+  "games",
 ];
 
 const getNews = async (keyword) => {
@@ -387,7 +322,7 @@ const doneTyping = (value) => {
     getNews(value);
   }
 
-  getApp(value);
+  searchMenuApp(value);
 };
 
 // alert handling

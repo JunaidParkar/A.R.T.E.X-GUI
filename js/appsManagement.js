@@ -6,73 +6,73 @@ const installedApps = {
       name: "n",
       default: false,
       icon: "assets/appIcons/setting.png",
-      path: "./apps/setting/index.html",
+      path: "apps/setting/index.html",
     },
     {
       name: "m",
       default: false,
       icon: "assets/appIcons/setting.png",
-      path: "./apps/setting/index.html",
+      path: "apps/setting/index.html",
     },
     {
       name: "l",
       default: false,
       icon: "assets/appIcons/setting.png",
-      path: "./apps/setting/index.html",
+      path: "apps/setting/index.html",
     },
     {
       name: "a",
       default: false,
       icon: "assets/appIcons/setting.png",
-      path: "./apps/setting/index.html",
+      path: "apps/setting/index.html",
     },
     {
       name: "f",
       default: false,
       icon: "assets/appIcons/setting.png",
-      path: "./apps/setting/index.html",
+      path: "apps/setting/index.html",
     },
     {
       name: "g",
       default: false,
       icon: "assets/appIcons/setting.png",
-      path: "./apps/setting/index.html",
+      path: "apps/setting/index.html",
     },
     {
       name: "b",
       default: false,
       icon: "assets/appIcons/setting.png",
-      path: "./apps/setting/index.html",
+      path: "apps/setting/index.html",
     },
     {
       name: "artex",
       default: true,
       icon: "assets/logo.png",
-      path: "./apps/artex/index.html",
+      path: "apps/artex/index.html",
     },
     {
       name: "fileManager",
       default: true,
       icon: "assets/appIcons/files.png",
-      path: "./apps/fileManager/index.html",
+      path: "apps/fileManager/index.html",
     },
     {
       name: "setting",
       default: true,
       icon: "assets/appIcons/setting.png",
-      path: "./apps/setting/index.html",
+      path: "apps/setting/index.html",
     },
     {
       name: "terminal",
       default: true,
       icon: "assets/appIcons/terminal.png",
-      path: "./apps/cmd/index.html",
+      path: "apps/cmd/index.html",
     },
     {
       name: "Artex store",
       default: true,
       icon: "assets/appIcons/store.png",
-      path: "./apps/appstore/index.html",
+      path: "apps/appstore/index.html",
     },
   ],
 };
@@ -105,8 +105,6 @@ installedApps.apps.forEach((a) => {
     appStructure;
 });
 
-// console.log(allApps);
-
 function closeApp(e) {
   e.classList.remove("select");
   let id = e.querySelector("img").dataset.app;
@@ -119,8 +117,6 @@ function closeApp(e) {
     document.getElementById("apps").appendChild(elem);
     e.classList.add("select");
   }
-
-  //   console.log(RunningApps);
 }
 
 function openApp(e) {
@@ -131,8 +127,6 @@ function openApp(e) {
   let image = e.querySelector("img").src;
 
   RunningApps.push({ name, image, appPath });
-
-  //   console.log(RunningApps);
 
   document.getElementById("apps").innerHTML +=
     "<div class='app' id='" +
