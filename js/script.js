@@ -4,20 +4,13 @@ document.addEventListener("keydown", async (event) => {
   if (event.ctrlKey && (event.key === "r" || event.code === "KeyR")) {
     event.preventDefault();
   }
-  // if (event.key === "Control" && event.code === "ControlLeft") {
-  //   let searchMenu = document.querySelector(".search-menu");
-  //   searchMenu.style.display =
-  //     searchMenu.style.display == "flex" ? "none" : "flex";
-  //   if (searchMenu.style.display == "flex") {
-  //     await getNews();
-  //   }
-  // Your code here
-  // }
 });
 
 // Custom left click
 
 const leftClick = async (e) => {
+  e.preventDefault();
+  console.log("left click");
   document.getElementById("contextMenu").style.display = "none";
   await toggleSearchMenu(e);
 };
@@ -26,30 +19,35 @@ const leftClick = async (e) => {
 
 const rightClick = (e) => {
   e.preventDefault();
-  console.log("clicked right");
-  var menu = document.getElementById("contextMenu");
+  let menu = document.getElementById("contextMenu");
   if (document.getElementById("contextMenu").style.display == "block") {
     leftClick(e);
   }
-  const clickX = e.clientX;
-  const clickY = e.clientY;
-  const gap = 15;
-  const edgeX = 150;
-  const edgeY = 225;
-  const windowX = window.innerWidth;
-  const windowY = window.innerHeight;
-  const contextWindowX = windowX - edgeX;
-  const contextWindowY = windowY - edgeY;
-  const menuX = clickX > contextWindowX ? contextWindowX : clickX + gap;
-  const menuY = clickY > contextWindowY ? contextWindowY : clickY + gap;
+  let clickX = e.clientX;
+  let clickY = e.clientY;
+  let gap = 15;
+  let windowWidth = window.innerWidth;
+  let windowHeight = window.innerHeight;
+  menu.style.opacity = 0;
   menu.style.display = "block";
-  menu.style.display = "block";
-  menu.style.left = menuX + "px";
-  menu.style.top = menuY + "px";
+  menu.style.left = `${clickX + gap}px`;
+  menu.style.top = `${clickY + gap}px`;
+  console.log(menu.getBoundingClientRect());
+  let rect = menu.getBoundingClientRect();
+  if (rect.right > windowWidth) {
+    menu.style.left = `${clickX - (rect.width + gap)}px`;
+  }
+
+  if (rect.bottom > windowHeight) {
+    menu.style.top = `${clickY - (rect.height + gap)}px`;
+  }
+  menu.style.opacity = 1;
 };
 
-document.onclick = leftClick;
-document.oncontextmenu = rightClick;
+document.querySelector(".bar").onclick = leftClick;
+document.querySelector(".bar").oncontextmenu = leftClick;
+document.getElementById("apps").onclick = leftClick;
+document.getElementById("apps").oncontextmenu = rightClick;
 
 // toggle full screen
 
@@ -163,13 +161,12 @@ getMaximumColorFromBackgroundAndSetText(desktopElement, myText);
 // open or close search menu
 
 const toggleSearchMenu = async (e) => {
-  let searchMenu = document.querySelector(".search-menu");
+  let searchMenu = document.getElementById("menu");
   let searchInput = document.getElementById("searchInput");
+  let inputContainer = document.getElementById("searchInputContainer");
   let clickX = e.clientX;
   let clickY = e.clientY;
-  let inpRect = document
-    .getElementById("searchInputContainer")
-    .getBoundingClientRect();
+  let inpRect = inputContainer.getBoundingClientRect();
   let clickedOnSearch =
     clickX > inpRect.left &&
     clickX < inpRect.right &&
@@ -177,9 +174,11 @@ const toggleSearchMenu = async (e) => {
     clickY < inpRect.bottom;
   if (clickedOnSearch) {
     if (searchMenu.style.display != "flex") {
-      searchInput.focus();
       searchMenu.style.display = "flex";
+      searchInput.focus();
       await getNews();
+    } else {
+      searchMenu.style.display = "none";
     }
   } else {
     let menuRect = searchMenu.getBoundingClientRect();
