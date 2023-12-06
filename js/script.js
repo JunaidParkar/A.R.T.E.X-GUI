@@ -44,6 +44,8 @@ const rightClick = (e) => {
   menu.style.opacity = 1;
 };
 
+// document.onclick = leftClick;
+// document.oncontextmenu = leftClick;
 document.querySelector(".bar").onclick = leftClick;
 document.querySelector(".bar").oncontextmenu = leftClick;
 document.getElementById("apps").onclick = leftClick;
@@ -202,7 +204,10 @@ function searchMenuApp(value) {
   searchapp.forEach((e) => {
     let appName = e.querySelector("p").textContent;
 
-    if (value.length === 0 || appName.toUpperCase().indexOf(value.toUpperCase()) > -1) {
+    if (
+      value.length === 0 ||
+      appName.toUpperCase().indexOf(value.toUpperCase()) > -1
+    ) {
       e.style.display = "flex";
       foundcount++;
     } else {
@@ -211,12 +216,13 @@ function searchMenuApp(value) {
   });
 
   if (foundcount > 0) {
-    document.querySelector(".search-app-list .not-available").style.display = "none";
+    document.querySelector(".search-app-list .not-available").style.display =
+      "none";
   } else {
-    document.querySelector(".search-app-list .not-available").style.display = "flex";
+    document.querySelector(".search-app-list .not-available").style.display =
+      "flex";
   }
 }
-
 
 // get news
 
