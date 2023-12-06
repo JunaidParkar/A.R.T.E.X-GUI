@@ -197,19 +197,26 @@ const toggleSearchMenu = async (e) => {
 
 function searchMenuApp(value) {
   let searchapp = document.querySelectorAll(".search-app-list li");
+  let foundcount = 0;
 
   searchapp.forEach((e) => {
     let appName = e.querySelector("p").textContent;
 
-    if (value.length === 0) {
+    if (value.length === 0 || appName.toUpperCase().indexOf(value.toUpperCase()) > -1) {
       e.style.display = "flex";
-    } else if (appName.toUpperCase().indexOf(value.toUpperCase()) > -1) {
-      e.style.display = "flex";
+      foundcount++;
     } else {
       e.style.display = "none";
     }
   });
+
+  if (foundcount > 0) {
+    document.querySelector(".search-app-list .not-available").style.display = "none";
+  } else {
+    document.querySelector(".search-app-list .not-available").style.display = "flex";
+  }
 }
+
 
 // get news
 
