@@ -1,6 +1,6 @@
 // block ctrl + r
 
-document.addEventListener("keydown", function (event) {
+document.addEventListener("keydown", async (event) => {
   if (event.ctrlKey && (event.key === "r" || event.code === "KeyR")) {
     event.preventDefault();
   }
@@ -9,121 +9,45 @@ document.addEventListener("keydown", function (event) {
 // Custom left click
 
 const leftClick = async (e) => {
+  e.preventDefault();
+  console.log("left click");
   document.getElementById("contextMenu").style.display = "none";
-  let searchMenu = document.querySelector(".search-menu");
-  let searchInput = document.getElementById("searchInput");
-  let clickX = e.clientX;
-  let clickY = e.clientY;
-  let inpRect = document
-    .getElementById("searchInputContainer")
-    .getBoundingClientRect();
-  let clickedOnSearch =
-    clickX > inpRect.left &&
-    clickX < inpRect.right &&
-    clickY > inpRect.top &&
-    clickY < inpRect.bottom;
-  if (clickedOnSearch) {
-    searchInput.focus();
-    searchMenu.style.display = "flex";
-    await getNews();
-  } else {
-    let menuRect = searchMenu.getBoundingClientRect();
-    let clickedOnMenu =
-      clickX > menuRect.left &&
-      clickX < menuRect.right &&
-      clickY > menuRect.top &&
-      clickY < menuRect.bottom;
-    if (!clickedOnMenu) {
-      searchMenu.style.display = "none";
-    }
-  }
+  await toggleSearchMenu(e);
 };
 
 // custom right click
 
 const rightClick = (e) => {
   e.preventDefault();
-  var menu = document.getElementById("contextMenu");
+  let menu = document.getElementById("contextMenu");
   if (document.getElementById("contextMenu").style.display == "block") {
     leftClick(e);
   }
-  const clickX = e.clientX;
-  const clickY = e.clientY;
-  const gap = 15;
-  const edgeX = 150;
-  const edgeY = 225;
-  const windowX = window.innerWidth;
-  const windowY = window.innerHeight;
-  const contextWindowX = windowX - edgeX;
-  const contextWindowY = windowY - edgeY;
-  const menuX = clickX > contextWindowX ? contextWindowX : clickX + gap;
-  const menuY = clickY > contextWindowY ? contextWindowY : clickY + gap;
+  let clickX = e.clientX;
+  let clickY = e.clientY;
+  let gap = 15;
+  let windowWidth = window.innerWidth;
+  let windowHeight = window.innerHeight;
+  menu.style.opacity = 0;
   menu.style.display = "block";
-  menu.style.display = "block";
-  menu.style.left = menuX + "px";
-  menu.style.top = menuY + "px";
+  menu.style.left = `${clickX + gap}px`;
+  menu.style.top = `${clickY + gap}px`;
+  console.log(menu.getBoundingClientRect());
+  let rect = menu.getBoundingClientRect();
+  if (rect.right > windowWidth) {
+    menu.style.left = `${clickX - (rect.width + gap)}px`;
+  }
+
+  if (rect.bottom > windowHeight) {
+    menu.style.top = `${clickY - (rect.height + gap)}px`;
+  }
+  menu.style.opacity = 1;
 };
 
-document.onclick = leftClick;
-document.oncontextmenu = rightClick;
-
-// open apps
-
-// document.querySelectorAll(".bar li").forEach((e) => {
-//   e.addEventListener("click", () => {
-//     let appimg = e.getElementsByTagName('img')[0].src;
-//     let thisapp = document.querySelector(".app-list img[data-app='" + appimg + "']");
-//     let otherApp = document.querySelector(".other-apps li img[data-app='" + appimg + "']");
-
-//     if (thisapp) {
-//       // If app exists in main app list
-//       console.log('there in .app-list');
-//       if (!e.classList.contains("select")) {
-//         // If not selected, make it selected and open
-//         document.querySelectorAll(".bar li.select").forEach((selectedApp) => {
-//           selectedApp.classList.remove("select");
-//         });
-//         e.classList.add("select");
-//         // Code to open the app, similar to your existing logic
-//         // Example: 
-//         let url = e.querySelector("img").dataset.app;
-//         let id = e.querySelector("img").dataset.app;
-//         document.getElementById("apps").innerHTML +=
-//           "<div class='app' id='" +
-//           id +
-//           "'><iframe src='" +
-//           url +
-//           "' frameborder='0'  uid='" +
-//           id +
-//           "'></iframe></div>";
-//       }
-//     } else {
-//       // If app doesn't exist in main app list
-//       console.log('add to other-apps-list');
-//       if (otherApp) {
-//         // If app exists in other-apps list, bring it to front without closing
-//         document.querySelector(".other-apps").appendChild(otherApp.parentNode);
-//       } else {
-//         // If app doesn't exist in other-apps list, add it and open
-//         document.querySelector(".other-apps").innerHTML +=
-//           "<li><img src='" + appimg + "' alt='' data-app='" + appimg + "' /></li>";
-//         // Code to open the app, similar to your existing logic
-//         // Example:
-//         let url = e.querySelector("img").dataset.app;
-//         let id = e.querySelector("img").dataset.app;
-//         document.getElementById("apps").innerHTML +=
-//           "<div class='app' id='" +
-//           id +
-//           "'><iframe src='" +
-//           url +
-//           "' frameborder='0'  uid='" +
-//           id +
-//           "'></iframe></div>";
-//       }
-//     }
-//   });
-// });
-
+document.querySelector(".bar").onclick = leftClick;
+document.querySelector(".bar").oncontextmenu = leftClick;
+document.getElementById("apps").onclick = leftClick;
+document.getElementById("apps").oncontextmenu = rightClick;
 
 // toggle full screen
 
@@ -172,7 +96,7 @@ const observer = new MutationObserver(function (mutationsList, observer) {
         node.childNodes.forEach((nd) => {
           if (nd.nodeName === "IFRAME") {
             attachEventHandlers(nd);
-            console.log("An iframe was added:", nd);
+            console.log(RunningApps);
           }
         });
       });
@@ -187,6 +111,7 @@ observer.observe(document, { childList: true, subtree: true });
 function attachEventHandlers(iframe) {
   iframe.contentWindow.addEventListener("click", (e) => {
     e.preventDefault();
+    console.log("indisbyubib");
     leftClick(e);
   });
   iframe.contentWindow.addEventListener("contextmenu", (e) => {
@@ -233,15 +158,51 @@ const myText = document.getElementById("date");
 
 getMaximumColorFromBackgroundAndSetText(desktopElement, myText);
 
-// get app
-function getApp(value) {
-  let searchapp = document.querySelectorAll('.search-app-list li');
+// open or close search menu
 
-  searchapp.forEach(e => {
-    let appName = e.querySelector('p').textContent;
+const toggleSearchMenu = async (e) => {
+  let searchMenu = document.getElementById("menu");
+  let searchInput = document.getElementById("searchInput");
+  let inputContainer = document.getElementById("searchInputContainer");
+  let clickX = e.clientX;
+  let clickY = e.clientY;
+  let inpRect = inputContainer.getBoundingClientRect();
+  let clickedOnSearch =
+    clickX > inpRect.left &&
+    clickX < inpRect.right &&
+    clickY > inpRect.top &&
+    clickY < inpRect.bottom;
+  if (clickedOnSearch) {
+    if (searchMenu.style.display != "flex") {
+      searchMenu.style.display = "flex";
+      searchInput.focus();
+      await getNews();
+    } else {
+      searchMenu.style.display = "none";
+    }
+  } else {
+    let menuRect = searchMenu.getBoundingClientRect();
+    let clickedOnMenu =
+      clickX > menuRect.left &&
+      clickX < menuRect.right &&
+      clickY > menuRect.top &&
+      clickY < menuRect.bottom;
+    if (!clickedOnMenu) {
+      searchMenu.style.display = "none";
+    }
+  }
+};
+
+// search app on menu
+
+function searchMenuApp(value) {
+  let searchapp = document.querySelectorAll(".search-app-list li");
+
+  searchapp.forEach((e) => {
+    let appName = e.querySelector("p").textContent;
 
     if (value.length === 0) {
-      e.style.display = "flex"; 
+      e.style.display = "flex";
     } else if (appName.toUpperCase().indexOf(value.toUpperCase()) > -1) {
       e.style.display = "flex";
     } else {
@@ -250,10 +211,17 @@ function getApp(value) {
   });
 }
 
-
 // get news
 
-let defaultKeyWords = ["india", "AI", "machine", "Science", "Technology", "earth"];
+let defaultKeyWords = [
+  "india",
+  "AI",
+  "machine",
+  "Science",
+  "Technology",
+  "earth",
+  "games",
+];
 
 const getNews = async (keyword) => {
   if (!keyword) {
@@ -353,7 +321,7 @@ const doneTyping = (value) => {
     getNews(value);
   }
 
-  getApp(value);
+  searchMenuApp(value);
 };
 
 // alert handling
@@ -398,7 +366,7 @@ const time = function () {
   document.getElementById("year").innerHTML = currentDate.getFullYear();
   document.getElementById("month").innerHTML = currentDate.getMonth() + 1;
 
-  let date = currentDate.getDate().toString().padStart(2, '0');
+  let date = currentDate.getDate().toString().padStart(2, "0");
   document.getElementById("date").innerHTML = date;
 
   var dayIndex = currentDate.getDay();

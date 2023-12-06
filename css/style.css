@@ -48,7 +48,7 @@ p {
   font-size: 16px;
 }
 
-img{
+img {
   width: 100%;
 }
 
@@ -109,11 +109,12 @@ img{
   background-position: center center;
   width: 100%;
   height: 100vh;
+  display: flex;
 }
 
 .desktop .apps {
-  width: 100%;
-  height: calc(100% - 80px);
+  width: calc(100% - 75px);
+  height: 100%;
   position: relative;
 }
 
@@ -177,15 +178,25 @@ img{
 
 .desktop .bar {
   padding: 10px;
-  height: 60px;
+  width: 75px;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  background: black;
+}
+
+.desktop .bar > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .desktop .bar ul {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: rgba(249, 249, 249, 0.114);
@@ -195,6 +206,10 @@ img{
   border-radius: 5px;
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
+}
+
+.desktop .bar #searchInputContainer input.active {
+  left: calc(100% + 25px);
 }
 
 .desktop .bar ul li.no-hover img {
@@ -260,6 +275,10 @@ img{
   color: rgb(211, 211, 211);
 }
 
+.desktop .bar ul input:focus {
+  background: transparent;
+}
+
 .desktop .bar .screen li.select {
   overflow: visible;
   transition: 0.1s all ease-in-out;
@@ -289,16 +308,25 @@ img{
 
 .desktop .bar .search-menu {
   position: fixed;
-  bottom: 80px;
-  align-items: start;
+  bottom: 0px;
+  left: 85px;
+  align-items: center;
+  justify-content: space-evenly;
   gap: 5px;
   width: 795px;
   display: none;
-  height: 500px;
+  height: 575px;
   z-index: 500;
 }
 
-.desktop .bar .search-menu ul {
+.desktop .bar .search-menu .menu {
+  width: 100%;
+  height: calc(100% - 75px);
+  display: flex;
+  gap: 5px;
+}
+
+.desktop .bar .search-menu .menu ul {
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -307,29 +335,28 @@ img{
   align-items: start;
   justify-content: start;
   width: calc(40% - 2.5px);
-  padding: 7px 5px;
+  padding: 7px 0px;
   background: transparent;
   background: rgba(4, 4, 4, 0.466);
   border: 1px solid rgba(255, 255, 255, 0.156);
   backdrop-filter: blur(35px);
 }
 
-.desktop .bar .search-menu .search-app-list {
+.desktop .bar .search-menu .menu .search-app-list {
   overflow-y: auto;
 }
 
-.desktop .bar .search-menu ul:nth-child(2) {
+.desktop .bar .search-menu .menu ul:nth-child(2) {
   width: calc(60% - 2.5px);
 }
 
-.desktop .bar .search-menu ul:nth-child(1) h3 {
+.desktop .bar .search-menu .menu ul:nth-child(1) h3 {
   color: rgba(255, 255, 255, 0.637);
   padding-left: 10px;
   font-weight: var(--text);
 }
 
-
-.desktop .bar .search-menu ul li {
+.desktop .bar .search-menu .menu ul li {
   width: 100%;
   display: flex;
   gap: 10px;
@@ -345,8 +372,8 @@ img{
   cursor: pointer;
 }
 
-.desktop .bar .search-menu ul li::after {
-  content: '';
+.desktop .bar .search-menu .menu ul li::after {
+  content: "";
   position: absolute;
   z-index: -1;
   background: rgba(169, 169, 169, 0.133);
@@ -356,19 +383,31 @@ img{
   transition: scale 250ms;
 }
 
-.desktop .bar .search-menu ul li:hover::after,
-.desktop .bar .search-menu ul li:focus-visible::after {
+.desktop .bar .search-menu .menu ul li:hover::after,
+.desktop .bar .search-menu .menu ul li:focus-visible::after {
   transform-origin: left;
   scale: 1 1;
 }
 
-.desktop .bar .search-menu ul li p {
+.desktop .bar .search-menu .menu ul li p {
   font-size: 14px;
 }
 
-.desktop .bar .search-menu ul#articles-container {
+.desktop .bar .search-menu .menu ul#articles-container {
   overflow: scroll;
   max-width: auto;
+}
+
+.desktop .bar .search-menu input {
+  width: calc(100% - 10px);
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.156);
+  border-radius: 5px;
+  color: white;
+}
+
+.desktop .bar .search-menu input::placeholder {
+  color: rgba(255, 255, 255, 0.637);
 }
 
 .articlePreloader {
@@ -530,23 +569,8 @@ img{
   border: 0;
 }
 
-@media (width < 600px) {
-  .desktop .bar ul {
-    display: none;
-  }
-
-  .desktop .bar .app-list {
-    display: flex;
-    width: 100vw;
-    background: linear-gradient(transparent, rgba(255, 255, 255, 0.089));
-  }
-
-  .desktop .bar .app-list li {
-    width: 40px;
-    height: 40px;
-  }
-
-  .desktop .bar .app-list li img {
-    width: 38px;
+@media (width < 1080px) {
+  .desktop .bar .search-menu {
+    width: 75%;
   }
 }
