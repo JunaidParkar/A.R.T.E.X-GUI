@@ -153,8 +153,6 @@ function checkAppCount() {
     const appList = document.querySelector('.other-apps');
     const apps = appList.querySelectorAll('.select');
 
-    alert(apps.length)
-
     if (apps.length > 4) {
         appList.classList.add('overlap');
     } else {
