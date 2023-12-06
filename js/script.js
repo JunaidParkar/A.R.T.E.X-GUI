@@ -243,7 +243,7 @@ const getNews = async (keyword) => {
     loader.classList.add("loader");
     preloader.appendChild(loader);
     document.getElementById("articles-container").appendChild(preloader);
-    const url = "http://eventregistry.org/api/v1/article/getArticles";
+    const url = "https://eventregistry.org/api/v1/article/getArticles";
     const data = `{
       "action": "getArticles",
       "keyword": "${keyword}",
