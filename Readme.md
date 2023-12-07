@@ -78,7 +78,7 @@
 We would like to express our gratitude to the following individuals and organizations for their contributions and support to the development of A.R.T.E.X:
 
 - [Junaid Parkar ( Founder )](https://junaidparkar-f7e41.web.app/)
-- [Zestlark](#)
+- [Zestlark](https://zestlark-0.web.app)
 
 Thank you for your valuable insights, feedback, and collaboration!
 

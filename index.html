@@ -7,6 +7,7 @@
   <title>ARTEX Ai</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/alertandmsg.css">
 </head>
 
 <body>
@@ -61,18 +62,20 @@
             </div>
           </ul>
 
-          <ul class="search-app-list">
-            <h3>Out of the box</h3>
-          </ul>
-
           <ul id="articles-container">
             <div class="articlePreloader">
               <div class="loader"></div>
             </div>
           </ul>
+
+          <ul class="search-app-list">
+            <h3>Out of the box</h3>
+          </ul>
+
         </div>
         <input id="searchInput" placeholder="Search here" autocomplete="off" type="text" />
       </div>
+      
     </div>
 
     <div class="apps" id="apps">
@@ -89,6 +92,7 @@
   </div>
 
   <!-- <div id="alert">
+    <div class="box">
       <div class="alert-header">
         <p>Command Prompt</p>
       </div>
@@ -98,9 +102,24 @@
           fh e7gfw9g y 67fmn b bib
         </p>
       </div>
-    </div> -->
-  <script src="js/script.js"></script>
+
+      <div class="btns">
+        <button>cancel</button>
+        <button>confirm</button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- <div class="notification">
+    <div class="icon">
+      <img src="./assets/appIcons/files.png" alt="">
+    </div>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, aperiam!</p>
+  </div> -->
+
   <script src="js/appsManagement.js"></script>
+  <script src="js/alertandmsg.js"></script>
+  <script src="js/script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
     integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -80,24 +80,25 @@ function toggleFullScreen() {
     } else if (elem.webkitRequestFullscreen) {
       elem.webkitRequestFullscreen();
     }
-    document.querySelectorAll(".bar .screen")[0].classList.remove("fullscreen");
-    document.querySelectorAll(".bar .screen")[0].classList.add("smallscreen");
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    }
-    document.querySelectorAll(".bar .screen")[0].classList.add("fullscreen");
-    document
-      .querySelectorAll(".bar .screen")[0]
-      .classList.remove("smallscreen");
   }
 }
+
+function showFullScreenAlert() {
+  if (sessionStorage.getItem('fullScreenAlertShown') !== 'true') {
+    showAlert('System', 'Experience more in full screen', '', toggleFullScreen);
+    sessionStorage.setItem('fullScreenAlertShown', 'true');
+  }
+}
+
+if (!document.fullscreenElement &&
+  !document.mozFullScreenElement &&
+  !document.webkitFullscreenElement &&
+  !document.msFullscreenElement) {
+  showFullScreenAlert();
+}
+
+
+
 
 // observer for DOM changes
 
@@ -231,6 +232,7 @@ function searchMenuApp(value) {
   } else {
     document.querySelector(".search-app-list .not-available").style.display =
       "flex";
+      showNotification('system-error',"no app found")
   }
 }
 
@@ -319,10 +321,7 @@ const getNews = async (keyword) => {
       );
     }
   } catch {
-    showAlert(
-      "News",
-      "Unable to load news at the moment. If problem presist then please check your internet connection."
-    );
+    showNotification("https://cdn.iconscout.com/icon/free/png-256/free-weather-191-461610.png?f=webp", "Unable to load news at the moment. If problem presist then please check your internet connection.");
   }
 };
 
@@ -349,29 +348,7 @@ const doneTyping = (value) => {
 
 // alert handling
 
-const showAlert = (heading, message) => {
-  let mainDiv = document.createElement("div");
-  mainDiv.id = "alert";
-  let headingDiv = document.createElement("div");
-  headingDiv.classList.add("alert-header");
-  let headingTxt = document.createElement("p");
-  headingTxt.textContent = heading;
-  headingDiv.appendChild(headingTxt);
-  let messageDiv = document.createElement("div");
-  messageDiv.classList.add("message");
-  let messageTxt = document.createElement("p");
-  messageTxt.textContent = message;
-  messageDiv.appendChild(messageTxt);
-  mainDiv.appendChild(headingDiv);
-  mainDiv.appendChild(messageDiv);
-  if (document.getElementById("alert")) {
-    document.body.removeChild(document.getElementById("alert"));
-  }
-  document.body.appendChild(mainDiv);
-  setTimeout(() => {
-    document.body.removeChild(document.getElementById("alert"));
-  }, 10 * 1000);
-};
+
 
 // get time
 
