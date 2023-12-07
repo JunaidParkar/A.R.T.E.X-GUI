@@ -1,6 +1,15 @@
+document.addEventListener("fullscreenchange", function (e) {
+  console.log(e);
+  if (!document.fullscreenElement) {
+    console.log("ppppp");
+    toggleFullScreen();
+  }
+});
+
 // block ctrl + r
 
 document.addEventListener("keydown", async (event) => {
+  console.log();
   if (event.ctrlKey && (event.key === "r" || event.code === "KeyR")) {
     event.preventDefault();
   }
@@ -15,13 +24,16 @@ document.addEventListener("keydown", async (event) => {
     event.preventDefault();
     console.log("heyy");
   }
+  if (event.key === "F11" || event.code === "F11") {
+    // event.preventDefault();
+    console.log("heyy");
+  }
 });
 
 // Custom left click
 
 const leftClick = async (e) => {
   e.preventDefault();
-  console.log("left click");
   document.getElementById("contextMenu").style.display = "none";
   await toggleSearchMenu(e);
 };
@@ -84,21 +96,25 @@ function toggleFullScreen() {
 }
 
 function showFullScreenAlert() {
-  if (sessionStorage.getItem('fullScreenAlertShown') !== 'true') {
-    showAlert('System', 'Experience more in full screen', '', toggleFullScreen);
-    sessionStorage.setItem('fullScreenAlertShown', 'true');
+  if (sessionStorage.getItem("fullScreenAlertShown") !== "true") {
+    showAlert(
+      "A.R.T.E.X",
+      "Experience more in full screen",
+      "",
+      toggleFullScreen
+    );
+    sessionStorage.setItem("fullScreenAlertShown", "true");
   }
 }
 
-if (!document.fullscreenElement &&
+if (
+  !document.fullscreenElement &&
   !document.mozFullScreenElement &&
   !document.webkitFullscreenElement &&
-  !document.msFullscreenElement) {
+  !document.msFullscreenElement
+) {
   showFullScreenAlert();
 }
-
-
-
 
 // observer for DOM changes
 
@@ -232,7 +248,7 @@ function searchMenuApp(value) {
   } else {
     document.querySelector(".search-app-list .not-available").style.display =
       "flex";
-      showNotification('system-error',"no app found")
+    showNotification("system-error", "no app found");
   }
 }
 
@@ -321,7 +337,10 @@ const getNews = async (keyword) => {
       );
     }
   } catch {
-    showNotification("https://cdn.iconscout.com/icon/free/png-256/free-weather-191-461610.png?f=webp", "Unable to load news at the moment. If problem presist then please check your internet connection.");
+    showNotification(
+      "https://cdn.iconscout.com/icon/free/png-256/free-weather-191-461610.png?f=webp",
+      "Unable to load news at the moment. If problem presist then please check your internet connection."
+    );
   }
 };
 
@@ -345,10 +364,6 @@ const doneTyping = (value) => {
 
   searchMenuApp(value);
 };
-
-// alert handling
-
-
 
 // get time
 
