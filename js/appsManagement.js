@@ -55,6 +55,11 @@ const otherApps = [
     image: "https://pi.ai/pi-logo-32.png?v=2",
     appPath: "https://pi.ai/talk",
   },
+  {
+    name: "Deep ai",
+    image: "https://deepai.org/static/images/flopsicon.svg",
+    appPath: "https://deepai.org/",
+  },
 ];
 
 // defaultapps

@@ -4,6 +4,17 @@ document.addEventListener("keydown", async (event) => {
   if (event.ctrlKey && (event.key === "r" || event.code === "KeyR")) {
     event.preventDefault();
   }
+  if (
+    event.ctrlKey &&
+    event.shiftKey &&
+    (event.key === "i" || event.code === "KeyI")
+  ) {
+    // event.preventDefault();
+  }
+  if (event.ctrlKey && (event.key === "t" || event.code === "KeyT")) {
+    event.preventDefault();
+    console.log("heyy");
+  }
 });
 
 // Custom left click
@@ -32,7 +43,6 @@ const rightClick = (e) => {
   menu.style.display = "block";
   menu.style.left = `${clickX + gap}px`;
   menu.style.top = `${clickY + gap}px`;
-  console.log(menu.getBoundingClientRect());
   let rect = menu.getBoundingClientRect();
   if (rect.right > windowWidth) {
     menu.style.left = `${clickX - (rect.width + gap)}px`;
@@ -386,4 +396,4 @@ const time = function () {
   document.getElementById("day").innerHTML = dayNames[dayIndex];
 };
 
-setTimeout(time(), 1000);
+setInterval(time(), 1000);
