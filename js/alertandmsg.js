@@ -123,7 +123,7 @@ const showNotification = (appNameOrUrl, message) => {
 };
 
 //first parameter can be url or app name , and second parameter will be message
-showNotification(
-  "fileManager",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, aperiam!"
-);
+// showNotification(
+//   "fileManager",
+//   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, aperiam!"
+// );

@@ -157,6 +157,8 @@ function attachEventHandlers(iframe) {
 // get brightness from bg image
 
 function getMaximumColorFromBackgroundAndSetText(element, textElement) {
+  element = document.querySelector(element)
+  textElement = document.getElementById(textElement)
   const backgroundImage = getComputedStyle(element).backgroundImage;
   const imageUrl = backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, "$1");
   const img = new Image();
@@ -182,10 +184,6 @@ function getMaximumColorFromBackgroundAndSetText(element, textElement) {
   };
 }
 
-const desktopElement = document.querySelector(".desktop");
-const myText = document.getElementById("date");
-
-getMaximumColorFromBackgroundAndSetText(desktopElement, myText);
 
 // open or close search menu
 
@@ -389,3 +387,26 @@ const time = function () {
 };
 
 setInterval(time(), 1000);
+
+
+// setting bg image
+const storedBackground = localStorage.getItem('backgroundImage');
+const defaultBackground = 'url(../assets/bg4.png)';
+
+if (storedBackground) {
+  document.documentElement.style.setProperty('--desktop-background', `url(${storedBackground})`);
+} else {
+  document.documentElement.style.setProperty('--desktop-background', defaultBackground);
+}
+getMaximumColorFromBackgroundAndSetText(".desktop", "date");
+
+//event listner on img change
+window.addEventListener('storage', (event) => {
+  if (event.key === 'backgroundImage') {
+    const newBackground = `url(${event.newValue})`;
+    document.documentElement.style.setProperty('--desktop-background', newBackground);
+    console.log('workung');
+    getMaximumColorFromBackgroundAndSetText(".desktop", "date")
+    showNotification('setting', 'Background changed!')
+  }
+});

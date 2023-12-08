@@ -1,107 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <div class="app">
-      <div class="sidebar" id="sidebar">
-        <img src="../../assets/appIcons/setting.png" alt="" class="logo" />
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png"
-          alt=""
-          class="avatar"
-        />
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
 
-      <div class="setting">
-        <header>Setting</header>
-
-        <ul>
-          <li>
-            Background
-            <span class="opensubsetting"
-              ><i class="ri-arrow-right-s-line"></i
-            ></span>
-          </li>
-        </ul>
-
-        <ul>
-          <li>
-            Camera
-            <span class="button">
-              <div class="circle"></div>
-            </span>
-          </li>
-          <li>
-            Microphone
-            <span class="button">
-              <div class="circle"></div>
-            </span>
-          </li>
-          <li>Battery <span class="percentage">60%</span></li>
-        </ul>
-
-        <ul>
-          <li>
-            Api keys
-            <span class="opensubsetting"
-              ><i class="ri-arrow-right-s-line"></i
-            ></span>
-          </li>
-          <li>
-            Voice Index Number
-            <input class="value" type="number" name="" id="" value="5" />
-          </li>
-          <li>
-            Speech Rate
-            <input class="value" type="range" name="" id="" value="5" />
-          </li>
-        </ul>
-
-        <ul>
-          <li>
-            Account
-            <span class="opensubsetting"
-              ><i class="ri-arrow-right-s-line"></i
-            ></span>
-          </li>
-          <li>
-            About
-            <span class="opensubsetting"
-              ><i class="ri-arrow-right-s-line"></i
-            ></span>
-          </li>
-          <li>
-            System
-            <span class="opensubsetting"
-              ><i class="ri-arrow-right-s-line"></i
-            ></span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="subsetting">
-        <main>
-          <img src="../../assets/logo.png" alt="" class="logo" />
-          <h2>ARTEX</h2>
-          <p>v 2.0.0</p>
-
-          <div class="circle"></div>
-          <div class="circle2"></div>
-        </main>
-        <div class="moresetting">kjbksdfb</div>
-      </div>
+<body>
+  <div class="app">
+    <div class="sidebar" id="sidebar">
+      <img src="../../assets/appIcons/setting.png" alt="" class="logo" />
+      <img src="https://cdn-icons-png.flaticon.com/512/5556/5556468.png" alt="" class="avatar" />
     </div>
 
-    <script src="./script.js"></script>
-  </body>
+    <div class="setting">
+      <header>Setting</header>
+
+      <ul>
+        <li>
+          Background
+          <span class="opensubsetting"><i class="ri-arrow-right-s-line" onclick="openMoreSetting(this)"
+              data-moresetting="setting-background"></i></span>
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          Camera
+          <span class="button">
+            <div class="circle"></div>
+          </span>
+        </li>
+        <li>
+          Microphone
+          <span class="button">
+            <div class="circle"></div>
+          </span>
+        </li>
+        <li>Battery <span class="percentage">60%</span></li>
+      </ul>
+
+      <ul>
+        <li>
+          Api keys
+          <span class="opensubsetting"><i class="ri-arrow-right-s-line" onclick="openMoreSetting(this)"
+              data-moresetting="setting-apikey"></i></span>
+        </li>
+        <li>
+          Voice Index Number
+          <input class="value" type="number" name="" id="" value="5" />
+        </li>
+        <li>
+          Speech Rate
+          <input class="value" type="range" name="" id="" value="5" />
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          Account
+          <span class="opensubsetting"><i class="ri-arrow-right-s-line" onclick="openMoreSetting(this)"
+              data-moresetting="setting-account"></i></span>
+        </li>
+        <li>
+          About
+          <span class="opensubsetting"><i class="ri-arrow-right-s-line" onclick="openMoreSetting(this)"
+              data-moresetting="setting-about"></i></span>
+        </li>
+        <li>
+          System
+          <span class="opensubsetting"><i class="ri-arrow-right-s-line" onclick="openMoreSetting(this)"
+              data-moresetting="setting-system"></i></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="subsetting">
+      <main>
+        <img src="../../assets/logo.png" alt="" class="logo" />
+        <h2>ARTEX</h2>
+        <p>v 2.0.0</p>
+
+        <div class="circle"></div>
+        <div class="circle2"></div>
+      </main>
+      <div class="moresetting">
+
+        <div id="setting-background">
+          <p><i class="ri-arrow-left-s-line" onclick="this.parentNode.parentNode.style.display = 'none'"></i> Background
+          </p>
+          <ul id="imageList">
+            <li><img src="../../assets/bg1.png" alt="" onclick="setBackground(this)"></li>
+            <li><img src="../../assets/bg2.png" alt="" onclick="setBackground(this)"></li>
+            <li><img src="../../assets/bg3.png" alt="" onclick="setBackground(this)"></li>
+            <li><img src="../../assets/bg4.png" alt="" onclick="setBackground(this)"></li>
+          </ul>
+        </div>
+
+        <div id="setting-apikey">
+          <p><i class="ri-arrow-left-s-line" onclick="this.parentNode.parentNode.style.display = 'none'"></i> Api key
+          </p>
+          <ul>
+            <input type="text">
+          </ul>
+        </div>
+
+        <div id="setting-account">
+          <p><i class="ri-arrow-left-s-line" onclick="this.parentNode.parentNode.style.display = 'none'"></i>
+            account
+          </p>
+        </div>
+
+        <div id="setting-about">
+          <p><i class="ri-arrow-left-s-line" onclick="this.parentNode.parentNode.style.display = 'none'"></i>
+            about
+          </p>
+        </div>
+
+        <div id="setting-system">
+          <p><i class="ri-arrow-left-s-line" onclick="this.parentNode.parentNode.style.display = 'none'"></i>
+            system
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
 </html>

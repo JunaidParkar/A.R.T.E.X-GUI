@@ -272,6 +272,10 @@ img {
   margin-top: -20px;
 }
 
+.desktop .bar ul.app-list.other-apps.overlap li.select img{
+  filter: drop-shadow(0 -3px 15px black);
+}
+
 .desktop .bar ul.app-list.other-apps.overlap li.select:hover {
   margin-top: 0;
   margin-bottom: 20px;
