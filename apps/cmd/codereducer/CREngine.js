@@ -142,7 +142,6 @@ class CREngine {
       let d = dataset.operations[this.flagIndex].requiredValue[i];
       if (d) {
         let ind = inp.indexOf(af[i]);
-        console.log(ind);
         if (ind + 1 > inp.length - 1 || ind <= 0) {
           values.push({ flag: af[i], value: undefined, requiredValue: true });
         } else if (inp[ind + 1].startsWith("--")) {
@@ -157,7 +156,6 @@ class CREngine {
       } else {
         values.push({ flag: af[i], value: undefined, requiredValue: false });
       }
-      //   console.log(values);
     }
     return values;
   }

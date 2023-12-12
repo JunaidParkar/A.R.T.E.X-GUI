@@ -1,6 +1,5 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap";
 
-/* context menu */
 * {
   margin: 0;
   padding: 0;
@@ -56,6 +55,8 @@ img {
 #date {
   color: #ff2a5f;
 }
+
+/* context menu */
 
 .context-menu {
   position: fixed;
@@ -187,7 +188,7 @@ img {
   background: rgba(0, 0, 0, 0.534);
 }
 
-.desktop .bar>div {
+.desktop .bar > div {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -266,13 +267,12 @@ img {
   margin-bottom: 0;
 }
 
-
 /*  for overlapping */
 .desktop .bar ul.app-list.other-apps.overlap li.select {
   margin-top: -20px;
 }
 
-.desktop .bar ul.app-list.other-apps.overlap li.select img{
+.desktop .bar ul.app-list.other-apps.overlap li.select img {
   filter: drop-shadow(0 -3px 15px black);
 }
 
@@ -290,8 +290,6 @@ img {
 }
 
 /*  for overlapping */
-
-
 
 .desktop .bar ul.app-list.other-apps {
   display: none;

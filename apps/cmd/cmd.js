@@ -4,16 +4,9 @@ let engine = new CREngine((e) => {
   submitResponse(e, false, true);
 });
 
-// add the terms for commands example command is "artex --h" here artex is called term
 engine.addTerm("artex");
 engine.addTerm("cloud");
 
-// add the command and what should be performed when this command is entered
-// remember the name i.e first argument i.e term is added by previous line
-// second argument is an array with all the flags required for particular command
-// eg: for authentication the command should look like "artex --u username --p password"
-// here for flag --u and --p for both flags values are required. So for this the second argument will look like [{flag: "--u", requiredValue: true}, {flag: "--p", requiredValue: true}]
-// third argument is an callback to define a function which  should execute on trigerring that specific command. it returns an argument which is the values of that flags which is set to true. examples are given below in second command
 engine.addCommand("artex", [{ flag: "--h", requiredValue: false }], (args) => {
   let p1 = document.createElement("p");
   p1.textContent = "artex help here";
@@ -68,10 +61,6 @@ function checkInput() {
   }
 }
 
-// function that appends data as response in command prompt
-// here data can be html or string. pass HTML only if author and error both are set to false else it should be an String
-// author is by default set to false. it is true only when appending command written by user
-// error is only true when you append any error
 const submitResponse = (data, author = false, error = false) => {
   let cont = document.getElementById("history");
   let div = document.createElement("div");
