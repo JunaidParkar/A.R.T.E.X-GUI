@@ -114,7 +114,7 @@ img {
 }
 
 .desktop .apps {
-  width: calc(100% - 75px);
+  width: calc(100% - 60px);
   height: 100%;
   position: relative;
 }

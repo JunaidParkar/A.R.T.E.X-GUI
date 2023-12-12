@@ -1,304 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="root">
-      <!-- header starts -->
-      <div id="header">
-        <!-- header controls -->
-        <div id="controls">
-          <div id="left">
-            <img src="../../assets/left.png" alt="" srcset="" />
-          </div>
-          <div id="right">
-            <img src="../../assets/right.png" alt="" srcset="" />
-          </div>
-          <div id="reload">
-            <img src="../../assets/reload.png" alt="" srcset="" />
-          </div>
-          <div id="hamburger">
-            <i class="ri-menu-4-line" style="color: white"></i>
-          </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="root">
+    <!-- header starts -->
+    <div id="header">
+      <!-- header controls -->
+      <div id="controls">
+        <div id="left">
+          <img src="../../assets/left.png" alt="" srcset="" />
         </div>
-        <!-- header paths -->
-        <div id="navigator">
-          <div id="path" class="active">
-            <span>C:</span>
-            <img src="../../assets/forward.png" alt="" />
-            <span>Home</span>
-            <img src="../../assets/forward.png" alt="" />
-            <span>Junaid</span>
-          </div>
-          <div id="pathInput" class="">
-            <input
-              type="text"
-              name=""
-              id=""
-              placeholder="Enter directory path"
-            />
-          </div>
+        <div id="right">
+          <img src="../../assets/right.png" alt="" srcset="" />
         </div>
-        <!-- search bar -->
-        <div id="searchBar">
-          <input type="text" placeholder="Enter file or folder name" />
+        <div id="reload">
+          <img src="../../assets/reload.png" alt="" srcset="" />
+        </div>
+        <div id="hamburger">
+          <i class="ri-menu-4-line" style="color: white"></i>
         </div>
       </div>
-      <!-- header ends -->
 
-      <!-- file manager starts -->
-
-      <div id="fileManager">
-        <!-- sidebar starts -->
-        <div id="sidebar">
-          <div id="drives">
-            <ul>
-              <li heading><h3>Drives</h3></li>
-              <li clickAble root-path="A.R.T.E.X/home" class="active">
-                <img src="../../assets/cloud-storage.png" alt="" />
-                <p>A.R.T.E.X</p>
-              </li>
-              <li clickable root-path="Google drive/home">
-                <img src="../../assets/drive.png" alt="" srcset="" />
-                <p>Google</p>
-              </li>
-              <li line><hr /></li>
-            </ul>
-          </div>
-          <div id="actionCenter">
-            <ul>
-              <li heading><h3>Actions</h3></li>
-              <li id="createFolder">
-                <img
-                  src="../../assets/fileManagerActions/createFolder.png"
-                  alt=""
-                />
-                <p>Create Folder</p>
-              </li>
-              <li id="createFile">
-                <img
-                  src="../../assets/fileManagerActions/createFile.png"
-                  alt=""
-                />
-                <p>Create File</p>
-              </li>
-              <li id="renameFile">
-                <img
-                  src="../../assets/fileManagerActions/rename.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>Rename</p>
-              </li>
-              <li id="deleteFile">
-                <img
-                  src="../../assets/fileManagerActions/delete.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>Delete</p>
-              </li>
-              <li id="uploadFile">
-                <img
-                  src="../../assets/fileManagerActions/upload.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>Upload file</p>
-              </li>
-              <li id="select">
-                <img
-                  src="../../assets/fileManagerActions/select.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>Select</p>
-              </li>
-              <!-- <li line><hr /></li> -->
-            </ul>
-          </div>
+      <!-- actions -->
+      <div id="actions">
+        <div id="createFolder" class="action">
+          <img src="../../assets/fileManagerActions/folder.png" alt="" srcset="" />
         </div>
-        <!-- sidebar ends -->
-        <!-- main manager starts -->
+        <div id="createFile" class="action">
+          <img src="../../assets/fileManagerActions/file.png" alt="" srcset="" />
+        </div>
+        <div id="renameFile" class="action">
+          <img src="../../assets/fileManagerActions/rename.png" alt="" srcset="" />
+        </div>
+        <div id="select" class="action">
+          <img src="../../assets/fileManagerActions/select.png" alt="" srcset="" />
+        </div>
+        <div id="uploadFile" class="action">
+          <img src="../../assets/fileManagerActions/upload.png" alt="" srcset="" />
+        </div>
+        <div id="deleteFile" class="action">
+          <img src="../../assets/fileManagerActions/delete.png" alt="" srcset="" />
+        </div>
+      </div>
 
-        <div id="system">
-          <ul id="file-list">
-            <li data-type="file" data-path="google/home">
-              <input type="checkbox" name="select-file" />
-              <span class="file-name"
-                ><img
-                  src="../../assets/fileManagerActions/file.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>file.txt</p></span
-              >
-              <img
-                src="../../assets/fileManagerActions/download.png"
-                alt=""
-                srcset=""
-                id="download-btn"
-              />
-              <img
-                src="../../assets/fileManagerActions/rename.png"
-                alt=""
-                srcset=""
-                id="rename-btn"
-              />
-              <img
-                src="../../assets/fileManagerActions/delete.png"
-                alt=""
-                srcset=""
-                id="delete-btn"
-              />
+
+      <!-- header paths -->
+      <div id="navigator">
+        <div id="path" class="active">
+          <span>C:</span>
+          <img src="../../assets/forward.png" alt="" />
+          <span>Home</span>
+          <img src="../../assets/forward.png" alt="" />
+          <span>Junaid</span>
+        </div>
+        <div id="pathInput" class="">
+          <input type="text" name="" id="" placeholder="Enter directory path" />
+        </div>
+      </div>
+      <!-- search bar -->
+      <div id="searchBar">
+        <input type="text" placeholder="Enter file or folder name" />
+      </div>
+    </div>
+    <!-- header ends -->
+
+    <!-- file manager starts -->
+
+    <div id="fileManager">
+      <!-- sidebar starts -->
+      <div id="sidebar">
+        <div id="drives" class="sub-sidebar">
+          <ul>
+            <li heading>
+              <h3>Drives</h3>
             </li>
-            <li data-type="folder" data-path="google/home">
-              <input type="checkbox" name="select-file" />
-              <span class="folder-name"
-                ><img
-                  src="../../assets/fileManagerActions/folder.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>Dream</p></span
-              >
-              <div></div>
-              <img
-                src="../../assets/fileManagerActions/rename.png"
-                alt=""
-                srcset=""
-                id="rename-btn"
-              />
-              <img
-                src="../../assets/fileManagerActions/delete.png"
-                alt=""
-                srcset=""
-                id="delete-btn"
-              />
+            <li clickAble root-path="A.R.T.E.X/home" class="active">
+              <img src="../../assets/fileManagerActions/cloud.png" alt="" />
+              <p>A.R.T.E.X</p>
             </li>
-            <li data-type="file" data-path="google/home">
-              <input type="checkbox" name="select-file" />
-              <span class="file-name"
-                ><img
-                  src="../../assets/fileManagerActions/file.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>hola.txt</p></span
-              >
-              <img
-                src="../../assets/fileManagerActions/download.png"
-                alt=""
-                srcset=""
-                id="download-btn"
-              />
-              <img
-                src="../../assets/fileManagerActions/rename.png"
-                alt=""
-                srcset=""
-                id="rename-btn"
-              />
-              <img
-                src="../../assets/fileManagerActions/delete.png"
-                alt=""
-                srcset=""
-                id="delete-btn"
-              />
-            </li>
-            <li data-type="folder" data-path="google/home">
-              <input type="checkbox" name="select-file" />
-              <span class="folder-name"
-                ><img
-                  src="../../assets/fileManagerActions/folder.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>Mines</p></span
-              >
-              <div></div>
-              <img
-                src="../../assets/fileManagerActions/rename.png"
-                alt=""
-                srcset=""
-                id="rename-btn"
-              />
-              <img
-                src="../../assets/fileManagerActions/delete.png"
-                alt=""
-                srcset=""
-                id="delete-btn"
-              />
-            </li>
-            <li data-type="file" data-path="google/home">
-              <input type="checkbox" name="select-file" />
-              <span class="file-name"
-                ><img
-                  src="../../assets/fileManagerActions/file.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>passwords.txt</p></span
-              >
-              <img
-                src="../../assets/fileManagerActions/download.png"
-                alt=""
-                srcset=""
-                id="download-btn"
-              />
-              <img
-                src="../../assets/fileManagerActions/rename.png"
-                alt=""
-                srcset=""
-                id="rename-btn"
-              />
-              <img
-                src="../../assets/fileManagerActions/delete.png"
-                alt=""
-                srcset=""
-                id="delete-btn"
-              />
-            </li>
-            <li data-type="folder" data-path="google/home">
-              <input type="checkbox" name="select-file" />
-              <span class="folder-name"
-                ><img
-                  src="../../assets/fileManagerActions/folder.png"
-                  alt=""
-                  srcset=""
-                />
-                <p>Frnds</p></span
-              >
-              <div></div>
-              <img
-                src="../../assets/fileManagerActions/rename.png"
-                alt=""
-                srcset=""
-                id="rename-btn"
-              />
-              <img
-                src="../../assets/fileManagerActions/delete.png"
-                alt=""
-                srcset=""
-                id="delete-btn"
-              />
+            <li clickable root-path="Google drive/home">
+              <img src="../../assets/drive.png" alt="" srcset="" />
+              <p>Google</p>
             </li>
           </ul>
         </div>
 
-        <!-- main manager ends -->
+
+
+        <div id="draganddrop" class="sub-sidebar">
+          <ul>
+            <!-- <li heading>
+              <h3>Upload</h3>
+            </li> -->
+            <li Draganddrop>
+              <img src="../../assets/fileManagerActions/uploadfile.png" alt="">
+              <p>drop your file here</p>
+
+              <label for="uploadfile">Select</label>
+              <input type="file" name="" id="uploadfile">
+
+            </li>
+
+          </ul>
+        </div>
+
+        <div id="banner" class="sub-sidebar">
+          <ul class="banner">
+            <img src="../../assets/fileManagerActions/bannerposter.png" alt="">
+            <span>
+              <h3>Sync your files</h3>
+              <p>Lorem ipsum dolor sit amet.</p>
+            </span>
+          </ul>
+        </div>
+
+
+      </div>
+      <!-- sidebar ends -->
+      <!-- main manager starts -->
+      <!-- https://icons8.com/icon/set/file/parakeet visit for icons -->
+
+      <div id="system">
+        <ul id="file-list">
+          <li data-type="file" data-path="google/home">
+            <input type="checkbox" name="select-file" />
+            <span class="file-name">
+              <img src="../../assets/fileManagerActions/system-file.png" alt="" srcset="" />
+              <p>file.txt</p>
+            </span>
+            <div class="fileaction">
+              <img title="download" src="../../assets/fileManagerActions/download.png" alt="" srcset=""
+                id="download-btn" />
+              <img title="rename" src="../../assets/fileManagerActions/rename.png" alt="" srcset="" id="rename-btn" />
+              <img title="delete" src="../../assets/fileManagerActions/delete.png" alt="" srcset="" id="delete-btn" />
+            </div>
+          </li>
+          <li data-type="folder" data-path="google/home">
+            <input type="checkbox" name="select-file" />
+            <span class="folder-name">
+              <img src="../../assets/fileManagerActions/system-folder.png" alt="" srcset="" />
+              <p>Dream</p>
+            </span>
+            <div></div>
+            <div class="fileaction">
+              <img title="rename" src="../../assets/fileManagerActions/rename.png" alt="" srcset="" id="rename-btn" />
+              <img title="delete" src="../../assets/fileManagerActions/delete.png" alt="" srcset="" id="delete-btn" />
+            </div>
+          </li>
+          <li data-type="file" data-path="google/home">
+            <input type="checkbox" name="select-file" />
+            <span class="file-name">
+              <img src="../../assets/fileManagerActions/system-file.png" alt="" srcset="" />
+              <p>hola.txt</p>
+            </span>
+            <div class="fileaction">
+              <img title="download" src="../../assets/fileManagerActions/download.png" alt="" srcset=""
+                id="download-btn" />
+              <img title="rename" src="../../assets/fileManagerActions/rename.png" alt="" srcset="" id="rename-btn" />
+              <img title="delete" src="../../assets/fileManagerActions/delete.png" alt="" srcset="" id="delete-btn" />
+            </div>
+          </li>
+          <li data-type="folder" data-path="google/home">
+            <input type="checkbox" name="select-file" />
+            <span class="folder-name">
+              <img src="../../assets/fileManagerActions/system-folder.png" alt="" srcset="" />
+              <p>Mines</p>
+            </span>
+            <div></div>
+            <div class="fileaction">
+              <img src="../../assets/fileManagerActions/rename.png" alt="" srcset="" id="rename-btn" />
+              <img title="delete" src="../../assets/fileManagerActions/delete.png" alt="" srcset="" id="delete-btn" />
+            </div>
+          </li>
+          <li data-type="file" data-path="google/home">
+            <input type="checkbox" name="select-file" />
+            <span class="file-name">
+              <img src="../../assets/fileManagerActions/system-file.png" alt="" srcset="" />
+              <p>passwords.txt</p>
+            </span>
+            <div class="fileaction">
+              <img title="download" src="../../assets/fileManagerActions/download.png" alt="" srcset=""
+                id="download-btn" />
+              <img title="rename" src="../../assets/fileManagerActions/rename.png" alt="" srcset="" id="rename-btn" />
+              <img title="delete" src="../../assets/fileManagerActions/delete.png" alt="" srcset="" id="delete-btn" />
+            </div>
+          </li>
+          <li data-type="folder" data-path="google/home">
+            <input type="checkbox" name="select-file" />
+            <span class="folder-name">
+              <img src="../../assets/fileManagerActions/system-folder.png" alt="" srcset="" />
+              <p>Frnds</p>
+            </span>
+            <div></div>
+            <div class="fileaction">
+              <img src="../../assets/fileManagerActions/rename.png" alt="" srcset="" id="rename-btn" />
+              <img title="delete" src="../../assets/fileManagerActions/delete.png" alt="" srcset="" id="delete-btn" />
+            </div>
+          </li>
+        </ul>
       </div>
 
-      <!-- file manager ends -->
+      <!-- main manager ends -->
     </div>
 
-    <script src="./script.js"></script>
-  </body>
+    <!-- file manager ends -->
+  </div>
+
+  <script src="./script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+    integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    anime({
+      targets: ["#controls", "#controls div", "#actions", "#actions .action", "#navigator", "#navigator div", "#searchBar"],
+      translateY: [-200, 0],
+      scale: 1,
+      opacity: [0, 1],
+      direction: "alternate",
+      loop: false,
+      duration:500,
+      delay: anime.stagger(50),
+    });
+
+    anime({
+      targets: ["#sidebar div ul li", "#sidebar #banner"],
+      translateX: [-200, 0],
+      scale: 1,
+      opacity: [0, 1],
+      direction: "alternate",
+      loop: false,
+      duration:500,
+      delay: anime.stagger(200, { start: 500 }),
+    });
+
+    anime({
+      targets: ["#file-list li",],
+      translateY: [200, 0],
+      scale: 1,
+      opacity: [0, 1],
+      direction: "alternate",
+      loop: false,
+      delay: 1000,
+      delay: anime.stagger(200, { start: 1000 }),
+    });
+
+    // anime({
+    //   targets: "#actions .action",
+    //   translateY: [200, 0],
+    //   scale: 1,
+    //   opacity: [0, 1],
+    //   direction: "alternate",
+    //   loop: false,
+    //   delay: anime.stagger(100),
+    // });
+
+    // anime({
+    //   targets: "#navigator",
+    //   translateY: [200, 0],
+    //   scale: 1,
+    //   opacity: [0, 1],
+    //   direction: "alternate",
+    //   loop: false,
+    //   delay: anime.stagger(100),
+    // });
+
+    // anime({
+    //   targets: ".desktop-date",
+    //   translateY: [-500, 0],
+    //   opacity: [0, 1],
+    //   direction: "alternate",
+    //   loop: false,
+    //   duration: 2000,
+    // });
+
+    // anime({
+    //   targets: "iframe",
+    //   translateY: [200, 0],
+    //   direction: "alternate",
+    //   loop: false,
+    //   loop: false,
+    //   delay: anime.stagger(100),
+    // });
+  </script>
+</body>
+
 </html>
