@@ -1,10 +1,41 @@
 document.addEventListener("fullscreenchange", function (e) {
-  console.log(e);
   if (!document.fullscreenElement) {
-    console.log("ppppp");
     toggleFullScreen();
   }
 });
+
+// resize to minimal size
+
+const res = true;
+
+window.addEventListener("resize", resizeFunction);
+
+const clearRes = () => {
+  setTimeout(() => {
+    res = true;
+  }, 3000);
+};
+
+function resizeFunction(e) {
+  resizeTimeout = setTimeout(() => {
+    if (res) {
+      let minWidth = 1080;
+      let minHeight = 720;
+      if (window.innerHeight < minHeight || window.innerWidth < minWidth) {
+        console.log(
+          window.innerWidth < minWidth ? minWidth : window.innerWidth,
+          window.innerHeight < minHeight ? minHeight : window.innerHeight
+        );
+        res = false;
+        window.resizeTo(
+          window.innerWidth < minWidth ? minWidth : window.innerWidth,
+          window.innerHeight < minHeight ? minHeight : window.innerHeight
+        );
+        clearRes();
+      }
+    } else return;
+  }, 2000);
+}
 
 // block ctrl + r
 
@@ -157,8 +188,8 @@ function attachEventHandlers(iframe) {
 // get brightness from bg image
 
 function getMaximumColorFromBackgroundAndSetText(element, textElement) {
-  element = document.querySelector(element)
-  textElement = document.getElementById(textElement)
+  element = document.querySelector(element);
+  textElement = document.getElementById(textElement);
   const backgroundImage = getComputedStyle(element).backgroundImage;
   const imageUrl = backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, "$1");
   const img = new Image();
@@ -183,7 +214,6 @@ function getMaximumColorFromBackgroundAndSetText(element, textElement) {
     textElement.style.color = `rgb(${maxBrightnessPixel[0]}, ${maxBrightnessPixel[1]}, ${maxBrightnessPixel[2]})`;
   };
 }
-
 
 // open or close search menu
 
@@ -388,25 +418,33 @@ const time = function () {
 
 setInterval(time(), 1000);
 
-
 // setting bg image
-const storedBackground = localStorage.getItem('backgroundImage');
-const defaultBackground = 'url(../assets/bg4.png)';
+const storedBackground = localStorage.getItem("backgroundImage");
+const defaultBackground = "url(../assets/bg4.png)";
 
 if (storedBackground) {
-  document.documentElement.style.setProperty('--desktop-background', `url(${storedBackground})`);
+  document.documentElement.style.setProperty(
+    "--desktop-background",
+    `url(${storedBackground})`
+  );
 } else {
-  document.documentElement.style.setProperty('--desktop-background', defaultBackground);
+  document.documentElement.style.setProperty(
+    "--desktop-background",
+    defaultBackground
+  );
 }
 getMaximumColorFromBackgroundAndSetText(".desktop", "date");
 
 //event listner on img change
-window.addEventListener('storage', (event) => {
-  if (event.key === 'backgroundImage') {
+window.addEventListener("storage", (event) => {
+  if (event.key === "backgroundImage") {
     const newBackground = `url(${event.newValue})`;
-    document.documentElement.style.setProperty('--desktop-background', newBackground);
-    console.log('workung');
-    getMaximumColorFromBackgroundAndSetText(".desktop", "date")
-    showNotification('setting', 'Background changed!')
+    document.documentElement.style.setProperty(
+      "--desktop-background",
+      newBackground
+    );
+    console.log("workung");
+    getMaximumColorFromBackgroundAndSetText(".desktop", "date");
+    showNotification("setting", "Background changed!");
   }
 });

@@ -50,31 +50,3 @@ const startSession = () => {
 document.addEventListener("DOMContentLoaded", () => {
   startSession();
 });
-
-// document.querySelectorAll(".bar li").forEach((e) => {
-//   e.addEventListener("click", () => {
-// if (e.classList.contains("select")) {
-//   e.classList.remove("select");
-//   let id = e.querySelector("img").dataset.app;
-//   let elem = document.getElementById(id);
-//   if (elem.nextSibling === null) {
-//     document.getElementById("apps").removeChild(elem);
-//   } else {
-//     document.getElementById("apps").appendChild(elem);
-//     e.classList.add("select");
-//   }
-// } else {
-//   e.classList.add("select");
-//   let url = e.querySelector("img").dataset.app;
-//   let id = e.querySelector("img").dataset.app;
-//   document.getElementById("apps").innerHTML +=
-//     "<div class='app' id='" +
-//     id +
-//     "'><iframe src='" +
-//     url +
-//     "' frameborder='0'  uid='" +
-//     id +
-//     "'></iframe></div>";
-// }
-//   });
-// });

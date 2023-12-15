@@ -109,10 +109,8 @@ const showNotification = (appNameOrUrl, message) => {
 
   document.body.appendChild(mainDiv);
 
-  //   setTimeout(() => {
   mainDiv.style.top = "20px";
   audioElement.play();
-  //   }, 100);
 
   setTimeout(() => {
     mainDiv.style.top = "-100px";
