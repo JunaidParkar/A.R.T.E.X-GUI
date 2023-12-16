@@ -1,13 +1,53 @@
+// toggle to full screen
+
+const toggleFullScreen = () => {
+  var elem = document.documentElement;
+  if (
+    !document.fullscreenElement &&
+    !document.mozFullScreenElement &&
+    !document.webkitFullscreenElement &&
+    !document.msFullscreenElement
+  ) {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+};
+
 // full screen event listener
 
 document.addEventListener("fullscreenchange", async () => {
   if (!document.fullscreenElement) {
-    await askConfirmation("A.R.T.E.X", "Experience more in full screen").then(
-      () => {
+    await ConfirmFromUser("A.R.T.E.X", "Experience more in full screen")
+      .then(() => {
         toggleFullScreen();
-      }
-    );
+      })
+      .catch(() => {});
   }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await ConfirmFromUser("A.R.T.E.X", "Experience more in full screen")
+    .then(() => {
+      toggleFullScreen();
+    })
+    .catch(() => {});
 });
 
 // defined shortcut keys
@@ -65,6 +105,24 @@ document.getElementById("apps").onclick = leftClick;
 document.getElementById("apps").oncontextmenu = rightClick;
 document.getElementById("search-menu").onclick = leftClick;
 document.getElementById("search-menu").oncontextmenu = rightClick;
+
+// attaching custom context menu to iframes
+
+const attachEventHandlers = (iframe) => {
+  iframe.contentWindow.addEventListener("click", (e) => {
+    e.preventDefault();
+    leftClick(e);
+  });
+  iframe.contentWindow.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+    rightClick(e);
+  });
+  iframe.contentWindow.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && (event.key === "r" || event.code === "KeyR")) {
+      event.preventDefault();
+    }
+  });
+};
 
 // get brightness from bg image
 

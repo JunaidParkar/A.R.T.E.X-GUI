@@ -182,3 +182,21 @@ const doneTyping = async (value) => {
     await getNews(value);
   } else await getNews();
 };
+
+// Setting observer to detect changes
+
+const observer = new MutationObserver(function (mutationsList, observer) {
+  for (const mutation of mutationsList) {
+    if (mutation.type === "childList") {
+      mutation.addedNodes.forEach(function (node) {
+        node.childNodes.forEach((nd) => {
+          if (nd.nodeName === "IFRAME") {
+            attachEventHandlers(nd);
+          }
+        });
+      });
+    }
+  }
+});
+
+observer.observe(document, { childList: true, subtree: true });
