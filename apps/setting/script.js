@@ -1,4 +1,4 @@
-let switches = document.querySelectorAll(".button");
+const switches = document.querySelectorAll(".button");
 
 switches.forEach((s) => {
   s.addEventListener("click", () => {
@@ -18,6 +18,11 @@ const openMoreSetting = (e) => {
     }
   });
 };
+
+// function setBackground(image) {
+//   const imageURL = image.src;
+//   localStorage.setItem('backgroundImage', imageURL);
+// }
 
 const storedBackground = localStorage.getItem("backgroundImage");
 const imageList = document

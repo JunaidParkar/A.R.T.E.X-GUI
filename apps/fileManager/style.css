@@ -17,6 +17,7 @@
 
 :root {
   --padding: 20px;
+
   --mainBG: linear-gradient(103deg, #000000 -14.54%, #151124 99.76%);
 }
 
@@ -114,6 +115,7 @@ body {
 }
 
 #header #actions {
+  /* border: 1px solid rgba(255, 255, 255, 0.281); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,6 +161,7 @@ body {
   overflow: hidden;
   align-items: center;
   padding: 10px;
+  /* gap: 10px; */
   color: rgba(255, 255, 255, 0.64);
   font-weight: 400;
   font-size: 14px;
@@ -273,6 +276,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: start;
+  /* padding: 0 var(--padding); */
   color: white;
 }
 
@@ -502,6 +506,7 @@ body {
   margin-top: 2px;
   position: relative;
   isolation: isolate;
+  /* background: rgba(255, 0, 0, 0.092); */
 }
 
 #system #file-list li::after {
@@ -537,6 +542,10 @@ body {
 #system #file-list li[data-type="folder"] {
   cursor: pointer;
 }
+
+/* #system #file-list li:hover {
+  background: rgba(255, 255, 255, 0.126);
+} */
 
 #system #file-list li span {
   width: calc(100% - 128px);
@@ -611,7 +620,73 @@ body {
   }
 }
 
+/* #file-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#file-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+#file-list li:hover {
+  background-color: #f5f5f5;
+}
+
+#file-list span.file-name,
+#file-list span.folder-name {
+  flex: 1;
+  margin-left: 10px;
+}
+
+#file-list span.file-name p,
+#file-list span.folder-name p {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#download-btn,
+#rename-btn,
+#delete-btn {
+  margin-left: auto;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#system img {
+  height: 40px;
+} */
+
 @media only screen and (max-width: 768px) {
+  /* #file-list li {
+    flex-direction: column;
+  }
+
+  #file-list span.file-name,
+  #file-list span.folder-name {
+    margin-left: 0;
+    margin-bottom: 5px;
+  }
+
+  #download-btn-1,
+  #rename-btn-1,
+  #delete-btn-1,
+  #rename-btn-2,
+  #delete-btn-2 {
+    margin-top: 10px;
+  } */
 }
 
 @media screen and (max-width: 650px) {

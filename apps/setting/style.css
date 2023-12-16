@@ -13,13 +13,6 @@
 }
 
 :root {
-  --desktop-background: url(../assets/bg1.png);
-  --font-size: 16px;
-  --icon-size: 40px;
-  --heading: 900;
-  --text: 200;
-  --title: 400;
-
   --dark: #213153;
   --accent-color: rgba(60, 161, 255, 1);
   --accent-tr-color: rgba(60, 161, 255, 0.179);
@@ -213,6 +206,8 @@ body {
   position: absolute;
   z-index: 0;
 }
+
+/*  */
 
 .app .subsetting .moresetting {
   height: 100%;
