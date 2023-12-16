@@ -13,7 +13,12 @@
 }
 
 :root {
+  --desktop-background: url(../assets/bg1.png);
+  --font-size: 16px;
+  --icon-size: 40px;
+  --heading: 900;
   --text: 200;
+  --title: 400;
 }
 
 body {
@@ -21,6 +26,8 @@ body {
   color: rgb(211, 211, 211);
   overflow: auto;
 }
+
+
 
 .app header {
   display: flex;
@@ -39,6 +46,7 @@ body {
   width: 30px;
 }
 
+
 .app header span {
   display: flex;
   justify-content: center;
@@ -52,7 +60,7 @@ body {
 }
 
 .app .banner {
-  background: url(../../assets/apps/default/artexStore/assets/bg.avif);
+  background: url(https://img.freepik.com/premium-photo/abstract-background-images-wallpaper-ai-generated_643360-9571.jpg);
   height: 500px;
   background-size: 120%;
   background-position: center center;
@@ -61,7 +69,7 @@ body {
 }
 
 .app .banner .gradient-layer {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 81.15%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 81.15%);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -87,7 +95,9 @@ body {
   backdrop-filter: blur(10px);
   color: white;
   box-shadow: 0px 15px 40px 0px rgba(243, 243, 243, 0.144);
+
 }
+
 
 .app .applist {
   margin: 50px;
@@ -99,6 +109,7 @@ body {
 .app .applist2 {
   margin-top: 0;
 }
+
 
 .app .applist p {
   margin-bottom: 20px;
@@ -149,6 +160,7 @@ body {
   font-size: 13px;
   margin-top: 0;
   padding: 0;
+
 }
 
 @media (width < 1024px) {
@@ -164,7 +176,7 @@ body {
 }
 
 .app .banner-secondary {
-  background: url(../../assets/apps/default/artexStore/assets/midautum.png);
+  background: url(../../assets/midautum.png);
   background-size: 100%;
   height: 200px;
   margin: 50px;
@@ -185,5 +197,86 @@ body {
 
 .app .banner-secondary p {
   font-weight: 100;
-  letter-spacing: 0.12rem;
+  letter-spacing: .12rem;
+}
+
+#download-page {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.353);
+  backdrop-filter: blur(6px);
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#download-page .download-box {
+  max-width: 450px;
+  max-height: 90vh;
+  background: rgb(0, 0, 0);
+  overflow: scroll;
+  position: relative;
+}
+
+#download-page .download-box i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.601);
+  padding: 10px;
+  backdrop-filter: blur(6px);
+}
+
+#download-page .download-box .banner {
+  width: 100%;
+  height: fit-content;
+}
+
+#download-page .download-box .download-info {
+  display: flex;
+  list-style: none;
+  padding: 0 20px;
+  align-items: center;
+  gap: 10px;
+  margin-top: -60px;
+  position: relative;
+}
+
+#download-page .download-box .download-info li img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid black;
+}
+
+#download-page .download-box .download-info li h3 {
+  margin-top: 50px;
+  color: white;
+  text-transform: capitalize;
+}
+
+#download-page .download-box ul {
+  padding: 25px;
+}
+
+#download-page .download-box ul button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+#download-page .download-box ul p small {
+  opacity: 70%;
+}
+
+#download-page .download-box ul.download-desc {
+  margin-top: -20px;
 }
