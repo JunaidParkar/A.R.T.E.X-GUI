@@ -25,6 +25,7 @@ document.addEventListener("keydown", async (event) => {
 
 const leftClick = async (e) => {
   e.preventDefault();
+  console.log("left");
   document.getElementById("contextMenu").style.display = "none";
 };
 
@@ -32,8 +33,8 @@ const leftClick = async (e) => {
 
 const rightClick = (e) => {
   e.preventDefault();
+  console.log("right");
   let menu = document.getElementById("contextMenu");
-  console.log(menu.style.display);
   if (menu.style.display == "block") {
     leftClick(e);
     return;
@@ -62,6 +63,8 @@ document.getElementById("sidebar").onclick = leftClick;
 document.getElementById("sidebar").oncontextmenu = leftClick;
 document.getElementById("apps").onclick = leftClick;
 document.getElementById("apps").oncontextmenu = rightClick;
+document.getElementById("search-menu").onclick = leftClick;
+document.getElementById("search-menu").oncontextmenu = rightClick;
 
 // get brightness from bg image
 

@@ -57,16 +57,16 @@ const getNews = async (keyword) => {
     keyword =
       defaultKeyWords[Math.floor(Math.random() * defaultKeyWords.length)];
   }
-  // try {
-  document.getElementById("news-container").innerHTML = "";
-  let preloader = document.createElement("div");
-  preloader.classList.add("articlePreloader");
-  let loader = document.createElement("div");
-  loader.classList.add("loader");
-  preloader.appendChild(loader);
-  document.getElementById("news-container").appendChild(preloader);
-  const url = "https://eventregistry.org/api/v1/article/getArticles";
-  const data = `{
+  try {
+    document.getElementById("news-container").innerHTML = "";
+    let preloader = document.createElement("div");
+    preloader.classList.add("articlePreloader");
+    let loader = document.createElement("div");
+    loader.classList.add("loader");
+    preloader.appendChild(loader);
+    document.getElementById("news-container").appendChild(preloader);
+    const url = "https://eventregistry.org/api/v1/article/getArticles";
+    const data = `{
       "action": "getArticles",
       "keyword": "${keyword}",
       "articlesPage": 1,
@@ -82,55 +82,57 @@ const getNews = async (keyword) => {
       "apiKey": "f2bb630d-ceca-4a20-9a04-28ccf0f71b8c",
       "forceMaxDataTimeWindow": 31
     }`;
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: data,
-  });
-  const text = await response.json();
-  const articles = text.articles.results;
-  document.getElementById("news-container").innerHTML = "";
-  if (articles.length > 0) {
-    const articlesContainer = document.getElementById("news-container");
-    articles.forEach((article) => {
-      const articleDiv = document.createElement("div");
-      articleDiv.classList.add("article");
-      const titleElement = document.createElement("h2");
-      titleElement.textContent = article.title;
-      const sourceElement = document.createElement("p");
-      sourceElement.textContent = `Source: ${article.source.title}`;
-      const bodyElement = document.createElement("p");
-      bodyElement.textContent = article.body;
-      const linkElement = document.createElement("a");
-      linkElement.href = article.url;
-      linkElement.textContent = "Read More";
-      const imageElement = document.createElement("img");
-      imageElement.src = article.image;
-      imageElement.alt = article.title;
-      imageElement.onerror = () => {
-        imageElement.style.display = "none";
-      };
-      articleDiv.appendChild(imageElement);
-      articleDiv.appendChild(titleElement);
-      articleDiv.appendChild(sourceElement);
-      articleDiv.appendChild(bodyElement);
-      articleDiv.appendChild(linkElement);
-      articlesContainer.appendChild(articleDiv);
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: data,
     });
-  } else {
-    getNews(
-      defaultKeyWords[Math.floor(Math.random() * defaultKeyWords.length)]
+    const text = await response.json();
+    const articles = text.articles.results;
+    document.getElementById("news-container").innerHTML = "";
+    if (articles.length > 0) {
+      const articlesContainer = document.getElementById("news-container");
+      articles.forEach((article) => {
+        const articleDiv = document.createElement("div");
+        articleDiv.classList.add("article");
+        const titleElement = document.createElement("h2");
+        titleElement.textContent = article.title;
+        const sourceElement = document.createElement("p");
+        sourceElement.textContent = `Source: ${article.source.title}`;
+        const bodyElement = document.createElement("p");
+        bodyElement.textContent = article.body;
+        const linkElement = document.createElement("a");
+        linkElement.href = article.url;
+        linkElement.textContent = "Read More";
+        const imageElement = document.createElement("img");
+        imageElement.src = article.image;
+        imageElement.alt = article.title;
+        imageElement.onerror = () => {
+          imageElement.style.display = "none";
+        };
+        articleDiv.appendChild(imageElement);
+        articleDiv.appendChild(titleElement);
+        articleDiv.appendChild(sourceElement);
+        articleDiv.appendChild(bodyElement);
+        articleDiv.appendChild(linkElement);
+        articlesContainer.appendChild(articleDiv);
+      });
+    } else {
+      getNews(
+        defaultKeyWords[Math.floor(Math.random() * defaultKeyWords.length)]
+      );
+    }
+  } catch (e) {
+    notifyUser(
+      "Unable to load news at the moment. If problem presist then please check your internet connection.",
+      "",
+      false,
+      false,
+      true
     );
   }
-  // } catch (e) {
-  // console.log(e);
-  // showNotification(
-  //   "https://cdn.iconscout.com/icon/free/png-256/free-weather-191-461610.png?f=webp",
-  //   "Unable to load news at the moment. If problem presist then please check your internet connection."
-  // );
-  // }
 };
 
 // open or close search menu
@@ -176,9 +178,7 @@ messageInput.addEventListener("keyup", (e) => {
 
 const doneTyping = async (value) => {
   if (value != "") {
-    searchAppList(value);
-    await getNews();
-  } else {
-    searchAppList("", true);
-  }
+    console.log(value);
+    await getNews(value);
+  } else await getNews();
 };
