@@ -45,7 +45,7 @@ let applist = [
 
 
 applist.forEach(e => {
-    let card = `<li onclick='openDownlaodMenu(${JSON.stringify(e)})'>
+    let card = `<li>
     <img src="${e.banner}" alt="" class="app-banner">
     <div class="info">
         <img src="${e.logo}"
@@ -84,7 +84,7 @@ let applist2 = [
 ]
 
 applist2.forEach(e => {
-    let card = `<li onclick='openDownlaodMenu(${JSON.stringify(e)})'>
+    let card = `<li>
     <img src="${e.banner}" alt="" class="app-banner">
     <div class="info">
         <img src="${e.logo}"
@@ -96,33 +96,3 @@ applist2.forEach(e => {
 
     document.querySelector('.card-list2').innerHTML += card
 })
-
-function openDownlaodMenu({ name, banner, logo, description, downloadLink }) {
-    let container = document.createElement('div')
-    let str = `<div id="download-page">
-    <div class="download-box">
-        <i onclick="destroyDownloadMenu(this.parentNode)" class="ri-arrow-left-line"></i>
-        <img src="${banner}" alt="" class="banner">
-        <ul class="download-info">
-            <li><img src="${logo}" alt="">
-            </li>
-            <li>
-                <h3>${name}</h3>
-            </li>
-        </ul>
-        <ul class="download-btn"><a href="${downloadLink}"><button>Download</button></a></ul>
-        <ul class="download-desc">
-            <p>Description</p>
-            <p><small>${description}</small></p>
-        </ul>
-    </div>
-    </div>`
-
-    container.innerHTML = str
-
-    document.body.appendChild(container)
-}
-
-const destroyDownloadMenu = (el) => {
-    document.body.removeChild(el.parentNode.parentNode)
-}
