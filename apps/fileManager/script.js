@@ -49,7 +49,7 @@ pthInput.querySelector("input").onkeyup = (e) => {
         spn.innerText = word;
         elems.push(spn);
         let img = document.createElement("img");
-        img.src = "../../assets/forward.png";
+        img.src = "../../assets/apps/default/fileManager/assets/forward.png";
         elems.push(img);
       }
     });
@@ -85,7 +85,7 @@ const changePath = (path) => {
       spn.innerText = word;
       elems.push(spn);
       let img = document.createElement("img");
-      img.src = "../../assets/forward.png";
+      img.src = "../../assets/apps/default/fileManager/assets/forward.png";
       elems.push(img);
     }
   });
@@ -104,6 +104,19 @@ const changePath = (path) => {
 };
 
 // header section ends
+
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('sidebar').style.left = 0
+})
+
+document.getElementById('close-sidebar').addEventListener('click', () => {
+  document.getElementById('sidebar').style.left = "-150vw"
+})
+
+
+// hamberger
+
+// hamberger end
 
 // file manager section starts
 

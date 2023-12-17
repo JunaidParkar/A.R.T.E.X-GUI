@@ -44,27 +44,27 @@ body {
 
 #header {
   width: 100%;
-  gap: 20px;
+  gap: 15px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: 0 var(--padding);
   margin-top: 10px;
+  overflow: hidden;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   #header {
     height: 50px;
   }
-}
+} */
 
 @media screen and (max-width: 480px) {
   #header {
-    height: 40px;
+    flex-wrap: wrap;
   }
 }
 
-#header > div {
+#header>div {
   margin: 10px 0;
 }
 
@@ -72,7 +72,6 @@ body {
 
 #header #controls {
   display: flex;
-  height: 100%;
   gap: 20px;
   align-items: center;
   background: rgba(255, 255, 255, 0.129);
@@ -145,10 +144,12 @@ body {
 /* navigator and search bar */
 
 #header #navigator {
-  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
+  padding: 9px;
+  background: rgba(255, 255, 255, 0.126);
+  border-radius: 5px;
 }
 
 #header #navigator #path,
@@ -156,11 +157,11 @@ body {
 #header #searchBar {
   width: 100%;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.126);
+
   display: none;
   overflow: hidden;
   align-items: center;
-  padding: 10px;
+  min-height: 100%;
   /* gap: 10px; */
   color: rgba(255, 255, 255, 0.64);
   font-weight: 400;
@@ -211,21 +212,21 @@ body {
 
 #header #searchBar {
   display: flex;
-  width: 25%;
+  max-width: 300px;
   padding: 12.5px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.281);
 }
 
-@media screen and (max-width: 950px) {
+/* @media screen and (max-width: 950px) {
   #header #navigator #path,
   #header #navigator #pathInput,
   #header #searchBar {
     height: 35px;
   }
-}
+} */
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
   #header #searchBar {
     display: none;
   }
@@ -233,9 +234,9 @@ body {
   #header #navigator {
     width: 75%;
   }
-}
+} */
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   #header #navigator #path,
   #header #navigator #pathInput,
   #header #searchBar {
@@ -256,13 +257,30 @@ body {
   #navigator {
     width: 80;
   }
-}
+}*/
 
 @media screen and (max-width: 480px) {
-  #header #navigator #path,
-  #header #navigator #pathInput,
+
+  #header {
+    gap: 0;
+  }
+
   #header #searchBar {
-    height: 30px;
+    width: 100%;
+    min-width: 100%;
+  }
+
+  /* #header #navigator {
+    display: none;
+  } */
+
+  #header #controls div {
+    display: none;
+  }
+
+  #header #controls div#hamburger {
+    display: flex;
+    font-size: 25px;
   }
 }
 
@@ -302,6 +320,11 @@ body {
   flex-direction: column;
   gap: 25px;
   padding: 20px;
+  transition: 0.5s;
+}
+
+#close-sidebar {
+  display: none;
 }
 
 /* #sidebar .sub-sidebar{
@@ -383,7 +406,7 @@ body {
   display: grid;
   place-items: center;
   gap: 20px;
-  color: rgba(255, 255, 255, 0.258);
+  color: rgba(255, 255, 255, 0.544);
   margin-top: 5px;
   text-transform: capitalize;
   padding: 10px;
@@ -427,8 +450,31 @@ body {
 @media screen and (max-width: 650px) {
   #sidebar {
     position: fixed;
-    left: -200px;
+    left: -150vw;
     top: 0;
+    width: 300px;
+    background: black;
+    z-index: 2;
+  }
+
+  #close-sidebar {
+    background: rgb(255, 50, 50);
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    margin-right: -50px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    backdrop-filter: blur(6px);
+    z-index: 2;
+    top: 20px;
+  }
+
+  #close-sidebar:hover{
+    opacity: 0;
   }
 }
 
@@ -494,6 +540,13 @@ body {
   margin-top: 50px;
   border-radius: 5px;
   overflow: scroll;
+}
+
+@media screen and (max-width: 480px) {
+  #system #file-list {
+    margin-top: 10px;
+    padding: 0 20px;
+  }
 }
 
 #system #file-list li {
@@ -568,7 +621,7 @@ body {
   color: rgba(255, 255, 255, 0.745);
 }
 
-#system #file-list li > img,
+#system #file-list li>img,
 #system #file-list li div {
   width: 25px;
   filter: invert(2);
