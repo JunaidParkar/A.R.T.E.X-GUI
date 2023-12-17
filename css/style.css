@@ -345,9 +345,19 @@ ul li {
   margin-bottom: 10px;
 }
 
-#sidebar #search-menu #menus #app-list ul {
+#sidebar #search-menu #menus #app-list ul#appMatched {
   width: 100%;
-  height: calc(100% - 20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.528);
+  color: red;
+  margin-bottom: 10px;
+}
+
+#sidebar #search-menu #menus #app-list ul#appMatched li.error img {
+  filter: grayscale(1) brightness(2);
+}
+
+#sidebar #search-menu #menus #app-list ul:last-child {
+  width: 100%;
   overflow: hidden;
   overflow-y: scroll;
   display: flex;
@@ -381,6 +391,7 @@ ul li {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-transform: capitalize;
 }
 
 #sidebar #search-menu #news-container {

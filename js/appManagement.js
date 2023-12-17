@@ -8,7 +8,7 @@ const apps = [
     default: true,
   },
   {
-    name: "fileManager",
+    name: "File manager",
     image: "./assets/apps/default/fileManager/icon/logo.png",
     appPath: "./apps/fileManager/index.html",
     default: true,
@@ -90,6 +90,9 @@ apps.forEach((app) => {
 // app list searching algorithm
 
 const searchAppList = (name, byName = false) => {
+  let resLi = document.getElementById("appMatched");
+  resLi.innerHTML = "";
+  console.log(name);
   let lis = Array.from(
     document.getElementById("appList").querySelectorAll("li")
   );
@@ -111,6 +114,21 @@ const searchAppList = (name, byName = false) => {
   const ul = document.getElementById("appList");
   ul.innerHTML = "";
   lis.forEach((li) => ul.appendChild(li));
+  let res = ul.querySelector("li").querySelector("p").innerText;
+  if (res.toLocaleLowerCase() == name.toLocaleLowerCase()) {
+    let elem = ul.querySelector("li").cloneNode(true);
+    resLi.appendChild(elem);
+  } else {
+    let li = document.createElement("li");
+    li.classList.add("error");
+    let img = document.createElement("img");
+    img.src = "../assets/system/icons/logo.png";
+    let p = document.createElement("p");
+    p.textContent = "No App Found";
+    li.appendChild(img);
+    li.appendChild(p);
+    resLi.appendChild(li);
+  }
 };
 
 searchAppList("", true);
