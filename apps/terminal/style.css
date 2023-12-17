@@ -134,6 +134,33 @@ textarea,
   color: white;
 }
 
+.output table tr td {
+  padding: 15px 12px;
+  border: 1px dashed rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.77);
+  font-size: 12px;
+  font-weight: lighter;
+
+}
+
+.output table {
+  border-collapse: collapse;
+  margin: 20px 0;
+  margin-bottom: 0;
+}
+
+.output ul,
+.output ol {
+  margin: 20px 0 0 20px;
+}
+
+.output ul li,
+.output ol li {
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.77);
+  font-size: 12px;
+}
+
 .error {
   color: rgba(255, 0, 0, 0.721);
 }
