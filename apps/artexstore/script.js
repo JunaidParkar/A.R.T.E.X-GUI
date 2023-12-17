@@ -126,3 +126,50 @@ function openDownlaodMenu({ name, banner, logo, description, downloadLink }) {
 const destroyDownloadMenu = (el) => {
     document.body.removeChild(el.parentNode.parentNode)
 }
+
+
+const searchlistTop = function () {
+    var elem = document.getElementById('searchbox');
+    var distanceScrolled = document.body.scrollTop;
+    var elemRect = elem.getBoundingClientRect();
+    var elemViewportOffset = elemRect.top;
+    var totalOffset = distanceScrolled + elemViewportOffset;
+    document.querySelector('.searchlist').style.top = totalOffset + 60 + 'px'
+};
+
+
+document.getElementById('searchbox').addEventListener('keyup', () => {
+    searchlistTop()
+    document.querySelector('.searchlist').innerHTML = ""
+
+    let value = document.getElementById('searchbox').value
+    if (value !== '') {
+        document.querySelector('.searchlist').style.display = 'block'
+        let searchresult = searchappresult(value)
+
+        if (searchresult.length > 0) {
+            searchresult.forEach((e) => {
+                if (e !== '') {
+                    document.querySelector('.searchlist').innerHTML += `<li onclick='openDownlaodMenu(${JSON.stringify(e)})'><img src="${e.logo}" alt=""><p>${e.name}</p><i class="ri-arrow-right-up-line"></i></li>`
+                }
+            })
+        } else {
+            document.querySelector('.searchlist').innerHTML += `<li>No result found</li>`
+        }
+
+    } else {
+        document.querySelector('.searchlist').style.display = 'none'
+    }
+})
+
+const searchappresult = (v) => {
+    let allapplist = applist.concat(applist2);
+    let value = v.toLowerCase();
+
+    let matchedResults = allapplist.filter((app) => {
+        let name = app.name.toLowerCase();
+        return name.includes(value);
+    });
+
+    return matchedResults;
+}
