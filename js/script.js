@@ -1,6 +1,6 @@
 // resize to minimal size
 
-const res = true;
+let res = true;
 
 const clearRes = () => {
   setTimeout(() => {

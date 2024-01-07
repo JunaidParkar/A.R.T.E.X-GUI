@@ -150,6 +150,7 @@ const manageAppState = async (li) => {
       }
     }
   }
+
   openApp(li.querySelector("img").dataset.name);
 };
 
@@ -240,6 +241,10 @@ const closeApp = (elem) => {
   }
   document.getElementById("apps").removeChild(elem);
 };
+
+const minimizeapp = (elem) => {
+  elem.style.display = "none"
+}
 
 let allUls = document.querySelectorAll("ul");
 let allAppUls = [];
