@@ -157,7 +157,21 @@ const openApp = (name) => {
   apps.forEach((app) => {
     if (app.name == name) {
       let div = document.createElement("div");
+      div.style.background = "black"
       div.classList.add("app");
+      let closebutton = document.createElement("button");
+      let li = document.createElement("li");
+      let img2 = document.createElement("img");
+      img2.dataset.name = name;
+      li.appendChild(img2);
+      closebutton.addEventListener("click", async () => {
+        await manageAppState(li);
+      });
+      closebutton.innerHTML = "X"
+      div.appendChild(closebutton);
+      let Apptitle = document.createElement("p")
+      Apptitle.innerHTML = app.name;
+      div.appendChild(Apptitle);
       let iframe = document.createElement("iframe");
       iframe.dataset.name = app.name;
       iframe.src = app.appPath;

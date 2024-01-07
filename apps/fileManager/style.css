@@ -751,3 +751,7 @@ body {
 /* main manager ends */
 
 /* file manager ends */
+
+input[type=checkbox] {
+  display: none;
+}
