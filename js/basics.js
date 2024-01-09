@@ -38,7 +38,7 @@ document.addEventListener("fullscreenchange", async () => {
       .then(() => {
         toggleFullScreen();
       })
-      .catch(() => {});
+      .catch(() => { });
   }
 });
 
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     .then(() => {
       toggleFullScreen();
     })
-    .catch(() => {});
+    .catch(() => { });
 });
 
 // defined shortcut keys
@@ -64,8 +64,8 @@ document.addEventListener("keydown", async (event) => {
 // Custom left click
 
 const leftClick = async (e) => {
-  e.preventDefault();
-  console.log("left");
+  // e.preventDefault();
+  // console.log("left");
   document.getElementById("contextMenu").style.display = "none";
 };
 
@@ -110,8 +110,8 @@ document.getElementById("search-menu").oncontextmenu = rightClick;
 
 const attachEventHandlers = (iframe) => {
   iframe.contentWindow.addEventListener("click", (e) => {
-    e.preventDefault();
-    leftClick(e);
+    // e.preventDefault();
+    document.getElementById("contextMenu").style.display = "none";
   });
   iframe.contentWindow.addEventListener("contextmenu", (e) => {
     e.preventDefault();
