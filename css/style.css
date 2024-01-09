@@ -574,6 +574,8 @@ ul li {
   margin-top: 10px;
   width: 100%;
   height: calc(100vh - 35px);
+  border: 0;  
+  padding: 0;
 }
 
 #apps .app.main {

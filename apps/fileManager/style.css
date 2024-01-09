@@ -473,8 +473,14 @@ body {
     top: 20px;
   }
 
-  #close-sidebar:hover{
+  #close-sidebar:hover {
     opacity: 0;
+  }
+}
+
+@media (width<380px) {
+  #sidebar {
+    width: calc(100% - 60px);
   }
 }
 
@@ -751,7 +757,3 @@ body {
 /* main manager ends */
 
 /* file manager ends */
-
-input[type=checkbox] {
-  display: none;
-}
