@@ -31,95 +31,33 @@
           Chats <i class="ri-menu-4-line" onclick="open_sidebar_options()"></i>
         </header>
 
-        <div class="messages">
+        <div class="messages" id="messages-box">
           <div class="ai">
             <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.
-            </p>
-          </div>
-
-          <div class="ai user">
-            <img src="../../assets/apps/default/artex/assets/user.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.lorem30 Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Architecto molestiae ipsa ducimus doloribus est
-              reiciendis nam hic! Neque, cum nihil. Quasi fugiat assumenda
-              numquam dignissimos in nulla inventore sunt sapiente.
-            </p>
-          </div>
-
-          <div class="ai">
-            <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.
-            </p>
-          </div>
-
-          <div class="ai user">
-            <img src="../../assets/apps/default/artex/assets/user.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.lorem30 Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Architecto molestiae ipsa ducimus doloribus est
-              reiciendis nam hic! Neque, cum nihil. Quasi fugiat assumenda
-              numquam dignissimos in nulla inventore sunt sapiente.
-            </p>
-          </div>
-
-          <div class="ai">
-            <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.
-            </p>
-          </div>
-
-          <div class="ai user">
-            <img src="../../assets/apps/default/artex/assets/user.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.lorem30 Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Architecto molestiae ipsa ducimus doloribus est
-              reiciendis nam hic! Neque, cum nihil. Quasi fugiat assumenda
-              numquam dignissimos in nulla inventore sunt sapiente.
-            </p>
-          </div>
-
-          <div class="ai">
-            <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.
-            </p>
-          </div>
-
-          <div class="ai user">
-            <img src="../../assets/apps/default/artex/assets/user.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.lorem30 Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Architecto molestiae ipsa ducimus doloribus est
-              reiciendis nam hic! Neque, cum nihil. Quasi fugiat assumenda
-              numquam dignissimos in nulla inventore sunt sapiente.
+              <p>Hello world</p>
+              <div class="code-block">
+                <div class="header">
+                  <p>python</p>
+                  <div id="copy">
+                    <img src="../../assets/apps/default/artex/assets/copy.png" alt="" srcset="">
+                    <p>copy</p>
+                  </div>
+                </div>
+                <!-- <div class="block">
+                  <pre>
+                    <code>
+                    </code>
+                  </pre>
+                </div> -->
+              </div>
             </p>
           </div>
         </div>
 
         <div class="input">
           <i class="ri-mic-fill"></i>
-          <input type="text" placeholder="Type your query here" />
+          <input type="text" placeholder="Type your query here" id="chat-input" />
           <i class="ri-send-plane-2-fill"></i>
         </div>
       </div>
@@ -162,6 +100,7 @@
       </div>
     </div>
   </body>
+  <script src="./script.js"></script>
 </html>
 <script>
   function open_sidebar_options() {
