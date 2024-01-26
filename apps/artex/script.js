@@ -37,7 +37,8 @@ const add_message = (msg) => {
           header.classList.add("header");
           let header_p1 = document.createElement("p");
           console.log(cd.classList[0])
-          header_p1.textContent = cd.classList[0].split("-")[1];
+
+          try {header_p1.textContent = cd.classList[0].split("-")[1];} catch {header_p1.textContent = "None"}
           let copy = document.createElement("div");
           copy.id = "copy";
           copy.addEventListener("click", async (e) => await copyCode(e))
@@ -74,13 +75,13 @@ const add_message = (msg) => {
 
 const takeInput = async () => {
   let query = chat_input.value
-  let response = await eel.getResponse(query)
+  let response = await eel.getResponse(query)()
   add_message(response)
 }
 
-eel.expose(add_message)
+// eel.expose(add_message)
 
-chat_input.onclick = async () => {
+submit_query.onclick = async () => {
   if (chat_input.value != "") {
     await takeInput()
   }
