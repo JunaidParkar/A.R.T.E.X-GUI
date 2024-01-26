@@ -6,7 +6,7 @@ const add_message = (msg) => {
 
     const doc = parser.parseFromString(msg, 'text/html');
 
-    let p = document.createElement("p");
+    let p = document.createElement("div");
     p.innerHTML = doc.body.innerHTML;
 
     let code = p.querySelectorAll("code");
@@ -40,8 +40,6 @@ const add_message = (msg) => {
             block.appendChild(pre);
             div.appendChild(header);
             div.appendChild(block);
-            
-            // Replace tg with div
             tg.replaceWith(div);
         });
     }
@@ -53,28 +51,24 @@ const add_message = (msg) => {
     md.appendChild(imgm)
     md.appendChild(p)
     messages_box.appendChild(md)
+    // document.getElementById('copy').addEventListener('click', function() {
+      // const codee = document.createElement("div")
+      // codee.appendChild(md)
+      // navigator.clipboard.writeText(codee.innerHTML).then(() => {
+      //     alert('Code copied to clipboard');
+      // }, () => {
+      //     alert('Failed to copy code');
+      // });
+  // });
+    // var copyText = document.getElementById("myInput");
+
+    // Select the text field
+    // copyText.select();
+    // copyText.setSelectionRange(0, 99999); // For mobile devices
+
+    // // Copy the text inside the text field
+    // navigator.clipboard.writeText(copyText.value);
 }
-
-// add_message(`<div class="ai">
-// <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
-// <p>
-//   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-//   quasi nulla porro animi sint nihil totam esse illum tempore
-//   voluptates.
-// </p>
-// </div>`)
-
-// add_message(`<div class="ai user">
-// <img src="../../assets/apps/default/artex/assets/user.png" alt="" />
-// <p>
-//   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-//   quasi nulla porro animi sint nihil totam esse illum tempore
-//   voluptates.lorem30 Lorem ipsum dolor sit amet consectetur
-//   adipisicing elit. Architecto molestiae ipsa ducimus doloribus est
-//   reiciendis nam hic! Neque, cum nihil. Quasi fugiat assumenda
-//   numquam dignissimos in nulla inventore sunt sapiente.
-// </p>
-// </div>`)
 
 let elm = `<pre><code class="language-python"># This code prints any data.
 
@@ -89,9 +83,16 @@ data = &quot;Hello World!&quot;
 def asian():
   print("tony stark") #try at Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cumque eaque eveniet totam numquam modi eum sunt exercitationem architecto doloremque quibusdam quidem adipisci, illo unde? Culpa vero sint velit vel.
 print_data(data)
+print_data(data)
+print_data(data)
+print_data(data)
+print_data(data)
+print_data(data)
+print_data(data)
 </code></pre>
 <p>This code will print the following output:</p>
 <pre><code class="language-html">Hello World!
 </code></pre>`;
 
+add_message(elm)
 add_message(elm)

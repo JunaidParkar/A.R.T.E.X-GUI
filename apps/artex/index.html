@@ -34,30 +34,18 @@
         <div class="messages" id="messages-box">
           <div class="ai">
             <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
-            <p>
-              <p>Hello world</p>
-              <div class="code-block">
-                <div class="header">
-                  <p>python</p>
-                  <div id="copy">
-                    <img src="../../assets/apps/default/artex/assets/copy.png" alt="" srcset="">
-                    <p>copy</p>
-                  </div>
-                </div>
-                <!-- <div class="block">
-                  <pre>
-                    <code>
-                    </code>
-                  </pre>
-                </div> -->
-              </div>
-            </p>
+            <div>
+              <p>hello world</p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
+              quasi nulla porro animi sint nihil totam esse illum tempore
+              voluptates.
+            </div>
           </div>
         </div>
 
         <div class="input">
           <i class="ri-mic-fill"></i>
-          <input type="text" placeholder="Type your query here" id="chat-input" />
+          <input type="text" id="chat-input" placeholder="Type your query here" />
           <i class="ri-send-plane-2-fill"></i>
         </div>
       </div>
@@ -99,19 +87,19 @@
         </div>
       </div>
     </div>
+    <script>
+      function open_sidebar_options() {
+        document.getElementById("chat").style.display = "none";
+        document.getElementById("sidebar").style.display = "flex";
+        document.getElementById("options").style.display = "block";
+      }
+    
+      function close_sidebar_options() {
+        document.getElementById("chat").style.display = "block";
+        document.getElementById("sidebar").style.display = "none";
+        document.getElementById("options").style.display = "none";
+      }
+    </script>
+    <script src="./script.js"></script>
   </body>
-  <script src="./script.js"></script>
 </html>
-<script>
-  function open_sidebar_options() {
-    document.getElementById("chat").style.display = "none";
-    document.getElementById("sidebar").style.display = "flex";
-    document.getElementById("options").style.display = "block";
-  }
-
-  function close_sidebar_options() {
-    document.getElementById("chat").style.display = "block";
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("options").style.display = "none";
-  }
-</script>
