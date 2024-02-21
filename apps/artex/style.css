@@ -94,6 +94,12 @@ body {
   object-fit: contain;
 }
 
+.app .chat .messages .ai>div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .app .chat .messages .user {
   background: transparent;
 }
@@ -217,4 +223,69 @@ body {
   .app .chat header i {
     display: flex;
   }
+}
+
+.code-block {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.header p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.header img {
+  background: transparent !important;
+}
+
+#copy {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#copy img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  pointer-events: none;
+}
+
+#copy p {
+  pointer-events: none;
+  margin: 0;
+}
+
+.block {
+  padding: 10px 0;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 10px;
+  overflow: auto;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px;
+  color: black;
 }

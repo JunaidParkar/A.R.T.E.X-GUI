@@ -31,96 +31,22 @@
           Chats <i class="ri-menu-4-line" onclick="open_sidebar_options()"></i>
         </header>
 
-        <div class="messages">
+        <div class="messages" id="messages-box">
           <div class="ai">
             <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
-            <p>
+            <div>
+              <p>hello world</p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
               quasi nulla porro animi sint nihil totam esse illum tempore
               voluptates.
-            </p>
-          </div>
-
-          <div class="ai user">
-            <img src="../../assets/apps/default/artex/assets/user.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.lorem30 Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Architecto molestiae ipsa ducimus doloribus est
-              reiciendis nam hic! Neque, cum nihil. Quasi fugiat assumenda
-              numquam dignissimos in nulla inventore sunt sapiente.
-            </p>
-          </div>
-
-          <div class="ai">
-            <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.
-            </p>
-          </div>
-
-          <div class="ai user">
-            <img src="../../assets/apps/default/artex/assets/user.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.lorem30 Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Architecto molestiae ipsa ducimus doloribus est
-              reiciendis nam hic! Neque, cum nihil. Quasi fugiat assumenda
-              numquam dignissimos in nulla inventore sunt sapiente.
-            </p>
-          </div>
-
-          <div class="ai">
-            <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.
-            </p>
-          </div>
-
-          <div class="ai user">
-            <img src="../../assets/apps/default/artex/assets/user.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.lorem30 Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Architecto molestiae ipsa ducimus doloribus est
-              reiciendis nam hic! Neque, cum nihil. Quasi fugiat assumenda
-              numquam dignissimos in nulla inventore sunt sapiente.
-            </p>
-          </div>
-
-          <div class="ai">
-            <img src="../../assets/apps/default/artex/assets/bot.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.
-            </p>
-          </div>
-
-          <div class="ai user">
-            <img src="../../assets/apps/default/artex/assets/user.png" alt="" />
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
-              quasi nulla porro animi sint nihil totam esse illum tempore
-              voluptates.lorem30 Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Architecto molestiae ipsa ducimus doloribus est
-              reiciendis nam hic! Neque, cum nihil. Quasi fugiat assumenda
-              numquam dignissimos in nulla inventore sunt sapiente.
-            </p>
+            </div>
           </div>
         </div>
 
         <div class="input">
           <i class="ri-mic-fill"></i>
-          <input type="text" placeholder="Type your query here" />
-          <i class="ri-send-plane-2-fill"></i>
+          <input type="text" id="chat-input" placeholder="Type your query here" />
+          <i class="ri-send-plane-2-fill" id="sendQuery" style="cursor: pointer;"></i>
         </div>
       </div>
       <div class="options" id="options">
@@ -161,18 +87,19 @@
         </div>
       </div>
     </div>
+    <script>
+      function open_sidebar_options() {
+        document.getElementById("chat").style.display = "none";
+        document.getElementById("sidebar").style.display = "flex";
+        document.getElementById("options").style.display = "block";
+      }
+    
+      function close_sidebar_options() {
+        document.getElementById("chat").style.display = "block";
+        document.getElementById("sidebar").style.display = "none";
+        document.getElementById("options").style.display = "none";
+      }
+    </script>
+    <script src="./script.js"></script>
   </body>
 </html>
-<script>
-  function open_sidebar_options() {
-    document.getElementById("chat").style.display = "none";
-    document.getElementById("sidebar").style.display = "flex";
-    document.getElementById("options").style.display = "block";
-  }
-
-  function close_sidebar_options() {
-    document.getElementById("chat").style.display = "block";
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("options").style.display = "none";
-  }
-</script>
